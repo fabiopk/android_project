@@ -14,7 +14,6 @@ public class Arrow {
 		hit = false;
 		xpos = x;
 		ypos = y;
-		//ssssss odsa
 	}
 
 	public void update() {
