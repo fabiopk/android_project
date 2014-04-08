@@ -15,7 +15,6 @@ public class SplashScreen extends Screen {
 
 	public SplashScreen(Game game) {
 		super(game);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -30,6 +29,7 @@ public class SplashScreen extends Screen {
 
                 if (inBounds(event, 0, 0, 1920, 1080)) {
                     game.setScreen(new MainMenuScreen(game));
+                    //comment
                 }
 
             }
