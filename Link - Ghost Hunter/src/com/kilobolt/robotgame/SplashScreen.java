@@ -57,10 +57,11 @@ public class SplashScreen extends Screen {
 		paint.setColor(Color.WHITE);
 		// Darken the entire screen
 		g.drawARGB(255, 0, 0, 0);
-		g.drawString("UVA CS2110 Spring 2014", 400, 165, paint);
-		g.drawString("", 400, 360, paint);
+		g.drawString("UVA CS2110 Spring 2014", 960, 165, paint);
+		g.drawString("Fabio Baldissera, Brian Spann, " +
+				"Leah Grande", 960, 500, paint);
+		g.drawString("Leah Grande",960, 550, paint);
 		
-
 	}
 
 	@Override
