@@ -10,7 +10,7 @@ public class Assets {
 			right1, right2, g_up, g_down, g_down1, g_left, g_left1, g_right,
 			g_right1, grass, block, ghost_dead, g_dead, g_dead1, g_dead2,
 			g_dead3, g_dead4, g_dead5, g_dead6, g_dead7, g_dead8, g_dead9,
-			walk_left, walk_right, walk_down, walk_up, sword_swing, heart,
+			walk_left, walk_right, walk_down, walk_up, sword_down, sword_right, heart,
 			gameover, item_heart, item_bow, shuriken;
 	// public static Music theme;
 	public static Image splash;

@@ -8,6 +8,7 @@ import com.kilobolt.framework.Image;
 public class SpriteSheet {
 
 	private int frames;
+	private int xoffset,yoffset;
 	private int currentFrame;
 	private long animTime;
 	private long totalDuration;
@@ -15,6 +16,7 @@ public class SpriteSheet {
 	private int duration;
 	private Image sheet;
 	private boolean isOver;
+	private int size;
 
 	public SpriteSheet(Image image, int frames, int duration) {
 		sheet = image;
@@ -26,6 +28,24 @@ public class SpriteSheet {
 		totalDuration = frames * duration;
 		animTime = 0;
 		isOver = false;
+		size =120;
+		this.xoffset = 0;
+		this.yoffset = 0;
+	}
+	
+	public SpriteSheet(Image image, int frames, int duration, int xoffset, int yoffset, int spacing) {
+		sheet = image;
+		this.frames = frames;
+		this.duration = duration;
+		height = image.getHeight();
+		width = image.getWidth();
+		currentFrame = 0;
+		totalDuration = frames * duration;
+		animTime = 0;
+		isOver = false;
+		size = spacing;
+		this.xoffset = xoffset;
+		this.yoffset = yoffset;
 	}
 
 	public synchronized void update(long elapsedTime) {
@@ -54,8 +74,8 @@ public class SpriteSheet {
 	}
 
 	public void printSprite(Graphics g, int xpos, int ypos) {
-		g.drawImage(sheet, xpos, ypos, (this.currentFrame * 120), 0,
-				120, height);	
+		g.drawImage(sheet, xpos + xoffset, ypos - yoffset, (this.currentFrame * size), 0,
+				size, height);	
 	}
 
 	public int getCurrentFrame() {

@@ -28,7 +28,7 @@ public class GameScreen extends Screen {
 			right1, right2, g_up, g_down, g_down1, g_left, g_left1, g_right,
 			g_right1, grass, cake, g_dead, g_dead1, g_dead2, g_dead3, g_dead4,
 			g_dead5, g_dead6, g_dead7, g_dead8, g_dead9, walk_left, walk_right,
-			walk_down, walk_up, sword_swing, heart, item_heart, item_bow,
+			walk_down, walk_up, sword_down, sword_right, heart, item_heart, item_bow,
 			shuriken;
 
 	Paint paint, paint2;
@@ -46,7 +46,7 @@ public class GameScreen extends Screen {
 
 	private ArrayList<Item> items;
 
-	private static SpriteSheet sword;
+	private static SpriteSheet s_down, s_right;
 
 	public static ArrayList<Ghost> getGhosts() {
 		return ghosts;
@@ -105,7 +105,8 @@ public class GameScreen extends Screen {
 		walk_right = Assets.walk_right;
 		walk_down = Assets.walk_down;
 		walk_up = Assets.walk_up;
-		sword_swing = Assets.sword_swing;
+		sword_down = Assets.sword_down;
+		sword_right = Assets.sword_right;
 		heart = Assets.heart;
 		item_heart = Assets.item_heart;
 		item_bow = Assets.item_bow;
@@ -166,7 +167,8 @@ public class GameScreen extends Screen {
 		w_right = new SpriteSheet(walk_right, 8, 40);
 		w_down = new SpriteSheet(walk_down, 9, 40);
 		w_up = new SpriteSheet(walk_up, 9, 40);
-		sword = new SpriteSheet(sword_swing, 6, 30);
+		s_down = new SpriteSheet(sword_down, 6, 30);
+		s_right = new SpriteSheet(sword_right, 5, 30, 0, 40, 160);
 
 		paint2 = new Paint();
 		paint2.setTextSize(100);
@@ -400,7 +402,7 @@ public class GameScreen extends Screen {
 			break;
 
 		case SwordAttack:
-			sword.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
+			s_down.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
 			break;
 		}
 
@@ -484,11 +486,11 @@ public class GameScreen extends Screen {
 	}
 
 	public static SpriteSheet getSword() {
-		return sword;
+		return s_down;
 	}
 
 	public void setSword(SpriteSheet swordM) {
-		sword = swordM;
+		s_down = swordM;
 	}
 
 	public void animate() {
@@ -499,7 +501,7 @@ public class GameScreen extends Screen {
 			w_down.update(10);
 			w_up.update(10);
 		} else if (link.getState() == State.SwordAttack) {
-			sword.update(10);
+			s_down.update(10);
 		} else {
 			a_down.update(10);
 			a_left.update(10);
