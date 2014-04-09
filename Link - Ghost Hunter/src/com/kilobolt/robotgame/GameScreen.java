@@ -178,6 +178,22 @@ public class GameScreen extends Screen {
 
 	}
 
+	public static SpriteSheet getS_down() {
+		return s_down;
+	}
+
+	public static void setS_down(SpriteSheet s_down) {
+		GameScreen.s_down = s_down;
+	}
+
+	public static SpriteSheet getS_right() {
+		return s_right;
+	}
+
+	public static void setS_right(SpriteSheet s_right) {
+		GameScreen.s_right = s_right;
+	}
+
 	public static int[][] getTilemap() {
 		return tilemap;
 	}
@@ -261,7 +277,7 @@ public class GameScreen extends Screen {
 					arrows.add(link.shoot());
 				}
 
-				if (timer >= 100) {
+				if (timer >= 30) {
 					addGhost();
 					timer = 0;
 				} else {
@@ -402,7 +418,11 @@ public class GameScreen extends Screen {
 			break;
 
 		case SwordAttack:
+			if(link.getOld_state() == State.Right) {
+			s_right.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
+			}else {
 			s_down.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
+			}
 			break;
 		}
 
@@ -496,24 +516,25 @@ public class GameScreen extends Screen {
 	public void animate() {
 
 		if (link.isMoving && !(link.getState() == State.SwordAttack)) {
-			w_left.update(10);
-			w_right.update(10);
-			w_down.update(10);
-			w_up.update(10);
+			w_left.update(13);
+			w_right.update(13);
+			w_down.update(13);
+			w_up.update(13);
 		} else if (link.getState() == State.SwordAttack) {
 			s_down.update(10);
+			s_right.update(10);
 		} else {
-			a_down.update(10);
-			a_left.update(10);
-			a_right.update(10);
+			a_down.update(12);
+			a_left.update(12);
+			a_right.update(12);
 		}
 		for (Ghost gst : ghosts) {
 			if (gst.isAlive) {
-				ag_right.update(10);
-				ag_left.update(10);
-				ag_down.update(10);
+				ag_right.update(9);
+				ag_left.update(9);
+				ag_down.update(9);
 			} else {
-				ag_dead.update(10);
+				ag_dead.update(14);
 			}
 
 		}
