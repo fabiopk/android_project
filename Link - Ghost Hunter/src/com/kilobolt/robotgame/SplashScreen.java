@@ -48,7 +48,8 @@ public class SplashScreen extends Screen {
 	@Override
 	public void paint(float deltaTime) {
 		Graphics g = game.getGraphics();
-		g.drawImage(Assets.splash, 0, 0);
+		g.drawImage(Assets.menu, 0, 0);
+		
 		// Defining a paint object
 		Paint paint = new Paint();
 		paint.setTextSize(100);
