@@ -15,15 +15,16 @@ public class Character {
 	protected State state = State.Down;
 	protected boolean isAlive = true;
 	protected boolean isMoving = false;
-	private int linkSpeed;
+	protected int linkSpeed;
 	private int[][] maps = GameScreen.getTilemap();
 	private int arrows;
 	private int life;
+	private State old_state = State.Down;
 
 	public Character() {
 		arrows = 3;
 		life = 3;
-		linkSpeed = 6;
+		linkSpeed = 8;
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
 		int x = position.nextInt(5);
@@ -50,7 +51,6 @@ public class Character {
 			xbonus = 0;
 			xspeed = 0;
 			this.isMoving = false;
-			// GameScreen.cleanCurrentFrames();
 		}
 
 		if (xbonus >= 120) {
@@ -74,11 +74,38 @@ public class Character {
 			this.isMoving = false;
 		}
 
-		if (GameScreen.getSword().isOver()) {
-			this.isMoving = false;
-			GameScreen.getSword().setCurrentFrame(0);
-			GameScreen.getSword().setOver(false);
-			this.state = State.Down;
+		if (state == State.SwordAttack) {
+			if (GameScreen.getS_right().isOver() && old_state == State.Right) {
+				this.isMoving = false;
+				GameScreen.getS_right().setCurrentFrame(0);
+				GameScreen.getS_down().setCurrentFrame(0);
+				GameScreen.getS_right().setOver(false);
+				GameScreen.getS_down().setOver(false);
+				this.state = old_state;
+			} else if (GameScreen.getS_down().isOver()
+					&& old_state == State.Down) {
+				this.isMoving = false;
+				GameScreen.getS_right().setCurrentFrame(0);
+				GameScreen.getS_down().setCurrentFrame(0);
+				GameScreen.getS_right().setOver(false);
+				GameScreen.getS_down().setOver(false);
+				this.state = old_state;
+			} else if (GameScreen.getS_down().isOver() && old_state == State.Up) {
+				this.isMoving = false;
+				GameScreen.getS_right().setCurrentFrame(0);
+				GameScreen.getS_down().setCurrentFrame(0);
+				GameScreen.getS_right().setOver(false);
+				GameScreen.getS_down().setOver(false);
+				this.state = old_state;
+			} else if (GameScreen.getS_down().isOver()
+					&& old_state == State.Left) {
+				this.isMoving = false;
+				GameScreen.getS_right().setCurrentFrame(0);
+				GameScreen.getS_down().setCurrentFrame(0);
+				GameScreen.getS_right().setOver(false);
+				GameScreen.getS_down().setOver(false);
+				this.state = old_state;
+			}
 		}
 	}
 
@@ -133,48 +160,49 @@ public class Character {
 	}
 
 	public void atack() {
-		this.isMoving = true;
-		this.state = State.SwordAttack;
-		Iterator<Ghost> its = GameScreen.getGhosts().iterator();
-		while (its.hasNext()) {
-			Ghost gts = its.next();
-			switch (state) {
+		if (!this.isMoving && !(this.state == State.SwordAttack)) {
+			this.isMoving = true;
+			Iterator<Ghost> its = GameScreen.getGhosts().iterator();
+			while (its.hasNext()) {
+				Ghost gts = its.next();
+				switch (state) {
 
-			case Up:
-				if (this.xpos == gts.xpos && (this.ypos - 1) == gts.ypos) {
-					gts.kill();
+				case Up:
+					old_state = State.Up;
+					if (this.xpos == gts.xpos && (this.ypos - 1) == gts.ypos) {
+						gts.kill();
+					}
+					break;
+
+				case Down:
+					old_state = State.Down;
+					if (this.xpos == gts.xpos && (this.ypos + 1) == gts.ypos) {
+						gts.kill();
+					}
+					break;
+
+				case Left:
+					old_state = State.Left;
+					if ((this.xpos - 1) == gts.xpos && this.ypos == gts.ypos) {
+						gts.kill();
+					}
+					break;
+
+				case Right:
+					old_state = State.Right;
+					if ((this.xpos + 1) == gts.xpos && this.ypos == gts.ypos) {
+						gts.kill();
+					}
+					break;
+
+				default:
+					this.isMoving = false;
+					break;
+
 				}
-				break;
-
-			case Down:
-				if (this.xpos == gts.xpos && (this.ypos + 1) == gts.ypos) {
-					gts.kill();
-				}
-				break;
-
-			case SwordAttack:
-				if (this.xpos == gts.xpos && (this.ypos + 1) == gts.ypos) {
-					gts.kill();
-				}
-				break;
-
-			case Left:
-				if ((this.xpos - 1) == gts.xpos && this.ypos == gts.ypos) {
-					gts.kill();
-				}
-				break;
-
-			case Right:
-				if ((this.xpos + 1) == gts.xpos && this.ypos == gts.ypos) {
-					gts.kill();
-				}
-				break;
-
-			default:
-				break;
-
 			}
 		}
+		this.state = State.SwordAttack;
 	}
 
 	public Arrow shoot() {
@@ -213,7 +241,7 @@ public class Character {
 			ar1.setHit(true);
 			// Since I am returning an arrow, if the character is not standing,
 			// returns an arrow "already hit"
-			//ADdasda
+			// ADdasda
 			return ar1;
 		}
 	}
@@ -264,5 +292,13 @@ public class Character {
 			this.isAlive = false;
 		}
 
+	}
+
+	public State getOld_state() {
+		return old_state;
+	}
+
+	public void setOld_state(State old_state) {
+		this.old_state = old_state;
 	}
 }

@@ -10,6 +10,7 @@ public class Ghost extends Character {
 	private int count_to_move;
 
 	public Ghost() {
+		this.linkSpeed = 7;
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
 		int x = position.nextInt(7);
