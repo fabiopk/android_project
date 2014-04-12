@@ -215,8 +215,8 @@ public class GameScreen extends Screen {
 		// updateReady(touchEvents);
 		if (state == GameState.Running)
 			updateRunning(touchEvents, deltaTime);
-		// if (state == GameState.Paused)
-		// updatePaused(touchEvents);
+		if (state == GameState.Paused)
+			updatePaused(touchEvents);
 		if (state == GameState.GameOver)
 			updateGameOver(touchEvents);
 	}
@@ -321,10 +321,11 @@ public class GameScreen extends Screen {
 		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_UP) {
+				
 				if (inBounds(event, 730, 360, 460, 120)) {
-						resume();
+					resume();
 				}
-
+				
 				if (inBounds(event, 730, 600, 460, 120)) {
 					goToMenu();
 				}
