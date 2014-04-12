@@ -17,6 +17,7 @@ public class SplashScreen extends Screen {
 		super(game);
 	}
 
+	//BEST COMMENT EVER!!
 	@Override
     public void update(float deltaTime) {
         Graphics g = game.getGraphics();
