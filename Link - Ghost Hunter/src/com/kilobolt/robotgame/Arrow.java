@@ -41,7 +41,7 @@ public class Arrow {
 					break;
 
 				case 2:
-					// Do nothing
+					// Do nothing, just kidding.
 					break;
 				case 3:
 					killGhost();
