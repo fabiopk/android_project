@@ -41,7 +41,7 @@ public class Arrow {
 					break;
 
 				case 2:
-					// K.
+					//fixed
 					break;
 				case 3:
 					killGhost();
