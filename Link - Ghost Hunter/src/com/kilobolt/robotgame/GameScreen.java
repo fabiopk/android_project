@@ -321,21 +321,16 @@ public class GameScreen extends Screen {
 		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_UP) {
-				if (inBounds(event, 0, 0, 800, 240)) {
-
-					if (!inBounds(event, 0, 0, 35, 35)) {
+				if (inBounds(event, 730, 360, 460, 120)) {
 						resume();
-					}
 				}
 
-				if (inBounds(event, 0, 240, 800, 240)) {
-					nullify();
+				if (inBounds(event, 730, 600, 460, 120)) {
 					goToMenu();
 				}
 			}
 		}
 	}
-
 	private void updateGameOver(List<TouchEvent> touchEvents) {
 		int len = touchEvents.size();
 		for (int i = 0; i < len; i++) {
@@ -597,8 +592,8 @@ public class GameScreen extends Screen {
 		Graphics g = game.getGraphics();
 		// Darken the entire screen so you can display the Paused screen.
 		g.drawARGB(155, 0, 0, 0);
-		g.drawString("Resume", 400, 165, paint2);
-		g.drawString("Menu", 400, 360, paint2);
+		g.drawString("Resume", 960, 420, paint2);
+		g.drawString("Menu", 960, 660, paint2);
 
 	}
 
@@ -628,7 +623,10 @@ public class GameScreen extends Screen {
 
 	@Override
 	public void backButton() {
-		pause();
+		if(state == GameState.Running)
+			pause();
+		else if(state == GameState.Paused)
+			android.os.Process.killProcess(android.os.Process.myPid());
 	}
 
 	private void goToMenu() {

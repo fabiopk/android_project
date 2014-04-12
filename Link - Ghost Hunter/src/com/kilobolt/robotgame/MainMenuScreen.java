@@ -21,11 +21,15 @@ public class MainMenuScreen extends Screen {
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
-
-                if (inBounds(event, 0, 0, 1920, 1080)) {
+            	
+            	if( inBounds(event, 745, 610, 430, 135)) {
                     game.setScreen(new GameScreen(game));
                 }
-
+            	
+            	if( inBounds(event, 605, 850, 730, 150)) {
+            		game.setScreen(new GameScreen(game));
+            		//change this setScreen to the new screen once we have an options menu
+            	}
             }
         }
     }
