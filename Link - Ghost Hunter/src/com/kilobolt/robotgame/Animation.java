@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.kilobolt.framework.Image;
 
 
-public class Animation {
+public class Animation { //
 
     private ArrayList frames;
     private int currentFrame;

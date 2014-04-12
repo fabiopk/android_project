@@ -63,7 +63,7 @@ public class SplashScreen extends Screen {
 		g.drawString("Fabio Baldissera, Brian Spann, &", 960, 550, paint);
 		g.drawString("Leah Grande",960, 650, paint);
 		g.drawString("Special thanks to: kilobolt.com", 960, 850, paint);
-		
+		g.drawImage(Assets.icon, 960, 900);
 	}
 
 	@Override

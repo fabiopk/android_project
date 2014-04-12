@@ -60,6 +60,7 @@ public class LoadingScreen extends Screen {
 		Assets.heart = g.newImage("heart.png", ImageFormat.RGB565);
 		Assets.gameover = g.newImage("gameover.png", ImageFormat.RGB565);
 		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.RGB565);
+		Assets.icon = g.newImage("icon.png", ImageFormat.RGB565);
 		// This is how you would load a sound if you had one.
 //		 Assets.click = game.getAudio().createSound("explode.ogg");
 
