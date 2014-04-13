@@ -12,9 +12,11 @@ import com.kilobolt.framework.Graphics.ImageFormat;
 import com.kilobolt.framework.Input.TouchEvent;
 
 public class ShopScreen extends Screen {
-
+	//private static Character link; **creates error
+	
 	public ShopScreen(Game game) {
 		super(game);
+		//link = new Character(); ** creates error
 	}
 
 	@Override
@@ -64,8 +66,7 @@ public class ShopScreen extends Screen {
 		//set cake price
 		g.drawString("1", 910, 360, paint);
 		//show number of coins
-		//g.drawString(Character.getMoney(), 0, 0, paint); -> This creates an error because
-		// it says it is a static reference to a non-static method, do you know what I should do?
+		//g.drawString(String.valueOf(link.getMoney()), 400, 460, paint); **creates error
 	}
 
 	@Override
