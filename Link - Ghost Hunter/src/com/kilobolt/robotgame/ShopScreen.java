@@ -64,7 +64,8 @@ public class ShopScreen extends Screen {
 		//set cake price
 		g.drawString("2", 910, 360, paint);
 		//show number of coins
-		g.drawString(Character.getMoney(), 0, 0, paint);
+		//g.drawString(Character.getMoney(), 0, 0, paint); -> This creates an error because
+		// it says it is a static reference to a non-static reference, do you know what I should do?
 	}
 
 	@Override
