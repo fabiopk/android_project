@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+import android.R.string;
 import android.graphics.Color;
 import android.graphics.Paint;
 
@@ -583,6 +584,8 @@ public class GameScreen extends Screen {
 			g.drawImage(Assets.heart, offset, 20);
 			offset += heart.getWidth() + 10;
 		}
+		g.drawImage(Assets.item_bow, 1700, 20);
+		g.drawString(String.valueOf(link.getArrows()), 1800, 120, paint2);
 		// g.drawImage(Assets.button, 0, 350, 0, 65, 65, 65);
 		// g.drawImage(Assets.button, 0, 415, 0, 130, 65, 65);
 		// g.drawImage(Assets.button, 0, 0, 0, 195, 35, 35);

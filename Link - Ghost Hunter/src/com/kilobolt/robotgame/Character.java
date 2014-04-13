@@ -20,6 +20,7 @@ public class Character {
 	private int arrows;
 	private int life;
 	private State old_state = State.Down;
+	private int money;
 
 	public Character() {
 		arrows = 3;
@@ -293,6 +294,10 @@ public class Character {
 		}
 
 	}
+	
+	public void spendMoney(int amount) {
+		this.money -= amount;
+	}
 
 	public State getOld_state() {
 		return old_state;
@@ -300,5 +305,13 @@ public class Character {
 
 	public void setOld_state(State old_state) {
 		this.old_state = old_state;
+	}
+
+	public int getArrows() {
+		return arrows;
+	}
+
+	public void setArrows(int arrows) {
+		this.arrows = arrows;
 	}
 }
