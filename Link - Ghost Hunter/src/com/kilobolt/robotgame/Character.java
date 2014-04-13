@@ -26,6 +26,7 @@ public class Character {
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
+		money = 0;
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
 		int x = position.nextInt(5);
@@ -297,6 +298,15 @@ public class Character {
 	
 	public void spendMoney(int amount) {
 		this.money -= amount;
+	}
+	
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void addMoney(int amount) {
+		this.money += amount;
 	}
 
 	public State getOld_state() {

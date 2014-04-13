@@ -56,13 +56,15 @@ public class ShopScreen extends Screen {
 		paint.setAntiAlias(true);
 		paint.setColor(Color.WHITE);
 		//set bomb price
-		g.drawString("4", 170, 360, paint);
+		g.drawString("3", 170, 360, paint);
 		//set heart price
-		g.drawString("6", 420, 360, paint);
+		g.drawString("4", 420, 360, paint);
 		//set arrow price
-		g.drawString("2", 660, 360, paint);
+		g.drawString("1", 660, 360, paint);
 		//set cake price
-		g.drawString("4", 910, 360, paint);
+		g.drawString("2", 910, 360, paint);
+		//show number of coins
+		g.drawString(Character.getMoney(), 0, 0, paint);
 	}
 
 	@Override
