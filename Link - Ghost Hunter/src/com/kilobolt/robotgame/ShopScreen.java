@@ -29,7 +29,6 @@ public class ShopScreen extends Screen {
 
                 if (inBounds(event, 0, 0, 1920, 1080)) {
                     game.setScreen(new MainMenuScreen(game));
-                    //comment
                 }
 
             }
@@ -48,7 +47,7 @@ public class ShopScreen extends Screen {
 	@Override
 	public void paint(float deltaTime) {
 		Graphics g = game.getGraphics();
-		g.drawImage(Assets.menu, 0, 0);
+		g.drawImage(Assets.merchant_screen, 0, 0);
 		
 		// Defining a paint object
 		Paint paint = new Paint();
@@ -56,14 +55,14 @@ public class ShopScreen extends Screen {
 		paint.setTextAlign(Paint.Align.CENTER);
 		paint.setAntiAlias(true);
 		paint.setColor(Color.WHITE);
-		// Darken the entire screen
-		g.drawARGB(255, 0, 0, 0);
-		g.drawString("UVA CS2110 Spring 2014", 960, 165, paint);
-		g.drawString("Masterminds: ", 960, 450, paint);
-		g.drawString("Fabio Baldissera, Brian Spann, &", 960, 550, paint);
-		g.drawString("Leah Grande",960, 650, paint);
-		g.drawString("Special thanks to: kilobolt.com", 960, 850, paint);
-		g.drawImage(Assets.icon, 960, 900);
+		//set bomb price
+		g.drawString("4", 50, 150, paint);
+		//set heart price
+		//g.drawString("6", 960, 165, paint);
+		//set arrow price
+		//g.drawString("2", 960, 165, paint);
+		//set cake price
+		//g.drawString("4", )
 	}
 
 	@Override
