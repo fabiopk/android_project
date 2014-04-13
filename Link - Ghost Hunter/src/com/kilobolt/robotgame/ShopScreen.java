@@ -56,16 +56,16 @@ public class ShopScreen extends Screen {
 		paint.setAntiAlias(true);
 		paint.setColor(Color.WHITE);
 		//set bomb price
-		g.drawString("3", 170, 360, paint);
+		g.drawString("10", 170, 360, paint);
 		//set heart price
-		g.drawString("4", 420, 360, paint);
+		g.drawString("5", 420, 360, paint);
 		//set arrow price
-		g.drawString("1", 660, 360, paint);
+		g.drawString("3", 660, 360, paint);
 		//set cake price
-		g.drawString("2", 910, 360, paint);
+		g.drawString("1", 910, 360, paint);
 		//show number of coins
 		//g.drawString(Character.getMoney(), 0, 0, paint); -> This creates an error because
-		// it says it is a static reference to a non-static reference, do you know what I should do?
+		// it says it is a static reference to a non-static method, do you know what I should do?
 	}
 
 	@Override
