@@ -80,7 +80,7 @@ public class Item {
 				break;
 				
 			case Bow:
-				GameScreen.getLink().setLife(GameScreen.getLink().getLife() +1);
+				GameScreen.getLink().setWithBow(true);
 				break;
 				
 			case Arrow:

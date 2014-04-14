@@ -8,7 +8,7 @@ public class Character {
 	enum State {
 		Down, Up, Right, Left, Dead, Invisible, SwordAttack
 	}
-
+	private boolean withBow;
 	protected int xpos, ypos;
 	protected int xspeed, yspeed;
 	protected int xbonus, ybonus;
@@ -23,6 +23,7 @@ public class Character {
 	private int money;
 
 	public Character() {
+		withBow = false;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
@@ -225,7 +226,7 @@ public class Character {
 	}
 
 	public Arrow shoot() {
-		if (arrows > 0) {
+		if (arrows > 0 && withBow) {
 			arrows -= 1;
 			Arrow ar1;
 			int arrow_speed = 15;
@@ -350,5 +351,13 @@ public class Character {
 
 	public void setArrows(int arrows) {
 		this.arrows = arrows;
+	}
+
+	public boolean isWithBow() {
+		return withBow;
+	}
+
+	public void setWithBow(boolean withBow) {
+		this.withBow = withBow;
 	}
 }

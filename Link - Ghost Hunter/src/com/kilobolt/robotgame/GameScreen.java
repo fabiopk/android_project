@@ -118,11 +118,11 @@ public class GameScreen extends Screen {
 
 		// Defining a paint object
 		paint = new Paint();
-		paint.setTextSize(30);
+		paint.setTextSize(60);
 		paint.setTextAlign(Paint.Align.CENTER);
 		paint.setAntiAlias(true);
 		paint.setColor(Color.WHITE);
-
+		paint.setStrokeWidth(20.2f);
 		// Add animations
 		a_down = new Animation();
 		a_down.addFrame(down, 1250);
@@ -595,9 +595,11 @@ public class GameScreen extends Screen {
 		for (int i = 0; i < link.getLife(); i++) {
 			g.drawImage(Assets.heart, offset, 20);
 			offset += heart.getWidth() + 10;
+		}if (link.isWithBow()) {
+		g.drawImage(Assets.bow_GUI, 1650, 5);
 		}
-		g.drawImage(Assets.item_bow, 1700, 20);
-		g.drawString(String.valueOf(link.getArrows()), 1800, 120, paint2);
+		g.drawImage(Assets.arrow_GUI, 1650, 5);
+		g.drawString(String.valueOf(link.getArrows()), 1864, 110, paint);
 		// g.drawImage(Assets.button, 0, 350, 0, 65, 65, 65);
 		// g.drawImage(Assets.button, 0, 415, 0, 130, 65, 65);
 		// g.drawImage(Assets.button, 0, 0, 0, 195, 35, 35);
