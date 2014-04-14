@@ -226,6 +226,7 @@ public class Character {
 	}
 
 	public Arrow shoot() {
+		//Can only attack with arrows and if have Bow
 		if (arrows > 0 && withBow) {
 			arrows -= 1;
 			Arrow ar1;
