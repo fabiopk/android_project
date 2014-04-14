@@ -53,6 +53,7 @@ public class LoadingScreen extends Screen {
 		Assets.sword_down = g.newImage("sword_swing.png", ImageFormat.ARGB4444);
 		Assets.sword_right = g.newImage("sword_right.png", ImageFormat.ARGB4444);
 		Assets.sword_left = g.newImage("sword_left.png", ImageFormat.ARGB4444);
+		Assets.sword_up = g.newImage("sword_up.png", ImageFormat.ARGB4444);
 		
 		Assets.item_heart = g.newImage("item_heart.png", ImageFormat.ARGB4444);
 		Assets.item_bow = g.newImage("item_bow.png", ImageFormat.ARGB4444);

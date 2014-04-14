@@ -58,7 +58,7 @@ public class SpriteSheet {
 
 			}
 
-			while (animTime > (currentFrame * duration)) {
+			if (animTime > (currentFrame * duration)) {
 				currentFrame++;
 
 			}
