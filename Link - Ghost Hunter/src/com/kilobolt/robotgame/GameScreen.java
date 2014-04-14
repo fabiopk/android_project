@@ -29,8 +29,8 @@ public class GameScreen extends Screen {
 			right1, right2, g_up, g_down, g_down1, g_left, g_left1, g_right,
 			g_right1, grass, cake, g_dead, g_dead1, g_dead2, g_dead3, g_dead4,
 			g_dead5, g_dead6, g_dead7, g_dead8, g_dead9, walk_left, walk_right,
-			walk_down, walk_up, sword_down, sword_right, sword_left, heart,
-			item_heart, item_bow, shuriken;
+			walk_down, walk_up, sword_down, sword_right, sword_left, sword_up,
+			heart, item_heart, item_bow, shuriken;
 
 	Paint paint, paint2;
 	private static int rows = 16;
@@ -47,7 +47,7 @@ public class GameScreen extends Screen {
 
 	private ArrayList<Item> items;
 
-	private static SpriteSheet s_down, s_right, s_left;
+	private static SpriteSheet s_down, s_right, s_left, s_up;
 
 	public static ArrayList<Ghost> getGhosts() {
 		return ghosts;
@@ -109,6 +109,7 @@ public class GameScreen extends Screen {
 		sword_down = Assets.sword_down;
 		sword_right = Assets.sword_right;
 		sword_left = Assets.sword_left;
+		sword_up = Assets.sword_up;
 		heart = Assets.heart;
 		item_heart = Assets.item_heart;
 		item_bow = Assets.item_bow;
@@ -172,6 +173,8 @@ public class GameScreen extends Screen {
 		s_down = new SpriteSheet(sword_down, 6, 30);
 		s_right = new SpriteSheet(sword_right, 5, 30, 0, 40, 160);
 		s_left = new SpriteSheet(sword_left, 5, 30, 40, 40, 160);
+		s_up = new SpriteSheet(sword_up, 7, 30, 31, 40, 160);
+
 		paint2 = new Paint();
 		paint2.setTextSize(100);
 		paint2.setTextAlign(Paint.Align.CENTER);
@@ -421,6 +424,8 @@ public class GameScreen extends Screen {
 				s_right.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
 			} else if (link.getOld_state() == State.Left) {
 				s_left.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
+			} else if (link.getOld_state() == State.Up) {
+				s_up.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
 			} else {
 				s_down.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
 			}
@@ -525,6 +530,7 @@ public class GameScreen extends Screen {
 			s_down.update(10);
 			s_right.update(10);
 			s_left.update(10);
+			s_up.update(10);
 		} else {
 			a_down.update(12);
 			a_left.update(12);
@@ -748,6 +754,22 @@ public class GameScreen extends Screen {
 	public void dropItem(int x, int y) {
 		Item item = new Item(x, y);
 		items.add(item);
+	}
+
+	public static SpriteSheet getS_left() {
+		return s_left;
+	}
+
+	public static void setS_left(SpriteSheet s_left) {
+		GameScreen.s_left = s_left;
+	}
+
+	public static SpriteSheet getS_up() {
+		return s_up;
+	}
+
+	public static void setS_up(SpriteSheet s_up) {
+		GameScreen.s_up = s_up;
 	}
 
 }
