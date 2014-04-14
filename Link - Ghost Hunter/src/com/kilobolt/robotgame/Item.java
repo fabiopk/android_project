@@ -84,7 +84,7 @@ public class Item {
 				break;
 				
 			case Arrow:
-				GameScreen.getLink().setLife(GameScreen.getLink().getLife() +1);
+				GameScreen.getLink().setArrows(GameScreen.getLink().getArrows() +1);
 				break;
 			}
 			onGround = false;

@@ -30,7 +30,7 @@ public class GameScreen extends Screen {
 			g_right1, grass, cake, g_dead, g_dead1, g_dead2, g_dead3, g_dead4,
 			g_dead5, g_dead6, g_dead7, g_dead8, g_dead9, walk_left, walk_right,
 			walk_down, walk_up, sword_down, sword_right, sword_left, sword_up,
-			heart, item_heart, item_bow, shuriken;
+			heart, item_heart, item_bow, item_arrow, shuriken;
 
 	Paint paint, paint2;
 	private static int rows = 16;
@@ -113,6 +113,7 @@ public class GameScreen extends Screen {
 		heart = Assets.heart;
 		item_heart = Assets.item_heart;
 		item_bow = Assets.item_bow;
+		item_arrow = Assets.item_arrow;
 		shuriken = Assets.shuriken;
 
 		// Defining a paint object
@@ -486,7 +487,7 @@ public class GameScreen extends Screen {
 				break;
 
 			case Arrow:
-				g.drawImage(item_heart, mod_i, mod_j);
+				g.drawImage(item_arrow, mod_i, mod_j);
 				break;
 			}
 

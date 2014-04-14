@@ -11,7 +11,7 @@ public class Assets {
 			g_right1, grass, block, ghost_dead, g_dead, g_dead1, g_dead2,
 			g_dead3, g_dead4, g_dead5, g_dead6, g_dead7, g_dead8, g_dead9,
 			walk_left, walk_right, walk_down, walk_up, sword_down, sword_right, sword_left, sword_up, heart,
-			gameover, item_heart, item_bow, shuriken, icon, merchant_screen;
+			gameover, item_heart, item_bow, item_arrow, shuriken, icon, merchant_screen;
 	// public static Music theme;
 	public static Image splash;
 	public static Image menu;
