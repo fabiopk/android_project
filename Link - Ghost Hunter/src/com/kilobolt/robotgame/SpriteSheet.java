@@ -74,7 +74,7 @@ public class SpriteSheet {
 	}
 
 	public void printSprite(Graphics g, int xpos, int ypos) {
-		g.drawImage(sheet, xpos + xoffset, ypos - yoffset, (this.currentFrame * size), 0,
+		g.drawImage(sheet, xpos - xoffset, ypos - yoffset, (this.currentFrame * size), 0,
 				size, height);	
 	}
 

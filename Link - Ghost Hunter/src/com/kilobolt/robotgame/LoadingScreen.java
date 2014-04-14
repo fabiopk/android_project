@@ -52,6 +52,8 @@ public class LoadingScreen extends Screen {
 		
 		Assets.sword_down = g.newImage("sword_swing.png", ImageFormat.ARGB4444);
 		Assets.sword_right = g.newImage("sword_right.png", ImageFormat.ARGB4444);
+		Assets.sword_left = g.newImage("sword_left.png", ImageFormat.ARGB4444);
+		
 		Assets.item_heart = g.newImage("item_heart.png", ImageFormat.ARGB4444);
 		Assets.item_bow = g.newImage("item_bow.png", ImageFormat.ARGB4444);
 		
@@ -63,6 +65,7 @@ public class LoadingScreen extends Screen {
 		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.RGB565);
 		Assets.icon = g.newImage("icon.png", ImageFormat.RGB565);
 		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.RGB565);
+		
 		// This is how you would load a sound if you had one.
 //		 Assets.click = game.getAudio().createSound("explode.ogg");
 

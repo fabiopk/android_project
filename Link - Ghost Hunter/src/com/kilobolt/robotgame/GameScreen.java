@@ -29,8 +29,8 @@ public class GameScreen extends Screen {
 			right1, right2, g_up, g_down, g_down1, g_left, g_left1, g_right,
 			g_right1, grass, cake, g_dead, g_dead1, g_dead2, g_dead3, g_dead4,
 			g_dead5, g_dead6, g_dead7, g_dead8, g_dead9, walk_left, walk_right,
-			walk_down, walk_up, sword_down, sword_right, heart, item_heart, item_bow,
-			shuriken;
+			walk_down, walk_up, sword_down, sword_right, sword_left, heart,
+			item_heart, item_bow, shuriken;
 
 	Paint paint, paint2;
 	private static int rows = 16;
@@ -47,7 +47,7 @@ public class GameScreen extends Screen {
 
 	private ArrayList<Item> items;
 
-	private static SpriteSheet s_down, s_right;
+	private static SpriteSheet s_down, s_right, s_left;
 
 	public static ArrayList<Ghost> getGhosts() {
 		return ghosts;
@@ -108,6 +108,7 @@ public class GameScreen extends Screen {
 		walk_up = Assets.walk_up;
 		sword_down = Assets.sword_down;
 		sword_right = Assets.sword_right;
+		sword_left = Assets.sword_left;
 		heart = Assets.heart;
 		item_heart = Assets.item_heart;
 		item_bow = Assets.item_bow;
@@ -170,7 +171,7 @@ public class GameScreen extends Screen {
 		w_up = new SpriteSheet(walk_up, 9, 40);
 		s_down = new SpriteSheet(sword_down, 6, 30);
 		s_right = new SpriteSheet(sword_right, 5, 30, 0, 40, 160);
-
+		s_left = new SpriteSheet(sword_left, 5, 30, 40, 40, 160);
 		paint2 = new Paint();
 		paint2.setTextSize(100);
 		paint2.setTextAlign(Paint.Align.CENTER);
@@ -322,17 +323,18 @@ public class GameScreen extends Screen {
 		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_UP) {
-				
+
 				if (inBounds(event, 730, 360, 460, 120)) {
 					resume();
 				}
-				
+
 				if (inBounds(event, 730, 600, 460, 120)) {
 					goToMenu();
 				}
 			}
 		}
 	}
+
 	private void updateGameOver(List<TouchEvent> touchEvents) {
 		int len = touchEvents.size();
 		for (int i = 0; i < len; i++) {
@@ -415,10 +417,12 @@ public class GameScreen extends Screen {
 			break;
 
 		case SwordAttack:
-			if(link.getOld_state() == State.Right) {
-			s_right.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
-			}else {
-			s_down.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
+			if (link.getOld_state() == State.Right) {
+				s_right.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
+			} else if (link.getOld_state() == State.Left) {
+				s_left.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
+			} else {
+				s_down.printSprite(g, mod_i + link.xbonus, mod_j + link.ybonus);
 			}
 			break;
 		}
@@ -481,7 +485,7 @@ public class GameScreen extends Screen {
 				break;
 			}
 
-			}
+		}
 
 		for (Arrow arrow : arrows) {
 			mod_i = 120 * arrow.getXpos();
@@ -520,6 +524,7 @@ public class GameScreen extends Screen {
 		} else if (link.getState() == State.SwordAttack) {
 			s_down.update(10);
 			s_right.update(10);
+			s_left.update(10);
 		} else {
 			a_down.update(12);
 			a_left.update(12);
@@ -627,9 +632,9 @@ public class GameScreen extends Screen {
 
 	@Override
 	public void backButton() {
-		if(state == GameState.Running)
+		if (state == GameState.Running)
 			pause();
-		else if(state == GameState.Paused)
+		else if (state == GameState.Paused)
 			android.os.Process.killProcess(android.os.Process.myPid());
 	}
 
