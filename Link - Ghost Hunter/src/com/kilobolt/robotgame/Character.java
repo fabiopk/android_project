@@ -10,6 +10,7 @@ public class Character {
 	}
 	private static final int KILL_POINTS = 10;
 	private boolean withBow;
+	private boolean withCakeMix;
 	protected int xpos, ypos;
 	protected int xspeed, yspeed;
 	protected int xbonus, ybonus;
@@ -25,6 +26,7 @@ public class Character {
 
 	public Character() {
 		withBow = false;
+		withCakeMix = false;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
@@ -395,6 +397,14 @@ public class Character {
 
 	public void setWithBow(boolean withBow) {
 		this.withBow = withBow;
+	}
+	
+	public boolean getWithCakeMix() {
+		return withCakeMix;
+	}
+	
+	public void setWithCakeMix(boolean withCakeMix) {
+		this.withCakeMix = withCakeMix;
 	}
 
 	public int getPoints() {

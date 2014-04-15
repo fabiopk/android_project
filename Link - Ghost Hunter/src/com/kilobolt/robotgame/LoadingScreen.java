@@ -56,8 +56,15 @@ public class LoadingScreen extends Screen {
 		Assets.sword_up = g.newImage("sword_up.png", ImageFormat.ARGB4444);
 		
 		Assets.item_heart = g.newImage("item_heart.png", ImageFormat.ARGB4444);
+		Assets.item_cake_mix = g.newImage("cake_mix.png", ImageFormat.ARGB4444);
+		Assets.item_cake_item = g.newImage("cake_item.png", ImageFormat.ARGB4444);
+		Assets.cake_placed = g.newImage("cake_placed.png", ImageFormat.ARGB4444);
 		Assets.item_bow = g.newImage("item_bow.png", ImageFormat.ARGB4444);
 		Assets.item_arrow = g.newImage("item_arrow.png", ImageFormat.ARGB4444);
+		Assets.item_bomb = g.newImage("bomb.png", ImageFormat.ARGB4444);
+		Assets.item_bronze_coin = g.newImage("bronze_coin.png", ImageFormat.ARGB4444);
+		Assets.item_gold_coin = g.newImage("gold_coin.png", ImageFormat.ARGB4444);
+		Assets.item_diamond = g.newImage("diamond.png", ImageFormat.ARGB4444);
 		Assets.arrow_GUI = g.newImage("arrow_GUI.png", ImageFormat.ARGB4444);
 		Assets.bow_GUI = g.newImage("bow_GUI.png", ImageFormat.ARGB4444);
 		
@@ -72,6 +79,12 @@ public class LoadingScreen extends Screen {
 		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.RGB565);
 		Assets.icon = g.newImage("icon.png", ImageFormat.RGB565);
 		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.RGB565);
+		
+		Assets.menu_screen_easy = g.newImage("menu_screen_easy.png", ImageFormat.RGB565);
+		Assets.menu_screen_normal = g.newImage("menu_screen_normal.png", ImageFormat.RGB565);
+		Assets.menu_screen_hard = g.newImage("menu_screen_hard.png", ImageFormat.RGB565);
+		Assets.menu_screen_muted = g.newImage("menu_screen_muted.png", ImageFormat.RGB565);
+		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.RGB565);
 		
 		// This is how you would load a sound if you had one.
 //		 Assets.click = game.getAudio().createSound("explode.ogg");
