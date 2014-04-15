@@ -12,7 +12,6 @@ import com.kilobolt.framework.Graphics.ImageFormat;
 import com.kilobolt.framework.Input.TouchEvent;
 
 public class ShopScreen extends Screen {
-	//private static Character link; //creates error
 	
 	private static int level = 0;
 	public ShopScreen(Game game) {
@@ -30,14 +29,35 @@ public class ShopScreen extends Screen {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
 
+            	//if click "select your item"
                 if (inBounds(event, 0, 0, 100, 100)) {
                 	level++;
                     game.setScreen(new GameScreen(game));
                 }
-
+                //if click bomb
+                if (inBounds(event, 106, 103, 251, 369)) {
+                	GameScreen.getLink().spendMoney(10);
+                }
+              //if click heart
+                if (inBounds(event, 359, 109, 497, 370)) {
+                	GameScreen.getLink().spendMoney(5);
+            }
+                //if click arrow
+                if (inBounds(event, 0, 0, 0, 0)) {
+                	//GameScreen.getLink().spendMoney(3);
+        }
             }
         }
     }
+	//
+    //}
+    
+    //}
+  //
+    //}
+    //if click cake
+    //if (inBounds(event, 0, 0, 0, 0)) {
+    	//GameScreen.getLink().spendMoney(1);
 	
     private boolean inBounds(TouchEvent event, int x, int y, int width,
             int height) {
@@ -68,9 +88,9 @@ public class ShopScreen extends Screen {
 		//set cake price
 		g.drawString("1", 910, 360, paint);
 		//show number of coins
-		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 400, 460, paint); 
+		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 300, 520, paint); 
 		//show number of points
-		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 400, 460, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 270, 740, paint);
 		
 	}
 
