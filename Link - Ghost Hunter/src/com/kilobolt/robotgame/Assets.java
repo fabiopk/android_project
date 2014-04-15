@@ -16,6 +16,8 @@ public class Assets {
 			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, item_cake_item, cake_placed, 
 			item_bomb;
 	// public static Music theme;
+	public static int option_screen_difficulty;
+	public static int mute;
 	public static Image splash;
 	public static Image menu;
 	public static Image cake;

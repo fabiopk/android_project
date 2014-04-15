@@ -29,7 +29,6 @@ public class SplashScreen extends Screen {
             if (event.type == TouchEvent.TOUCH_UP) {
 
                 if (inBounds(event, 0, 0, 1920, 1080)) {
-                	//I'm putting the shop screen here for now, will move later
                     game.setScreen(new MainMenuScreen(game));
                     
                 }

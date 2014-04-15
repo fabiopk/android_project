@@ -8,6 +8,10 @@ import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Input.TouchEvent;
 
 public class MainMenuScreen extends Screen {
+	
+	private OptionsScreen screen1;
+	private int firstRun = 1;
+	
     public MainMenuScreen(Game game) {
         super(game);
     }
@@ -21,14 +25,13 @@ public class MainMenuScreen extends Screen {
         for (int i = 0; i < len; i++) {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
-            	
             	if( inBounds(event, 745, 610, 430, 135)) {
-                    game.setScreen(new GameScreen(game));
-                } //starts a new game
-            	
-            	if( inBounds(event, 605, 850, 730, 150)) { 
-            		game.setScreen(new OptionsScreen(game));
-            	} //opens the options screen
+            		game.setScreen(new GameScreen(game));
+            	} //starts a new game
+	            	
+	            if( inBounds(event, 605, 850, 730, 150)) { 
+	            	game.setScreen(new OptionsScreen(game));
+	            } //opens the options screen
             }
         }
     }
