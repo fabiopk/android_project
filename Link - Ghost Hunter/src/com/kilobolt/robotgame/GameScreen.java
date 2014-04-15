@@ -36,7 +36,7 @@ public class GameScreen extends Screen {
 	private static int rows = 16;
 	private static int columns = 9;
 	private static int[][] tilemap;
-	private static Character link;
+	static Character link;
 	private Animation a_down, a_left, a_right, ag_right, ag_left, ag_down;
 	private static ArrayList<Ghost> ghosts;
 	private static ArrayList<Arrow> arrows;
