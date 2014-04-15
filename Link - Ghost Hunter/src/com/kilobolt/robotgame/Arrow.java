@@ -45,6 +45,7 @@ public class Arrow {
 					break;
 				case 3:
 					killGhost();
+					GameScreen.getLink().setPoints(GameScreen.getLink().getPoints() + 5);
 					hit = true;
 					break;
 

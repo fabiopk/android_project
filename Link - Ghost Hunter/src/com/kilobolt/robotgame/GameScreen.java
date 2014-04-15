@@ -63,7 +63,9 @@ public class GameScreen extends Screen {
 		// Initialize game objects here
 
 		createTilemap();
-		link = new Character();
+		if (ShopScreen.getLevel() == 0) {
+			link = new Character();
+		}
 
 		ghosts = new ArrayList<Ghost>();
 		addGhost();
@@ -73,7 +75,6 @@ public class GameScreen extends Screen {
 
 		items = new ArrayList<Item>();
 		arrows = new ArrayList<Arrow>();
-		dropItem(5, 5);
 
 		up = Assets.up;
 		down = Assets.down;
@@ -115,6 +116,28 @@ public class GameScreen extends Screen {
 		item_bow = Assets.item_bow;
 		item_arrow = Assets.item_arrow;
 		shuriken = Assets.shuriken;
+
+		switch (ShopScreen.getLevel()) {
+		case 0:
+			grass = Assets.grass;
+			break;
+
+		case 1:
+			grass = Assets.grass_2;
+			break;
+
+		case 2:
+			grass = Assets.grass_3;
+			break;
+
+		case 3:
+			grass = Assets.grass_4;
+			break;
+
+		default:
+			grass = Assets.grass;
+			break;
+		}
 
 		// Defining a paint object
 		paint = new Paint();
@@ -244,6 +267,11 @@ public class GameScreen extends Screen {
 			state = GameState.GameOver;
 		}
 
+		if (link.getPoints() >= (30 + ShopScreen.getLevel() * 30)) {
+			game.setScreen(new ShopScreen(game));
+			nullify();
+		}
+
 		for (Ghost gst : ghosts) { // Clean map before ghost move, so it is zero
 									// again
 			tilemap[gst.getXpos()][gst.getYpos()] = 0;
@@ -346,6 +374,8 @@ public class GameScreen extends Screen {
 			if (event.type == TouchEvent.TOUCH_DOWN) {
 				if (inBounds(event, 0, 0, 1920, 1080)) {
 					nullify();
+					ShopScreen.setLevel(0);
+					link.setAlive(true);
 					game.setScreen(new MainMenuScreen(game));
 					return;
 				}
@@ -367,15 +397,15 @@ public class GameScreen extends Screen {
 
 				switch (tilemap[i][j]) {
 				case 0:
-					g.drawImage(Assets.grass, mod_i, mod_j);
+					g.drawImage(grass, mod_i, mod_j);
 					break;
 				case 1:
-					g.drawImage(Assets.grass, mod_i, mod_j);
+					g.drawImage(grass, mod_i, mod_j);
 					g.drawImage(Assets.cake, mod_i, mod_j);
 					break;
 
 				default:
-					g.drawImage(Assets.grass, mod_i, mod_j);
+					g.drawImage(grass, mod_i, mod_j);
 					break;
 
 				}
@@ -595,14 +625,12 @@ public class GameScreen extends Screen {
 		for (int i = 0; i < link.getLife(); i++) {
 			g.drawImage(Assets.heart, offset, 20);
 			offset += heart.getWidth() + 10;
-		}if (link.isWithBow()) {
-		g.drawImage(Assets.bow_GUI, 1650, 5);
+		}
+		if (link.isWithBow()) {
+			g.drawImage(Assets.bow_GUI, 1650, 5);
 		}
 		g.drawImage(Assets.arrow_GUI, 1650, 5);
 		g.drawString(String.valueOf(link.getArrows()), 1864, 110, paint);
-		// g.drawImage(Assets.button, 0, 350, 0, 65, 65, 65);
-		// g.drawImage(Assets.button, 0, 415, 0, 130, 65, 65);
-		// g.drawImage(Assets.button, 0, 0, 0, 195, 35, 35);
 
 	}
 

@@ -62,6 +62,9 @@ public class LoadingScreen extends Screen {
 		Assets.bow_GUI = g.newImage("bow_GUI.png", ImageFormat.ARGB4444);
 		
 		Assets.grass = g.newImage("grass.png", ImageFormat.RGB565);
+		Assets.grass_2 = g.newImage("grass_2.png", ImageFormat.RGB565);
+		Assets.grass_3 = g.newImage("grass_3.png", ImageFormat.RGB565);
+		Assets.grass_4 = g.newImage("grass_4.png", ImageFormat.RGB565);
 		Assets.block = g.newImage("block.png", ImageFormat.RGB565);
 		Assets.cake = g.newImage("cake.png", ImageFormat.RGB565);
 		Assets.heart = g.newImage("heart.png", ImageFormat.RGB565);

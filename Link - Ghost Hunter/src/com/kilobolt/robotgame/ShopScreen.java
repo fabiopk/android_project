@@ -14,9 +14,10 @@ import com.kilobolt.framework.Input.TouchEvent;
 public class ShopScreen extends Screen {
 	//private static Character link; //creates error
 	
+	private static int level = 0;
 	public ShopScreen(Game game) {
 		super(game);
-		//link = new Character();  //creates error
+		
 	}
 
 	@Override
@@ -29,8 +30,9 @@ public class ShopScreen extends Screen {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
 
-                if (inBounds(event, 0, 0, 1920, 1080)) {
-                    game.setScreen(new MainMenuScreen(game));
+                if (inBounds(event, 0, 0, 100, 100)) {
+                	level++;
+                    game.setScreen(new GameScreen(game));
                 }
 
             }
@@ -87,6 +89,14 @@ public class ShopScreen extends Screen {
 	@Override
 	public void backButton() {
 
+	}
+
+	public static int getLevel() {
+		return level;
+	}
+
+	public static void setLevel(int level1) {
+		level = level;
 	}
 
 }

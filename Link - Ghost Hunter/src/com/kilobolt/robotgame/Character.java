@@ -8,6 +8,7 @@ public class Character {
 	enum State {
 		Down, Up, Right, Left, Dead, Invisible, SwordAttack
 	}
+	private static final int KILL_POINTS = 10;
 	private boolean withBow;
 	protected int xpos, ypos;
 	protected int xspeed, yspeed;
@@ -20,7 +21,7 @@ public class Character {
 	private int arrows;
 	private int life;
 	private State old_state = State.Down;
-	private int money;
+	private int money, points;
 
 	public Character() {
 		withBow = false;
@@ -191,6 +192,7 @@ public class Character {
 					old_state = State.Up;
 					if (this.xpos == gts.xpos && (this.ypos - 1) == gts.ypos) {
 						gts.kill();
+						points += KILL_POINTS;
 					}
 					break;
 
@@ -198,6 +200,7 @@ public class Character {
 					old_state = State.Down;
 					if (this.xpos == gts.xpos && (this.ypos + 1) == gts.ypos) {
 						gts.kill();
+						points += KILL_POINTS;
 					}
 					break;
 
@@ -205,6 +208,7 @@ public class Character {
 					old_state = State.Left;
 					if ((this.xpos - 1) == gts.xpos && this.ypos == gts.ypos) {
 						gts.kill();
+						points += KILL_POINTS;
 					}
 					break;
 
@@ -212,6 +216,7 @@ public class Character {
 					old_state = State.Right;
 					if ((this.xpos + 1) == gts.xpos && this.ypos == gts.ypos) {
 						gts.kill();
+						points += KILL_POINTS;
 					}
 					break;
 
@@ -360,5 +365,13 @@ public class Character {
 
 	public void setWithBow(boolean withBow) {
 		this.withBow = withBow;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
 	}
 }
