@@ -29,6 +29,8 @@ public class MainMenuScreen extends Screen {
             	if( inBounds(event, 605, 850, 730, 150)) {
             		game.setScreen(new GameScreen(game));
             		//change this setScreen to the new screen once we have an options menu
+            	}else {
+            		//nothing
             	}
             }
         }
