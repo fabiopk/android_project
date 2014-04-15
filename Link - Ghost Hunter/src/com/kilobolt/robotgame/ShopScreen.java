@@ -26,38 +26,36 @@ public class ShopScreen extends Screen {
 
         int len = touchEvents.size();
         for (int i = 0; i < len; i++) {
-            TouchEvent event = touchEvents.get(i);
-            if (event.type == TouchEvent.TOUCH_UP) {
+        	TouchEvent event = touchEvents.get(i);
+        	if (event.type == TouchEvent.TOUCH_UP) {
 
-            	//if click "select your item"
-                if (inBounds(event, 0, 0, 100, 100)) {
-                	level++;
-                    game.setScreen(new GameScreen(game));
-                }
-                //if click bomb
-                if (inBounds(event, 106, 103, 251, 369)) {
-                	GameScreen.getLink().spendMoney(10);
-                }
-              //if click heart
-                if (inBounds(event, 359, 109, 497, 370)) {
-                	GameScreen.getLink().spendMoney(5);
-            }
-                //if click arrow
-                if (inBounds(event, 0, 0, 0, 0)) {
-                	//GameScreen.getLink().spendMoney(3);
+        		//if click "select your item"
+        		if (inBounds(event, 0, 0, 100, 100)) {
+        			level++;
+        			game.setScreen(new GameScreen(game));
+        		}
+        		//if click bomb
+        		if (inBounds(event, 106, 103, 251, 369)) {
+        			GameScreen.getLink().spendMoney(10);
+        			GameScreen.getLink().addBombs(1);
+        		}
+        		//if click heart
+        		if (inBounds(event, 359, 109, 497, 370)) {
+        			GameScreen.getLink().spendMoney(5);
+        			GameScreen.getLink().addLife(1);
+        		}
+        		//if click arrow
+        		if (inBounds(event, 600, 110, 740, 370)) {
+        			GameScreen.getLink().spendMoney(3);
+        			//GameScreen.getLink().addArrows(1);
+        		}
+        		//if click cake
+        		if (inBounds(event, 850, 105, 990, 370)) {
+        			GameScreen.getLink().spendMoney(1);
+        		}
+        	}
         }
-            }
-        }
-    }
-	//
-    //}
-    
-    //}
-  //
-    //}
-    //if click cake
-    //if (inBounds(event, 0, 0, 0, 0)) {
-    	//GameScreen.getLink().spendMoney(1);
+	}
 	
     private boolean inBounds(TouchEvent event, int x, int y, int width,
             int height) {

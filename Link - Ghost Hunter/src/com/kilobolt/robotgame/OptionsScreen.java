@@ -6,6 +6,7 @@ import com.kilobolt.framework.Game;
 import com.kilobolt.framework.Graphics;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.framework.Input.TouchEvent;
+import com.kilobolt.framework.Music;
 
 public class OptionsScreen extends Screen {
 	
@@ -27,10 +28,14 @@ public class OptionsScreen extends Screen {
             if (event.type == TouchEvent.TOUCH_UP) {
             	
             	if( inBounds(event, 740, 105, 570, 155)) {
-            		if(mute == 0)
+            		if(mute == 0) {
             			mute = 1;
-            		else if(mute == 1)
+            			Assets.theme.stop();
+            		}
+            		else if(mute == 1) {
             			mute = 0;
+            			Assets.theme.play();
+            		}
                 } //mutes sound
             	
             	if(inBounds(event, 420, 390, 1080, 150) || 
