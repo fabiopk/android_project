@@ -37,6 +37,22 @@ public class ShopScreen extends Screen {
             }
         }
     }
+	//if click bomb
+    //if (inBounds(event, 0, 0, 1920, 1080)) {
+    	//GameScreen.getLink().spendMoney(10);
+    //}
+    //if click heart
+    //if (inBounds(event, 0, 0, 0, 0)) {
+    	//GameScreen.getLink().spendMoney(5);
+    //}
+  //if click arrow
+    //if (inBounds(event, 0, 0, 0, 0)) {
+    	//GameScreen.getLink().spendMoney(3);
+    //}
+    //if click cake
+    //if (inBounds(event, 0, 0, 0, 0)) {
+    	//GameScreen.getLink().spendMoney(1);
+
 	
     private boolean inBounds(TouchEvent event, int x, int y, int width,
             int height) {
