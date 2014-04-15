@@ -68,7 +68,10 @@ public class ShopScreen extends Screen {
 		//set cake price
 		g.drawString("1", 910, 360, paint);
 		//show number of coins
-		//g.drawString(String.valueOf(link.getMoney()), 400, 460, paint); //creates error
+		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 400, 460, paint); 
+		//show number of points
+		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 400, 460, paint);
+		
 	}
 
 	@Override
