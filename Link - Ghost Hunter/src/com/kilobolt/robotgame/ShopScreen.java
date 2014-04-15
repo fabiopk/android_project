@@ -29,6 +29,7 @@ public class ShopScreen extends Screen {
             TouchEvent event = touchEvents.get(i);
             if (event.type == TouchEvent.TOUCH_UP) {
 
+            	//if click "select your item"
                 if (inBounds(event, 0, 0, 100, 100)) {
                 	level++;
                     game.setScreen(new MainMenuScreen(game));
@@ -52,7 +53,6 @@ public class ShopScreen extends Screen {
     //if click cake
     //if (inBounds(event, 0, 0, 0, 0)) {
     	//GameScreen.getLink().spendMoney(1);
-
 	
     private boolean inBounds(TouchEvent event, int x, int y, int width,
             int height) {
