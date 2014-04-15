@@ -21,7 +21,7 @@ public class Character {
 	private int arrows;
 	private int life;
 	private State old_state = State.Down;
-	private int money, points;
+	private int money, points, bombs, cakes;
 
 	public Character() {
 		withBow = false;
@@ -29,6 +29,9 @@ public class Character {
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
+		bombs = 0;
+		cakes = 0;
+
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
 		int x = position.nextInt(5);
@@ -128,6 +131,29 @@ public class Character {
 				this.state = old_state;
 			}
 		}
+	}
+
+	public int getBombs() {
+		return bombs;
+	}
+
+	public void setBombs(int bombs) {
+		this.bombs = bombs;
+	}
+	public void addBombs(int amount) {
+		this.bombs += amount;
+	}
+
+	public int getCakes() {
+		return cakes;
+	}
+
+	public void setCakes(int cakes) {
+		this.cakes = cakes;
+	}
+	
+	public void addCakes(int amount) {
+		this.cakes += amount;
 	}
 
 	public void moveRight() {
@@ -322,6 +348,10 @@ public class Character {
 	public void setLife(int life) {
 		this.life = life;
 	}
+	
+	public void addLife(int amount) {
+		this.life += amount;
+	}
 
 	public void kill() {
 		this.life -= 1;
@@ -373,5 +403,8 @@ public class Character {
 
 	public void setPoints(int points) {
 		this.points = points;
+	}
+	public void addPoints(int amount) {
+		this.points += amount;
 	}
 }
