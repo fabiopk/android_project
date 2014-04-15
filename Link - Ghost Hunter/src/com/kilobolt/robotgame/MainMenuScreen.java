@@ -24,12 +24,11 @@ public class MainMenuScreen extends Screen {
             	
             	if( inBounds(event, 745, 610, 430, 135)) {
                     game.setScreen(new GameScreen(game));
-                }
+                } //starts a new game
             	
-            	if( inBounds(event, 605, 850, 730, 150)) {
-            		game.setScreen(new GameScreen(game));
-            		//change this setScreen to the new screen once we have an options menu
-            	}
+            	if( inBounds(event, 605, 850, 730, 150)) { 
+            		game.setScreen(new OptionsScreen(game));
+            	} //opens the options screen
             }
         }
     }
