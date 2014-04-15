@@ -30,7 +30,7 @@ public class SplashScreen extends Screen {
 
                 if (inBounds(event, 0, 0, 1920, 1080)) {
                 	//I'm putting the shop screen here for now, will move later
-                    game.setScreen(new MainMenuScreen(game));
+                    game.setScreen(new ShopScreen(game));
                     
                 }
 

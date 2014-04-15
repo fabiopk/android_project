@@ -12,7 +12,6 @@ import com.kilobolt.framework.Graphics.ImageFormat;
 import com.kilobolt.framework.Input.TouchEvent;
 
 public class ShopScreen extends Screen {
-	//private static Character link; //creates error
 	
 	private static int level = 0;
 	public ShopScreen(Game game) {
@@ -32,7 +31,7 @@ public class ShopScreen extends Screen {
 
                 if (inBounds(event, 0, 0, 100, 100)) {
                 	level++;
-                    game.setScreen(new GameScreen(game));
+                    game.setScreen(new MainMenuScreen(game));
                 }
 
             }
@@ -68,9 +67,9 @@ public class ShopScreen extends Screen {
 		//set cake price
 		g.drawString("1", 910, 360, paint);
 		//show number of coins
-		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 400, 460, paint); 
+		//g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 400, 460, paint); 
 		//show number of points
-		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 400, 460, paint);
+		//g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 400, 460, paint);
 		
 	}
 
