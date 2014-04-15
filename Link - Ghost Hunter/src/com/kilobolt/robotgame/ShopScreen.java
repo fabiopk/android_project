@@ -39,11 +39,11 @@ public class ShopScreen extends Screen {
         }
     }
 	//if click bomb
-    //if (inBounds(event, 0, 0, 1920, 1080)) {
+    //if (inBounds(event, 106, 103, 251, 369)) {
     	//GameScreen.getLink().spendMoney(10);
     //}
     //if click heart
-    //if (inBounds(event, 0, 0, 0, 0)) {
+    //if (inBounds(event, 359, 109, 497, 370)) {
     	//GameScreen.getLink().spendMoney(5);
     //}
   //if click arrow
