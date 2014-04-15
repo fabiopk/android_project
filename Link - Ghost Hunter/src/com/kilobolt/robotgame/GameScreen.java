@@ -30,7 +30,9 @@ public class GameScreen extends Screen {
 			g_right1, grass, cake, g_dead, g_dead1, g_dead2, g_dead3, g_dead4,
 			g_dead5, g_dead6, g_dead7, g_dead8, g_dead9, walk_left, walk_right,
 			walk_down, walk_up, sword_down, sword_right, sword_left, sword_up,
-			heart, item_heart, item_bow, item_arrow, shuriken;
+			heart, item_heart, item_bow, item_arrow, shuriken, 
+			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, 
+			item_cake_item, cake_placed, item_bomb;
 
 	Paint paint, paint2;
 	private static int rows = 16;
@@ -116,6 +118,13 @@ public class GameScreen extends Screen {
 		item_bow = Assets.item_bow;
 		item_arrow = Assets.item_arrow;
 		shuriken = Assets.shuriken;
+		item_diamond = Assets.item_diamond;
+		item_bronze_coin = Assets.item_bronze_coin;
+		item_gold_coin = Assets.item_gold_coin;
+		item_cake_mix = Assets.item_cake_mix;
+		item_cake_item = Assets.item_cake_item;
+		cake_placed = Assets.cake_placed;
+		item_bomb = Assets.item_bomb;
 
 		switch (ShopScreen.getLevel()) {
 		case 0:
@@ -519,8 +528,31 @@ public class GameScreen extends Screen {
 			case Arrow:
 				g.drawImage(item_arrow, mod_i, mod_j);
 				break;
-			}
-
+				
+			case Diamond:
+				g.drawImage(item_diamond, mod_i, mod_j);
+				break;
+				
+			case Bronze:
+				g.drawImage(item_bronze_coin, mod_i, mod_j);
+				break;
+				
+			case Gold:
+				g.drawImage(item_gold_coin, mod_i, mod_j);
+				break;
+			
+			case Cake_Mix:
+				g.drawImage(item_cake_mix, mod_i, mod_j);
+				break;
+				
+			case Cake:
+				g.drawImage(item_cake_item, mod_i, mod_j);
+				break;
+				
+			case Bomb:
+				g.drawImage(item_bomb, mod_i, mod_j);
+				break;
+			}	
 		}
 
 		for (Arrow arrow : arrows) {
