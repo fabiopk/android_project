@@ -145,6 +145,15 @@ public class Character {
 	public void addBombs(int amount) {
 		this.bombs += amount;
 	}
+	
+	public void loseBombs(int amount) {
+		if (this.bombs - amount < 0) {
+			this.bombs = 0;
+		}
+		else {
+		this.bombs -= amount;
+		}
+	}
 
 	public int getCakes() {
 		return cakes;
@@ -156,6 +165,15 @@ public class Character {
 	
 	public void addCakes(int amount) {
 		this.cakes += amount;
+	}
+	
+	public void loseCakes(int amount) {
+	if (this.cakes - amount < 0) {
+		this.cakes = 0;
+	}
+	else {
+	this.cakes -= amount;
+	}
 	}
 
 	public void moveRight() {
@@ -354,6 +372,15 @@ public class Character {
 	public void addLife(int amount) {
 		this.life += amount;
 	}
+	
+	public void loseLife(int amount) {
+		if (this.life - amount < 0) {
+			this.life = 0;
+		}
+		else {
+		this.life -= amount;
+		}
+	}
 
 	public void kill() {
 		this.life -= 1;
@@ -363,8 +390,13 @@ public class Character {
 
 	}
 
-	public void spendMoney(int amount) {
+	public void loseMoney(int amount) {
+		if (this.money - amount < 0) {
+			this.money = 0;
+		}
+		else {
 		this.money -= amount;
+		}
 	}
 
 	public int getMoney() {
@@ -389,6 +421,19 @@ public class Character {
 
 	public void setArrows(int arrows) {
 		this.arrows = arrows;
+	}
+	
+	public void addArrows(int amount) {
+		this.arrows += amount;
+	}
+	
+	public void loseArrows(int amount) {
+		if (this.arrows - amount < 0) {
+			this.arrows = 0;
+		}
+		else {
+		this.arrows -= amount;
+		}
 	}
 
 	public boolean isWithBow() {
@@ -416,5 +461,14 @@ public class Character {
 	}
 	public void addPoints(int amount) {
 		this.points += amount;
+	}
+	
+	public void losePoints(int amount) {
+		if (this.points - amount < 0) {
+			this.points = 0;
+		}
+		else {
+		this.points -= amount;
+		}
 	}
 }
