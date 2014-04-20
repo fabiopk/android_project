@@ -44,6 +44,7 @@ public class GameScreen extends Screen {
 	private static ArrayList<Arrow> arrows;
 	static Animation ag_dead;
 	private SpriteSheet w_left, w_right, w_down, w_up;
+	private boolean nearGhost;
 
 	private int timer;
 
@@ -347,6 +348,8 @@ public class GameScreen extends Screen {
 				itr2.remove();
 			}
 		}
+		
+		ghostNear();
 
 	}
 
@@ -571,6 +574,9 @@ public class GameScreen extends Screen {
 			drawPausedUI();
 		if (state == GameState.GameOver)
 			drawGameOverUI();
+		if (nearGhost == true)
+			drawDanger();
+		
 
 	}
 
@@ -679,6 +685,11 @@ public class GameScreen extends Screen {
 		Graphics g = game.getGraphics();
 		g.drawImage(Assets.gameover, 0, 0);
 
+	}
+	
+	private void drawDanger() {
+		Graphics g = game.getGraphics();
+		g.drawARGB(50, 255, 0, 0);
 	}
 
 	@Override
@@ -834,5 +845,16 @@ public class GameScreen extends Screen {
 	public static void setS_up(SpriteSheet s_up) {
 		GameScreen.s_up = s_up;
 	}
-
+	
+	public void ghostNear(){
+		for(int i = link.getXpos()-1; i <= link.getXpos()+1; i++){
+			for(int j = link.getYpos()-1; j <= link.getYpos()+1; j++){
+				if(tilemap[i][j] == 3){
+					nearGhost = true;
+					return;
+				}
+			}
+		}
+		nearGhost = false;
+	}
 }
