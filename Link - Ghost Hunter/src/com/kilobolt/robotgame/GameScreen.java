@@ -669,14 +669,12 @@ public class GameScreen extends Screen {
 			g.drawImage(Assets.heart, offset, 20);
 			offset += heart.getWidth() + 10;
 		}
-		if (link.isWithBow()) {
-			g.drawImage(Assets.bow_GUI, 1650, 5);
+		if (!link.isWithBow()) {
+			g.drawImage(Assets.bow_GUI, 0, 0);
 		}
-		g.drawImage(Assets.arrow_GUI, 1650, 5);
+		g.drawImage(Assets.arrow_GUI, 0, 0);
 		g.drawString(String.valueOf(link.getArrows()), 1864, 110, paint);
-		
-		g.drawImage(Assets.item_gold_coin, 1650, 200);
-		g.drawString(String.valueOf(link.getMoney()), 1864, 350, paint);
+
 	}
 
 	private void drawPausedUI() {
