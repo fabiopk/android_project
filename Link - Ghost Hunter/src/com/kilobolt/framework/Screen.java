@@ -1,7 +1,7 @@
 package com.kilobolt.framework;
 
 public abstract class Screen {
-    protected final Game game;
+    protected static Game game;
 
     public Screen(Game game) {
         this.game = game;

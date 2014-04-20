@@ -15,6 +15,7 @@ import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.robotgame.Character.State;
+import com.kilobolt.robotgame.Item.Type;
 
 public class GameScreen extends Screen {
 	enum GameState {
@@ -34,7 +35,9 @@ public class GameScreen extends Screen {
 			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, 
 			item_cake_item, cake_placed, item_bomb;
 
-	Paint paint, paint2;
+	static Paint paint;
+
+	Paint paint2;
 	private static int rows = 16;
 	private static int columns = 9;
 	private static int[][] tilemap;
@@ -44,10 +47,13 @@ public class GameScreen extends Screen {
 	private static ArrayList<Arrow> arrows;
 	static Animation ag_dead;
 	private SpriteSheet w_left, w_right, w_down, w_up;
+	private boolean nearGhost;
 
 	private int timer;
 
 	private ArrayList<Item> items;
+
+	private boolean hasPortal = false;
 
 	private static SpriteSheet s_down, s_right, s_left, s_up;
 
@@ -276,9 +282,11 @@ public class GameScreen extends Screen {
 			state = GameState.GameOver;
 		}
 
-		if (link.getPoints() >= (30 + ShopScreen.getLevel() * 30)) {
-			game.setScreen(new ShopScreen(game));
-			nullify();
+		if (link.getPoints() >= (30 + ShopScreen.getLevel() * 30) && !hasPortal) {
+		Item portal = new Item(15, 5);
+		portal.setType(Type.Portal);
+		items.add(portal);
+		hasPortal = true;
 		}
 
 		for (Ghost gst : ghosts) { // Clean map before ghost move, so it is zero
@@ -347,6 +355,8 @@ public class GameScreen extends Screen {
 				itr2.remove();
 			}
 		}
+		
+		ghostNear();
 
 	}
 
@@ -552,6 +562,10 @@ public class GameScreen extends Screen {
 			case Bomb:
 				g.drawImage(item_bomb, mod_i, mod_j);
 				break;
+				
+			case Portal:
+				g.drawImage(Assets.portal_b, mod_i, mod_j);
+			break;
 			}	
 		}
 
@@ -571,6 +585,9 @@ public class GameScreen extends Screen {
 			drawPausedUI();
 		if (state == GameState.GameOver)
 			drawGameOverUI();
+		if (nearGhost == true)
+			drawDanger();
+		
 
 	}
 
@@ -622,7 +639,7 @@ public class GameScreen extends Screen {
 		}
 	}
 
-	private void nullify() {
+	private static void nullify() {
 
 		// Set all variables to null. You will be recreating them in the
 		// constructor.
@@ -658,15 +675,16 @@ public class GameScreen extends Screen {
 			g.drawImage(Assets.heart, offset, 20);
 			offset += heart.getWidth() + 10;
 		}
-		if (link.isWithBow()) {
-			g.drawImage(Assets.bow_GUI, 1650, 5);
+		if (!link.isWithBow()) {
+			g.drawImage(Assets.bow_GUI, 0, 0);
 		}
-		g.drawImage(Assets.arrow_GUI, 1650, 5);
+		g.drawImage(Assets.arrow_GUI, 0, 0);
 		g.drawString(String.valueOf(link.getArrows()), 1864, 110, paint);
 		g.drawString(String.valueOf(link.getMoney()), 1864, 350, paint);
 		g.drawString(String.valueOf(link.getBombs()), 1864, 350, paint);
 		g.drawString(String.valueOf(link.getCakes()), 1864, 350, paint);
 		g.drawString(String.valueOf(link.getPoints()), 1864, 350, paint);
+
 	}
 
 	private void drawPausedUI() {
@@ -682,6 +700,11 @@ public class GameScreen extends Screen {
 		Graphics g = game.getGraphics();
 		g.drawImage(Assets.gameover, 0, 0);
 
+	}
+	
+	private void drawDanger() {
+		Graphics g = game.getGraphics();
+		g.drawARGB(50, 255, 0, 0);
 	}
 
 	@Override
@@ -838,4 +861,22 @@ public class GameScreen extends Screen {
 		GameScreen.s_up = s_up;
 	}
 
+	public static void goToMerchant() {
+		game.setScreen(new ShopScreen(game));
+		nullify();
+		
+	}
+
+	
+	public void ghostNear(){
+		for(int i = link.getXpos()-1; i <= link.getXpos()+1; i++){
+			for(int j = link.getYpos()-1; j <= link.getYpos()+1; j++){
+				if(tilemap[i][j] == 3){
+					nearGhost = true;
+					return;
+				}
+			}
+		}
+		nearGhost = false;
+	}
 }
