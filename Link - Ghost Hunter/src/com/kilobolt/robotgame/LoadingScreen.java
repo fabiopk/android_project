@@ -80,11 +80,11 @@ public class LoadingScreen extends Screen {
 		Assets.icon = g.newImage("icon.png", ImageFormat.RGB565);
 		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.RGB565);
 		
-		Assets.menu_screen_easy = g.newImage("menu_screen_easy.png", ImageFormat.RGB565);
-		Assets.menu_screen_normal = g.newImage("menu_screen_normal.png", ImageFormat.RGB565);
-		Assets.menu_screen_hard = g.newImage("menu_screen_hard.png", ImageFormat.RGB565);
-		Assets.menu_screen_muted = g.newImage("menu_screen_muted.png", ImageFormat.RGB565);
-		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.RGB565);
+		Assets.menu_screen_easy = g.newImage("menu_screen_easy.png", ImageFormat.ARGB4444);//RGB565);
+		Assets.menu_screen_normal = g.newImage("menu_screen_normal.png", ImageFormat.ARGB4444);//RGB565);
+		Assets.menu_screen_hard = g.newImage("menu_screen_hard.png", ImageFormat.ARGB4444);//RGB565);
+		Assets.menu_screen_muted = g.newImage("menu_screen_muted.png", ImageFormat.ARGB4444);//RGB565);
+		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.ARGB4444);//RGB565);
 		
 		// This is how you would load a sound if you had one.
 //		 Assets.click = game.getAudio().createSound("explode.ogg");

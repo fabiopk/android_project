@@ -21,6 +21,7 @@ public class Character {
 	private int[][] maps = GameScreen.getTilemap();
 	private int arrows;
 	private int life;
+	private int bomb;
 	private State old_state = State.Down;
 	private int money, points, bombs, cakes;
 
