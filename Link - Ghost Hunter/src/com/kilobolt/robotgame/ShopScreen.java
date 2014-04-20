@@ -36,23 +36,27 @@ public class ShopScreen extends Screen {
         		}
         		//if click bomb
         		if (inBounds(event, 106, 103, 251, 369)) {
-        			GameScreen.getLink().loseMoney(10);
+        			if (GameScreen.getLink().loseMoney(10)) {
         			GameScreen.getLink().addBombs(1);
+        		}
         		}
         		//if click heart
         		if (inBounds(event, 359, 109, 497, 370)) {
-        			GameScreen.getLink().loseMoney(5);
+        			if (GameScreen.getLink().loseMoney(5)) {
         			GameScreen.getLink().addLife(1);
+        			}
         		}
         		//if click arrow
         		if (inBounds(event, 600, 110, 740, 370)) {
-        			GameScreen.getLink().loseMoney(3);
+        			if (GameScreen.getLink().loseMoney(3)) {
         			GameScreen.getLink().addArrows(1);
+        			}
         		}
         		//if click cake
         		if (inBounds(event, 850, 105, 990, 370)) {
-        			GameScreen.getLink().loseMoney(1);
+        			if (GameScreen.getLink().loseMoney(1)) {
         			GameScreen.getLink().addCakes(1);
+        		}
         		}
         	}
         }
