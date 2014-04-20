@@ -93,9 +93,9 @@ public class ShopScreen extends Screen {
 		//show number of coins
 		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 300, 600, paint);
 		//show number of points
-		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 270, 825, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 300, 825, paint);
 		//show number of bombs
-		g.drawString(String.valueOf(GameScreen.getLink().getBombs()), 1540, 560, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getBombs()), 1600, 560, paint);
 		//show number of cakes
 		g.drawString(String.valueOf(GameScreen.getLink().getCakes()), 1405, 890, paint);
 		//show number of arrows

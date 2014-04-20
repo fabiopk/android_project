@@ -249,8 +249,8 @@ public class GameScreen extends Screen {
 		// Refer to Unit 3's code. We did a similar thing without separating the
 		// update methods.
 
-		// if (state == GameState.Ready)
-		// updateReady(touchEvents);
+		//if (state == GameState.Ready)
+		 //updateReady(touchEvents);
 		if (state == GameState.Running)
 			updateRunning(touchEvents, deltaTime);
 		if (state == GameState.Paused)
