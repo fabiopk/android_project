@@ -390,12 +390,13 @@ public class Character {
 
 	}
 
-	public void loseMoney(int amount) {
+	public boolean loseMoney(int amount) {
 		if (this.money - amount < 0) {
-			this.money = 0;
+			return false;
 		}
 		else {
 		this.money -= amount;
+		return true;
 		}
 	}
 

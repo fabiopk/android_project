@@ -663,7 +663,9 @@ public class GameScreen extends Screen {
 		}
 		g.drawImage(Assets.arrow_GUI, 1650, 5);
 		g.drawString(String.valueOf(link.getArrows()), 1864, 110, paint);
-
+		
+		g.drawImage(Assets.item_gold_coin, 1650, 200);
+		g.drawString(String.valueOf(link.getMoney()), 1864, 350, paint);
 	}
 
 	private void drawPausedUI() {
