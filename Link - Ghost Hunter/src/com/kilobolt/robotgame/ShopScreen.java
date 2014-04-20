@@ -36,22 +36,23 @@ public class ShopScreen extends Screen {
         		}
         		//if click bomb
         		if (inBounds(event, 106, 103, 251, 369)) {
-        			GameScreen.getLink().spendMoney(10);
+        			GameScreen.getLink().loseMoney(10);
         			GameScreen.getLink().addBombs(1);
         		}
         		//if click heart
         		if (inBounds(event, 359, 109, 497, 370)) {
-        			GameScreen.getLink().spendMoney(5);
+        			GameScreen.getLink().loseMoney(5);
         			GameScreen.getLink().addLife(1);
         		}
         		//if click arrow
         		if (inBounds(event, 600, 110, 740, 370)) {
-        			GameScreen.getLink().spendMoney(3);
-        			//GameScreen.getLink().addArrows(1);
+        			GameScreen.getLink().loseMoney(3);
+        			GameScreen.getLink().addArrows(1);
         		}
         		//if click cake
         		if (inBounds(event, 850, 105, 990, 370)) {
-        			GameScreen.getLink().spendMoney(1);
+        			GameScreen.getLink().loseMoney(1);
+        			GameScreen.getLink().addCakes(1);
         		}
         	}
         }
@@ -86,9 +87,16 @@ public class ShopScreen extends Screen {
 		//set cake price
 		g.drawString("1", 910, 360, paint);
 		//show number of coins
-		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 300, 520, paint); 
+		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 300, 520, paint);
 		//show number of points
 		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 270, 740, paint);
+		//show number of bombs
+		g.drawString(String.valueOf(GameScreen.getLink().getBombs()), 1540, 510, paint);
+		//show number of cakes
+		g.drawString(String.valueOf(GameScreen.getLink().getCakes()), 1405, 830, paint);
+		//show number of arrows
+		g.drawString(String.valueOf(GameScreen.getLink().getArrows()), 1660, 825, paint);
+
 		
 	}
 
@@ -117,7 +125,7 @@ public class ShopScreen extends Screen {
 	}
 
 	public static void setLevel(int level1) {
-		level = level;
+		level = level1;
 	}
 
 }
