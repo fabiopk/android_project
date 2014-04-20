@@ -5,7 +5,7 @@ import java.util.Random;
 public class Item {
 
 	enum Type {
-		Heart, Cake_Mix, Cake, Bow, Arrow, Bomb, Bronze, Gold, Diamond, Nothing
+		Heart, Cake_Mix, Cake, Bow, Arrow, Bomb, Bronze, Gold, Diamond, Portal, Nothing
 	}
 
 	private int xpos, ypos;
@@ -126,6 +126,10 @@ public class Item {
 				break;
 				
 			case Cake:
+				break;
+				
+			case Portal:
+				GameScreen.goToMerchant();
 				break;
 			}
 			onGround = false;

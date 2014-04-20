@@ -15,6 +15,7 @@ import com.kilobolt.framework.Image;
 import com.kilobolt.framework.Input.TouchEvent;
 import com.kilobolt.framework.Screen;
 import com.kilobolt.robotgame.Character.State;
+import com.kilobolt.robotgame.Item.Type;
 
 public class GameScreen extends Screen {
 	enum GameState {
@@ -34,7 +35,9 @@ public class GameScreen extends Screen {
 			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, 
 			item_cake_item, cake_placed, item_bomb;
 
-	Paint paint, paint2;
+	static Paint paint;
+
+	Paint paint2;
 	private static int rows = 16;
 	private static int columns = 9;
 	private static int[][] tilemap;
@@ -48,6 +51,8 @@ public class GameScreen extends Screen {
 	private int timer;
 
 	private ArrayList<Item> items;
+
+	private boolean hasPortal = false;
 
 	private static SpriteSheet s_down, s_right, s_left, s_up;
 
@@ -276,9 +281,11 @@ public class GameScreen extends Screen {
 			state = GameState.GameOver;
 		}
 
-		if (link.getPoints() >= (30 + ShopScreen.getLevel() * 30)) {
-			game.setScreen(new ShopScreen(game));
-			nullify();
+		if (link.getPoints() >= (30 + ShopScreen.getLevel() * 30) && !hasPortal) {
+		Item portal = new Item(15, 5);
+		portal.setType(Type.Portal);
+		items.add(portal);
+		hasPortal = true;
 		}
 
 		for (Ghost gst : ghosts) { // Clean map before ghost move, so it is zero
@@ -552,6 +559,10 @@ public class GameScreen extends Screen {
 			case Bomb:
 				g.drawImage(item_bomb, mod_i, mod_j);
 				break;
+				
+			case Portal:
+				g.drawImage(Assets.portal_b, mod_i, mod_j);
+			break;
 			}	
 		}
 
@@ -622,7 +633,7 @@ public class GameScreen extends Screen {
 		}
 	}
 
-	private void nullify() {
+	private static void nullify() {
 
 		// Set all variables to null. You will be recreating them in the
 		// constructor.
@@ -833,6 +844,12 @@ public class GameScreen extends Screen {
 
 	public static void setS_up(SpriteSheet s_up) {
 		GameScreen.s_up = s_up;
+	}
+
+	public static void goToMerchant() {
+		game.setScreen(new ShopScreen(game));
+		nullify();
+		
 	}
 
 }
