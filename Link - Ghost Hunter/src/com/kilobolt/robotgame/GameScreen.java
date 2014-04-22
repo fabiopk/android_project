@@ -679,9 +679,9 @@ public class GameScreen extends Screen {
 			offset += heart.getWidth() + 10;
 		}
 		if (!link.isWithBow()) {
-			g.drawImage(Assets.bow_GUI, 0, 0);
+			//g.drawImage(Assets.bow_GUI, 0, 0);
 		}
-		g.drawImage(Assets.arrow_GUI, 0, 0);
+		//g.drawImage(Assets.arrow_GUI, 0,0);//1200, 10);
 		g.drawString(String.valueOf(link.getArrows()), 1850, 50, paint);
 		g.drawString(String.valueOf(link.getMoney()), 1390, 50, paint);
 		g.drawString(String.valueOf(link.getBombs()), 1540, 50, paint);
@@ -754,10 +754,10 @@ public class GameScreen extends Screen {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				if (i == 0 || i == rows-1 || j == 0 || j == columns -1){
-					tilemap[i][j] = 1;
-				}
-				else if (r.nextInt(5) == 0) {
+//				if (i == 0 || i == rows-1 || j == 0 || j == columns -1){
+//					tilemap[i][j] = 1;
+//				}
+				if (r.nextInt(5) == 0) {
 					tilemap[i][j] = 1;
 				} else {
 					tilemap[i][j] = 0;
