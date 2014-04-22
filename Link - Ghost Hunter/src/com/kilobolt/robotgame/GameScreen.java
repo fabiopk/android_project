@@ -679,11 +679,11 @@ public class GameScreen extends Screen {
 			g.drawImage(Assets.bow_GUI, 0, 0);
 		}
 		g.drawImage(Assets.arrow_GUI, 0, 0);
-		g.drawString(String.valueOf(link.getArrows()), 1864, 110, paint);
-		g.drawString(String.valueOf(link.getMoney()), 1864, 350, paint);
-		g.drawString(String.valueOf(link.getBombs()), 1864, 350, paint);
-		g.drawString(String.valueOf(link.getCakes()), 1864, 350, paint);
-		g.drawString(String.valueOf(link.getPoints()), 1864, 350, paint);
+		g.drawString(String.valueOf(link.getArrows()), 1850, 50, paint);
+		g.drawString(String.valueOf(link.getMoney()), 1390, 50, paint);
+		g.drawString(String.valueOf(link.getBombs()), 1540, 50, paint);
+		g.drawString(String.valueOf(link.getCakes()), 1710, 50, paint);
+		g.drawString(String.valueOf(link.getPoints()), 1230, 50, paint);
 
 	}
 
