@@ -49,6 +49,7 @@ public class GameScreen extends Screen {
 	private SpriteSheet w_left, w_right, w_down, w_up;
 	private boolean nearGhost;
 
+	private int frameCounter;
 	private int timer;
 
 	private ArrayList<Item> items;
@@ -356,7 +357,9 @@ public class GameScreen extends Screen {
 			}
 		}
 		
-		ghostNear();
+		if(frameCounter%10 == 0)
+			ghostNear();
+		frameCounter++;
 
 	}
 
@@ -751,7 +754,10 @@ public class GameScreen extends Screen {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				if (r.nextInt(5) == 0) {
+				if (i == 0 || i == rows-1 || j == 0 || j == columns -1){
+					tilemap[i][j] = 1;
+				}
+				else if (r.nextInt(5) == 0) {
 					tilemap[i][j] = 1;
 				} else {
 					tilemap[i][j] = 0;
