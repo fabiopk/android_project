@@ -14,7 +14,7 @@ public class Assets {
 			gameover, item_heart, item_bow, item_arrow, shuriken, icon, merchant_screen, arrow_GUI, bow_GUI,
 			menu_screen_easy, menu_screen_normal, menu_screen_hard, menu_screen_muted, options_screen_clean,
 			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, item_cake_item, cake_placed, portal_o, portal_b, 
-			item_bomb;
+			item_bomb, placed_bomb;
 	// public static Music theme;
 	public static int option_screen_difficulty;
 	public static int mute;

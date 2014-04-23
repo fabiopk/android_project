@@ -77,6 +77,7 @@ public class LoadingScreen extends Screen {
 		Assets.heart = g.newImage("heart.png", ImageFormat.RGB565);
 		Assets.gameover = g.newImage("gameover.png", ImageFormat.RGB565);
 		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.RGB565);
+		Assets.placed_bomb = g.newImage("placed_bomb.png", ImageFormat.RGB565);
 		Assets.icon = g.newImage("icon.png", ImageFormat.RGB565);
 		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.RGB565);
 		

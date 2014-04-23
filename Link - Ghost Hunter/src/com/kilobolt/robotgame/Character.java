@@ -21,7 +21,6 @@ public class Character {
 	private int[][] maps = GameScreen.getTilemap();
 	private int arrows;
 	private int life;
-	private int bomb;
 	private State old_state = State.Down;
 	private int money, points, bombs, cakes;
 
@@ -32,7 +31,7 @@ public class Character {
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
-		bombs = 0;
+		bombs = 9;
 		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();
@@ -328,6 +327,24 @@ public class Character {
 		// returns an arrow "already hit"
 		// ADdasda
 		return ar1;
+	}
+	
+	public Bomb placeBomb() {
+		//Can only attack with arrows and if have Bow
+		if (bombs > 0) {
+			bombs -= 1;
+			Bomb bmb1;
+//			int arrow_speed = 15;
+			bmb1 = new Bomb(this.xpos, this.ypos);
+			return bmb1;
+		}
+		Bomb bmb1 = new Bomb(this.xpos, this.ypos);
+		bmb1.setExploded(true);
+		// Since I am returning an arrow, if the character is not
+		// standing,
+		// returns an arrow "already hit"
+		// ADdasda
+		return bmb1;
 	}
 
 	public int getXpos() {
