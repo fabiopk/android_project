@@ -48,6 +48,7 @@ public class GameScreen extends Screen {
 	static Animation ag_dead;
 	private SpriteSheet w_left, w_right, w_down, w_up;
 	private boolean nearGhost;
+	private boolean testCond;
 
 	private int frameCounter;
 	private int timer;
@@ -360,6 +361,10 @@ public class GameScreen extends Screen {
 		if(frameCounter%5 == 0)
 			ghostNear();
 		frameCounter++;
+		if(frameCounter >= 200){
+			testCond = true;
+		}
+			
 
 	}
 
@@ -590,6 +595,8 @@ public class GameScreen extends Screen {
 			drawGameOverUI();
 		if (nearGhost == true)
 			drawDanger();
+		if (testCond == true){}
+			//drawTest();
 		
 
 	}
@@ -678,15 +685,15 @@ public class GameScreen extends Screen {
 			g.drawImage(Assets.heart, offset, 20);
 			offset += heart.getWidth() + 10;
 		}
-		if (!link.isWithBow()) {
-			g.drawImage(Assets.bow_GUI, 0, 0);
-		}
-		g.drawImage(Assets.arrow_GUI, 1200, 10);
+		g.drawImage(Assets.arrow_GUI, 1093, 10);
 		g.drawString(String.valueOf(link.getArrows()), 1850, 50, paint);
 		g.drawString(String.valueOf(link.getMoney()), 1390, 50, paint);
 		g.drawString(String.valueOf(link.getBombs()), 1540, 50, paint);
 		g.drawString(String.valueOf(link.getCakes()), 1710, 50, paint);
 		g.drawString(String.valueOf(link.getPoints()), 1230, 50, paint);
+		if (!link.isWithBow()) {
+			g.drawImage(Assets.bow_GUI, 1731, 34);
+		}
 
 	}
 
@@ -708,6 +715,11 @@ public class GameScreen extends Screen {
 	private void drawDanger() {
 		Graphics g = game.getGraphics();
 		g.drawARGB(50, 255, 0, 0);
+	}
+	
+	private void drawTest() {
+		Graphics g = game.getGraphics();
+		g.drawARGB(100, 0, 255, 0);
 	}
 
 	@Override
