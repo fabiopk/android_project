@@ -285,7 +285,8 @@ public class GameScreen extends Screen {
 		}
 
 		if (link.getPoints() >= (30 + ShopScreen.getLevel() * 30) && !hasPortal) {
-		Item portal = new Item(15, 5);
+		Item portal = new Item(14, 5);
+		tilemap[14][5] = 0;
 		portal.setType(Type.Portal);
 		items.add(portal);
 		hasPortal = true;
