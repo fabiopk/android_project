@@ -49,7 +49,6 @@ public class GameScreen extends Screen {
 	static Animation ag_dead;
 	private SpriteSheet w_left, w_right, w_down, w_up;
 	private boolean nearGhost;
-	private boolean testCond;
 
 	private int frameCounter;
 	private int timer;
@@ -330,10 +329,9 @@ public class GameScreen extends Screen {
 					link.moveDown();
 				} else if (inBounds(event, 0, 0, 480, 540)) {
 					link.atack();
-//				} else if (inBounds(event, 1440, 0, 480, 540)) {
-//					arrows.add(link.shoot());
-//				}
-				} else if (inBounds(event, 1440, 0, 480, 540)) {
+				} else if (link.getUsingArrows() && inBounds(event, 1440, 0, 480, 540)) {
+					arrows.add(link.shoot());
+				} else if (link.getUsingBombs() && inBounds(event, 1440, 0, 480, 540)) {
 					bombs.add(link.placeBomb());
 				}
 
@@ -377,11 +375,6 @@ public class GameScreen extends Screen {
 		if(frameCounter%5 == 0)
 			ghostNear();
 		frameCounter++;
-		if(frameCounter >= 200){
-			testCond = true;
-		}
-			
-
 	}
 
 	private boolean inBounds(TouchEvent event, int x, int y, int width,
@@ -616,8 +609,6 @@ public class GameScreen extends Screen {
 			drawGameOverUI();
 		if (nearGhost == true)
 			drawDanger();
-		if (testCond == true){}
-			//drawTest();
 		
 
 	}
@@ -736,11 +727,6 @@ public class GameScreen extends Screen {
 	private void drawDanger() {
 		Graphics g = game.getGraphics();
 		g.drawARGB(50, 255, 0, 0);
-	}
-	
-	private void drawTest() {
-		Graphics g = game.getGraphics();
-		g.drawARGB(100, 0, 255, 0);
 	}
 
 	@Override

@@ -11,6 +11,9 @@ public class Character {
 	private static final int KILL_POINTS = 10;
 	private boolean withBow;
 	private boolean withCakeMix;
+	private boolean usingArrows;
+	private boolean usingBombs;
+	private boolean usingCakes;
 	protected int xpos, ypos;
 	protected int xspeed, yspeed;
 	protected int xbonus, ybonus;
@@ -27,11 +30,14 @@ public class Character {
 	public Character() {
 		withBow = false;
 		withCakeMix = false;
+		usingArrows = true;
+		usingBombs = false;
+		usingCakes = false;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
-		bombs = 9;
+		bombs = 0;
 		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();
@@ -330,20 +336,13 @@ public class Character {
 	}
 	
 	public Bomb placeBomb() {
-		//Can only attack with arrows and if have Bow
 		if (bombs > 0) {
 			bombs -= 1;
-			Bomb bmb1;
-//			int arrow_speed = 15;
-			bmb1 = new Bomb(this.xpos, this.ypos);
+			Bomb bmb1 = new Bomb(this.xpos, this.ypos);
 			return bmb1;
 		}
 		Bomb bmb1 = new Bomb(this.xpos, this.ypos);
 		bmb1.setExploded(true);
-		// Since I am returning an arrow, if the character is not
-		// standing,
-		// returns an arrow "already hit"
-		// ADdasda
 		return bmb1;
 	}
 
@@ -489,5 +488,29 @@ public class Character {
 		else {
 		this.points -= amount;
 		}
+	}
+	
+	public boolean getUsingArrows() {
+		return usingArrows;
+	}
+	
+	public void setUsingArrows(boolean usingArrows) {
+		this.usingArrows = usingArrows;
+	}
+	
+	public boolean getUsingBombs() {
+		return usingBombs;
+	}
+	
+	public void setUsingBombs(boolean usingBombs) {
+		this.usingBombs = usingBombs;
+	}
+	
+	public boolean getUsingCakes() {
+		return usingBombs;
+	}
+	
+	public void setUsingCakes(boolean usingCakes) {
+		this.usingCakes = usingCakes;
 	}
 }

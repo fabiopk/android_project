@@ -88,9 +88,6 @@ public class LoadingScreen extends Screen {
 		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.RGB565);
 		Assets.portal_b = g.newImage("portal_blue.png", ImageFormat.ARGB4444);
 		Assets.portal_o = g.newImage("portal_orange.png", ImageFormat.ARGB4444);
-		
-		// This is how you would load a sound if you had one.
-//		 Assets.click = game.getAudio().createSound("explode.ogg");
 
 		game.setScreen(new SplashScreen(game));
 
