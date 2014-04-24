@@ -30,9 +30,9 @@ public class Character {
 	public Character() {
 		withBow = false;
 		withCakeMix = false;
-		usingArrows = true;
-		usingBombs = false;
-		usingCakes = false;
+//		usingArrows = true;
+//		usingBombs = false;
+//		usingCakes = false;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
@@ -507,7 +507,7 @@ public class Character {
 	}
 	
 	public boolean getUsingCakes() {
-		return usingBombs;
+		return usingCakes;
 	}
 	
 	public void setUsingCakes(boolean usingCakes) {

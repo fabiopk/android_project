@@ -65,8 +65,8 @@ public class LoadingScreen extends Screen {
 		Assets.item_bronze_coin = g.newImage("bronze_coin.png", ImageFormat.ARGB4444);
 		Assets.item_gold_coin = g.newImage("gold_coin.png", ImageFormat.ARGB4444);
 		Assets.item_diamond = g.newImage("diamond.png", ImageFormat.ARGB4444);
-		Assets.arrow_GUI = g.newImage("gui_new.png", ImageFormat.ARGB4444);
-		Assets.bow_GUI = g.newImage("gui_notbow_new.png", ImageFormat.ARGB4444);
+		Assets.item_GUI = g.newImage("gui_new.png", ImageFormat.ARGB4444);
+		Assets.crossout_GUI = g.newImage("crossout.png", ImageFormat.ARGB4444);
 		
 		Assets.grass = g.newImage("grass.png", ImageFormat.RGB565);
 		Assets.grass_2 = g.newImage("grass_2.png", ImageFormat.RGB565);

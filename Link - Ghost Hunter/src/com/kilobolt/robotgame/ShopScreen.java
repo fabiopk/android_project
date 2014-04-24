@@ -35,29 +35,50 @@ public class ShopScreen extends Screen {
         			game.setScreen(new GameScreen(game));
         		}
         		//if click bomb
-        		if (inBounds(event, 106, 103, 251, 369)) {
+        		if (inBounds(event, 100, 95, 155, 280)) {
         			if (GameScreen.getLink().loseMoney(10)) {
-        			GameScreen.getLink().addBombs(1);
-        		}
+        				GameScreen.getLink().addBombs(1);
+        			}
         		}
         		//if click heart
-        		if (inBounds(event, 359, 109, 497, 370)) {
+        		if (inBounds(event, 350, 95, 155, 280)) {
         			if (GameScreen.getLink().loseMoney(5)) {
         			GameScreen.getLink().addLife(1);
         			}
         		}
         		//if click arrow
-        		if (inBounds(event, 600, 110, 740, 370)) {
+        		if (inBounds(event, 591, 100, 168, 281)) {
         			if (GameScreen.getLink().loseMoney(3)) {
         			GameScreen.getLink().addArrows(1);
         			}
         		}
         		//if click cake
-        		if (inBounds(event, 850, 105, 990, 370)) {
+        		if (inBounds(event, 845, 100, 155, 280)) {
         			if (GameScreen.getLink().loseMoney(1)) {
-        			GameScreen.getLink().addCakes(1);
+        				GameScreen.getLink().addCakes(1);
+        			}
         		}
+        		//if choose bomb for weapon
+        		if (inBounds(event, 1483, 311, 151, 273)) {
+        			GameScreen.getLink().setUsingBombs(true);
+        			GameScreen.getLink().setUsingArrows(false);
+        			GameScreen.getLink().setUsingCakes(false);
         		}
+        		//if choose cake for weapon
+        		if (inBounds(event, 1335, 634, 153, 273)) {
+        			GameScreen.getLink().setUsingCakes(true);
+        			GameScreen.getLink().setUsingBombs(false);
+        			GameScreen.getLink().setUsingArrows(false);
+        		}
+        		//if choose arrow for weapon
+        		if (inBounds(event, 1587, 634, 151, 273)) {
+        			GameScreen.getLink().setUsingArrows(true);
+        			GameScreen.getLink().setUsingBombs(false);
+        			GameScreen.getLink().setUsingCakes(false);
+        		}
+        		
+
+        		
         	}
         }
 	}
@@ -95,7 +116,7 @@ public class ShopScreen extends Screen {
 		//show number of points
 		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 300, 825, paint);
 		//show number of bombs
-		g.drawString(String.valueOf(GameScreen.getLink().getBombs()), 1600, 560, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getBombs()), 1550, 560, paint);
 		//show number of cakes
 		g.drawString(String.valueOf(GameScreen.getLink().getCakes()), 1405, 890, paint);
 		//show number of arrows

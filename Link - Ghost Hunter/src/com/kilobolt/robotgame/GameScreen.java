@@ -312,6 +312,13 @@ public class GameScreen extends Screen {
 		tilemap[link.getXpos()][link.getYpos()] = 0;
 		animate();
 		link.update();
+		
+		if (timer >= 300) {
+			addGhost();
+			timer = 0;
+		} else {
+			timer++;
+		}
 
 		// 1. All touch input is handled here:
 		int len = touchEvents.size();
@@ -333,14 +340,9 @@ public class GameScreen extends Screen {
 					arrows.add(link.shoot());
 				} else if (link.getUsingBombs() && inBounds(event, 1440, 0, 480, 540)) {
 					bombs.add(link.placeBomb());
-				}
-
-				if (timer >= 30) {
-					addGhost();
-					timer = 0;
-				} else {
-					timer++;
-				}
+				} else if (link.getUsingCakes() && inBounds(event, 1440, 0, 480, 540)) {
+					//this is where the method goes for placing cakes
+				}				
 			}
 			tilemap[link.getXpos()][link.getYpos()] = 2;
 		}
@@ -697,14 +699,28 @@ public class GameScreen extends Screen {
 			g.drawImage(Assets.heart, offset, 20);
 			offset += heart.getWidth() + 10;
 		}
-		g.drawImage(Assets.arrow_GUI, 1093, 10);
+		g.drawImage(Assets.item_GUI, 1093, 10);
 		g.drawString(String.valueOf(link.getArrows()), 1850, 50, paint);
 		g.drawString(String.valueOf(link.getMoney()), 1390, 50, paint);
 		g.drawString(String.valueOf(link.getBombs()), 1540, 50, paint);
 		g.drawString(String.valueOf(link.getCakes()), 1710, 50, paint);
 		g.drawString(String.valueOf(link.getPoints()), 1230, 50, paint);
 		if (!link.isWithBow()) {
-			g.drawImage(Assets.bow_GUI, 1731, 34);
+			g.drawImage(Assets.crossout_GUI, 1731, 34);
+		}
+		if (!link.getWithCakeMix()) {
+			g.drawImage(Assets.crossout_GUI, 1567, 34);
+		}
+		
+		//for the 3 methods below need to add the drawImage for which weapon were using
+		if (link.getUsingArrows()) {
+			
+		}
+		if (link.getUsingBombs()) {
+			
+		}
+		if (link.getUsingCakes()) {
+			
 		}
 
 	}
