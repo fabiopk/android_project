@@ -326,17 +326,17 @@ public class GameScreen extends Screen {
 			TouchEvent event = touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_DOWN) {
 
-				if (inBounds(event, 0, 540, 480, 540)) {
+				if (inBounds(event, 0, 767, 187, 141)) {
 					link.moveLeft();
-				} else if (inBounds(event, 1440, 540, 480, 540)) {
+				} else if (inBounds(event, 322, 767, 220, 141 )) {
 					link.moveRight();
-				} else if (inBounds(event, 480, 0, 960, 540)) {
+				} else if (inBounds(event, 188, 540, 145, 227)) {
 					link.moveUp();
-				} else if (inBounds(event, 480, 540, 960, 540)) {
+				} else if (inBounds(event, 178, 907, 145, 174)) {
 					link.moveDown();
-				} else if (inBounds(event, 0, 0, 480, 540)) {
+				} else if (inBounds(event, 1346, 791, 210, 225)) {
 					link.atack();
-				} else if (link.getUsingArrows() && inBounds(event, 1440, 0, 480, 540)) {
+				} else if (inBounds(event, 1542, 629, 212, 217)) {
 					arrows.add(link.shoot());
 				} else if (link.getUsingBombs() && inBounds(event, 1440, 0, 480, 540)) {
 					bombs.add(link.placeBomb());
@@ -603,14 +603,15 @@ public class GameScreen extends Screen {
 
 		if (state == GameState.Ready)
 			drawReadyUI();
-		if (state == GameState.Running)
+		if (state == GameState.Running){
 			drawRunningUI();
+		if (nearGhost == true)
+			drawDanger();
+		}
 		if (state == GameState.Paused)
 			drawPausedUI();
 		if (state == GameState.GameOver)
 			drawGameOverUI();
-		if (nearGhost == true)
-			drawDanger();
 		
 
 	}
@@ -705,6 +706,9 @@ public class GameScreen extends Screen {
 		g.drawString(String.valueOf(link.getBombs()), 1540, 50, paint);
 		g.drawString(String.valueOf(link.getCakes()), 1710, 50, paint);
 		g.drawString(String.valueOf(link.getPoints()), 1230, 50, paint);
+		g.drawImage(Assets.dpad, 70, 630);
+		g.drawImage(Assets.buttons, 1440, 630);
+		
 		if (!link.isWithBow()) {
 			g.drawImage(Assets.crossout_GUI, 1731, 34);
 		}
@@ -742,7 +746,12 @@ public class GameScreen extends Screen {
 	
 	private void drawDanger() {
 		Graphics g = game.getGraphics();
-		g.drawARGB(50, 255, 0, 0);
+		g.drawImage(Assets.exclamation, (link.getXpos()*120)+ 43+ link.xbonus, (link.getYpos()*120)-42 + link.ybonus);
+	}
+	
+	private void drawTest() {
+		Graphics g = game.getGraphics();
+		g.drawARGB(100, 0, 255, 0);
 	}
 
 	@Override
