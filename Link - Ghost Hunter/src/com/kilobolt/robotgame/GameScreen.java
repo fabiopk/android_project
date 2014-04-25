@@ -714,11 +714,11 @@ public class GameScreen extends Screen {
 			offset += heart.getWidth() + 10;
 		}
 		g.drawImage(Assets.item_GUI, 1093, 10);
-		g.drawString(String.valueOf(link.getArrows()), 1850, 50, paint);
-		g.drawString(String.valueOf(link.getMoney()), 1390, 50, paint);
-		g.drawString(String.valueOf(link.getBombs()), 1540, 50, paint);
-		g.drawString(String.valueOf(link.getCakes()), 1710, 50, paint);
-		g.drawString(String.valueOf(link.getPoints()), 1230, 50, paint);
+		g.drawString(String.valueOf(link.getArrows()), 1850, 100, paint);
+		g.drawString(String.valueOf(link.getMoney()), 1390, 100, paint);
+		g.drawString(String.valueOf(link.getBombs()), 1540, 100, paint);
+		g.drawString(String.valueOf(link.getCakes()), 1710, 100, paint);
+		g.drawString(String.valueOf(link.getPoints()), 1230, 100, paint);
 		g.drawImage(Assets.dpad, 70, 630);
 		//g.drawImage(Assets.buttons, 1440, 630);
 		g.drawImage(Assets.red_button, 1425, 825);
