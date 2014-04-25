@@ -727,10 +727,10 @@ public class GameScreen extends Screen {
 			g.drawImage(Assets.green_bow_button, 1650, 675);
 		}
 		if (link.getUsingBombs()) {
-			g.drawImage(Assets.green_bomb_button, 1500, 630);
+			g.drawImage(Assets.green_bomb_button, 1650, 675);
 		}
 		if (link.getUsingCakes()) {
-			g.drawImage(Assets.green_cake_button, 1500, 630);
+			g.drawImage(Assets.green_cake_button, 1650, 675);
 		}
 		
 		if (!link.isWithBow()) {
