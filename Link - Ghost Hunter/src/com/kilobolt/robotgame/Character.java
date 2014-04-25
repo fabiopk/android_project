@@ -30,7 +30,8 @@ public class Character {
 
 	public Character() {
 		withBow = false;
-		withCakeMix = true;
+
+		withCakeMix = false;
 		usingArrows = true;
 		usingBombs = false;
 		usingCakes = false;
@@ -43,17 +44,33 @@ public class Character {
 
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
-		int x = position.nextInt(5);
-		int y = position.nextInt(5);
-		for (int i = x; i < GameScreen.getRows(); i++) {
-			for (int j = y; j < GameScreen.getColumns(); j++) {
-				if (mapa[i][j] != 1) {
-					xpos = i;
-					ypos = j;
-					return;
-				}
+		int x;
+		int y;
+		int checkSpawn = 0;
+		
+		while (checkSpawn == 0){
+			x = position.nextInt(14)+1;
+			y = position.nextInt(7)+1;
+			if(mapa[x][y] == 0){
+				this.xpos = x;
+				this.ypos = y;
+				//mapa[x][y] = 2;
+				checkSpawn = 1;
+				return;
 			}
+			
 		}
+//		int x = position.nextInt(5);
+//		int y = position.nextInt(5);
+//		for (int i = x; i < GameScreen.getRows(); i++) {
+//			for (int j = y; j < GameScreen.getColumns(); j++) {
+//				if (mapa[i][j] != 1) {
+//					xpos = i;
+//					ypos = j;
+//					return;
+//				}
+//			}
+//		}
 		return;
 	}
 
@@ -177,7 +194,9 @@ public class Character {
 	public void loseCakes(int amount) {
 		if (this.cakes - amount < 0) {
 			this.cakes = 0;
-		} else {
+		} 
+		else {
+
 			this.cakes -= amount;
 		}
 	}

@@ -286,13 +286,13 @@ public class GameScreen extends Screen {
 		if (!link.isAlive) {
 			state = GameState.GameOver;
 		}
-
+		
 		if (link.getPoints() >= (ShopScreen.prev_points + (ShopScreen.getLevel()+1) * 20) && !hasPortal) {
-		Item portal = new Item(14, 5);
-		tilemap[14][5] = 0;
-		portal.setType(Type.Portal);
-		items.add(portal);
-		hasPortal = true;
+			Item portal = new Item(14, 5);
+			tilemap[14][5] = 0;
+			portal.setType(Type.Portal);
+			items.add(portal);
+			hasPortal = true;
 		}
 
 		for (Ghost gst : ghosts) { // Clean map before ghost move, so it is zero
@@ -337,7 +337,11 @@ public class GameScreen extends Screen {
 					link.moveDown();
 				} else if (inBounds(event, 1346, 791, 210, 225)) {
 					link.atack();
+<<<<<<< HEAD
 				} else if (link.getUsingArrows() && inBounds(event, 1542, 629, 212, 217)) {
+=======
+				} else if (link.getUsingArrows() &&inBounds(event, 1542, 629, 212, 217)) {
+>>>>>>> branch 'master' of https://github.com/fabiopk/android_project.git
 					arrows.add(link.shoot());
 				} else if (link.getUsingBombs() && inBounds(event, 1542, 629, 212, 217)) {
 					bombs.add(link.placeBomb());
@@ -611,8 +615,8 @@ public class GameScreen extends Screen {
 			drawReadyUI();
 		if (state == GameState.Running){
 			drawRunningUI();
-		if (nearGhost == true)
-			drawDanger();
+			if (nearGhost == true)
+				drawDanger();
 		}
 		if (state == GameState.Paused)
 			drawPausedUI();
@@ -753,11 +757,6 @@ public class GameScreen extends Screen {
 	private void drawDanger() {
 		Graphics g = game.getGraphics();
 		g.drawImage(Assets.exclamation, (link.getXpos()*120)+ 43+ link.xbonus, (link.getYpos()*120)-42 + link.ybonus);
-	}
-	
-	private void drawTest() {
-		Graphics g = game.getGraphics();
-		g.drawARGB(100, 0, 255, 0);
 	}
 
 	@Override

@@ -111,6 +111,7 @@ public class Item {
 				break;
 				
 			case Bomb:
+				GameScreen.getLink().setBombs(GameScreen.getLink().getBombs()+1);
 				break;
 				
 			case Bow:
@@ -126,6 +127,7 @@ public class Item {
 				break;
 				
 			case Cake:
+				GameScreen.getLink().setCakes(GameScreen.getLink().getCakes());
 				break;
 				
 			case Portal:
