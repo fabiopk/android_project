@@ -290,6 +290,7 @@ public class GameScreen extends Screen {
 	private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) {
 
 		if (!link.isAlive) {
+			Assets.applause.play(1f);
 			state = GameState.GameOver;
 		}
 		
@@ -753,6 +754,8 @@ public class GameScreen extends Screen {
 	private void drawGameOverUI() {
 		Graphics g = game.getGraphics();
 		g.drawImage(Assets.gameover, 0, 0);
+		int n = link.getPoints() + link.getMoney();
+		g.drawString("FINAL SCORE: " + n, 960, 900, paint);
 
 	}
 	

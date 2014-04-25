@@ -99,7 +99,8 @@ public class LoadingScreen extends Screen {
 		Assets.green_cake_button = g.newImage("cake_button.png", ImageFormat.ARGB4444);
 		
 		// This is how you would load a sound if you had one.
-//		 Assets.click = game.getAudio().createSound("explode.ogg");
+		 Assets.explosion = game.getAudio().createSound("explosion.mp3");
+		 Assets.applause = game.getAudio().createSound("applause.mp3");
 
 		game.setScreen(new SplashScreen(game));
 
