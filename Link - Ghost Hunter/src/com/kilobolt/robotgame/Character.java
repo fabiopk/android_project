@@ -30,14 +30,14 @@ public class Character {
 	public Character() {
 		withBow = false;
 		withCakeMix = false;
-//		usingArrows = true;
-//		usingBombs = false;
-//		usingCakes = false;
+		usingArrows = false;
+		usingBombs = true;
+		usingCakes = false;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 30;
 		money = 0;
-		bombs = 0;
+		bombs = 10;
 		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();
