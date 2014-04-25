@@ -61,7 +61,7 @@ public class LoadingScreen extends Screen {
 		Assets.cake_placed = g.newImage("cake_placed.png", ImageFormat.ARGB4444);
 		Assets.item_bow = g.newImage("item_bow.png", ImageFormat.ARGB4444);
 		Assets.item_arrow = g.newImage("item_arrow.png", ImageFormat.ARGB4444);
-		Assets.item_bomb = g.newImage("bomb.png", ImageFormat.ARGB4444);
+		Assets.item_bomb = g.newImage("bomb_item.png", ImageFormat.ARGB4444);
 		Assets.item_bronze_coin = g.newImage("bronze_coin.png", ImageFormat.ARGB4444);
 		Assets.item_gold_coin = g.newImage("gold_coin.png", ImageFormat.ARGB4444);
 		Assets.item_diamond = g.newImage("diamond.png", ImageFormat.ARGB4444);
