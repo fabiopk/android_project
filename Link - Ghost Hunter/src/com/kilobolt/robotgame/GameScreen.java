@@ -337,12 +337,12 @@ public class GameScreen extends Screen {
 					link.moveDown();
 				} else if (inBounds(event, 1346, 791, 210, 225)) {
 					link.atack();
-				} else if (inBounds(event, 1542, 629, 212, 217)) {
+				} else if (link.getUsingArrows() && inBounds(event, 1542, 629, 212, 217)) {
 					arrows.add(link.shoot());
-				} else if (link.getUsingBombs() && inBounds(event, 1440, 0, 480, 540)) {
+				} else if (link.getUsingBombs() && inBounds(event, 1542, 629, 212, 217)) {
 					bombs.add(link.placeBomb());
-				} else if (link.getUsingCakes() && inBounds(event, 1440, 0, 480, 540)) {
-					//this is where the method goes for placing cakes
+				} else if (link.getUsingCakes() && inBounds(event, 1542, 629, 212, 217)) {
+					link.placeCake();
 				}				
 			}
 			tilemap[link.getXpos()][link.getYpos()] = 2;
@@ -441,6 +441,11 @@ public class GameScreen extends Screen {
 				case 1:
 					g.drawImage(grass, mod_i, mod_j);
 					g.drawImage(Assets.cake, mod_i, mod_j);
+					break;
+					
+				case 5:
+					g.drawImage(grass, mod_i, mod_j);
+					g.drawImage(Assets.chocolate_cake, mod_i, mod_j);
 					break;
 
 				default:

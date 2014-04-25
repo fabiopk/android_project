@@ -91,6 +91,7 @@ public class LoadingScreen extends Screen {
 		Assets.dpad = g.newImage("dpad.png", ImageFormat.ARGB4444);
 		Assets.buttons = g.newImage("buttons.png", ImageFormat.ARGB4444);
 		Assets.exclamation = g.newImage("exclamation.png", ImageFormat.ARGB4444);
+		Assets.chocolate_cake = g.newImage("chocolate_cake.png", ImageFormat.ARGB4444);
 		
 		// This is how you would load a sound if you had one.
 //		 Assets.click = game.getAudio().createSound("explode.ogg");
