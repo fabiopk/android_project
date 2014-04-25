@@ -58,6 +58,7 @@ public class Bomb {
 			GameScreen.getLink().setPoints(GameScreen.getLink().getPoints() + 5*numGhostsKilled);
 			exploded = true;
 			placed = false;
+			Assets.explosion.play(1f);
 		}
 	}
 

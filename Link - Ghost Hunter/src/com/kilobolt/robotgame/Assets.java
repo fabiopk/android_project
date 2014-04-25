@@ -23,6 +23,8 @@ public class Assets {
 	public static Image menu;
 	public static Image cake;
 	public static Music theme;
+	public static Sound explosion;
+	public static Sound applause;
 
 	public static void load(SampleGame sampleGame) {
 		// TODO Auto-generated method stub

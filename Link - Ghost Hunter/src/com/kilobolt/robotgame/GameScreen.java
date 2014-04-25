@@ -284,6 +284,7 @@ public class GameScreen extends Screen {
 	private void updateRunning(List<TouchEvent> touchEvents, float deltaTime) {
 
 		if (!link.isAlive) {
+			Assets.applause.play(1f);
 			state = GameState.GameOver;
 		}
 		
