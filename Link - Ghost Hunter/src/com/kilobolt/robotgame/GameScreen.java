@@ -327,13 +327,13 @@ public class GameScreen extends Screen {
 			TouchEvent event = touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_DOWN) {
 
-				if (inBounds(event, 0, 767, 187, 141)) {
+				if (inBounds(event, 55, 756, 150, 165)) {
 					link.moveLeft();
-				} else if (inBounds(event, 322, 767, 220, 141 )) {
+				} else if (inBounds(event, 350, 756, 150, 165 )) {
 					link.moveRight();
-				} else if (inBounds(event, 188, 540, 145, 227)) {
+				} else if (inBounds(event, 195, 615, 165, 140)) {
 					link.moveUp();
-				} else if (inBounds(event, 178, 907, 145, 174)) {
+				} else if (inBounds(event, 195, 922, 165, 140)) {
 					link.moveDown();
 				} else if (inBounds(event, 1346, 791, 210, 225)) {
 					link.atack();
