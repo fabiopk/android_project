@@ -72,6 +72,7 @@ public class GameScreen extends Screen {
 
 		// Initialize game objects here
 
+		ShopScreen.prev_points = 0;
 		createTilemap();
 		if (ShopScreen.getLevel() == 0) {
 			link = new Character();
@@ -285,8 +286,8 @@ public class GameScreen extends Screen {
 		if (!link.isAlive) {
 			state = GameState.GameOver;
 		}
-
-		if (link.getPoints() >= (30 + ShopScreen.getLevel() * 30) && !hasPortal) {
+		
+		if (link.getPoints() >= (ShopScreen.prev_points + (ShopScreen.getLevel()+1) * 20) && !hasPortal) {
 			Item portal = new Item(14, 5);
 			tilemap[14][5] = 0;
 			portal.setType(Type.Portal);
