@@ -12,6 +12,7 @@ import com.kilobolt.framework.Graphics.ImageFormat;
 import com.kilobolt.framework.Input.TouchEvent;
 
 public class ShopScreen extends Screen {
+	//coments
 	
 	private static int level = 0;
 	public static int prev_points;

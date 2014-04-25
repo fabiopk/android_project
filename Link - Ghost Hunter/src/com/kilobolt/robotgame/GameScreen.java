@@ -33,7 +33,8 @@ public class GameScreen extends Screen {
 			walk_down, walk_up, sword_down, sword_right, sword_left, sword_up,
 			heart, item_heart, item_bow, item_arrow, shuriken, 
 			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, 
-			item_cake_item, cake_placed, item_bomb, placed_bomb;
+			item_cake_item, cake_placed, item_bomb, placed_bomb,
+			red_button, green_bow_button, green_bomb_button, green_cake_button;
 
 	static Paint paint;
 
@@ -76,6 +77,7 @@ public class GameScreen extends Screen {
 		createTilemap();
 		if (ShopScreen.getLevel() == 0) {
 			link = new Character();
+			tilemap[link.getXpos()][link.getYpos()] = 2;
 		}
 
 		ghosts = new ArrayList<Ghost>();
@@ -136,6 +138,10 @@ public class GameScreen extends Screen {
 		cake_placed = Assets.cake_placed;
 		item_bomb = Assets.item_bomb;
 		placed_bomb = Assets.placed_bomb;
+//		red_button = Assets.red_button;
+//		green_bow_button = Assets.green_bow_button;
+//		green_bomb_button = Assets.green_bomb_button;
+//		green_cake_button = Assets.green_cake_button;
 
 		switch (ShopScreen.getLevel()) {
 		case 0:
@@ -314,13 +320,6 @@ public class GameScreen extends Screen {
 		tilemap[link.getXpos()][link.getYpos()] = 0;
 		animate();
 		link.update();
-		
-		if (timer >= 300) {
-			addGhost();
-			timer = 0;
-		} else {
-			timer++;
-		}
 
 		// 1. All touch input is handled here:
 		int len = touchEvents.size();
@@ -328,25 +327,32 @@ public class GameScreen extends Screen {
 			TouchEvent event = touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_DOWN) {
 
-				if (inBounds(event, 0, 767, 187, 141)) {
+				if (inBounds(event, 55, 756, 150, 165)) {
 					link.moveLeft();
-				} else if (inBounds(event, 322, 767, 220, 141 )) {
+				} else if (inBounds(event, 350, 756, 150, 165 )) {
 					link.moveRight();
-				} else if (inBounds(event, 188, 540, 145, 227)) {
+				} else if (inBounds(event, 195, 615, 165, 140)) {
 					link.moveUp();
-				} else if (inBounds(event, 178, 907, 145, 174)) {
+				} else if (inBounds(event, 195, 922, 165, 140)) {
 					link.moveDown();
-				} else if (inBounds(event, 1346, 791, 210, 225)) {
+				} else if (inBounds(event, 1417, 820, 227, 221)) {
 					link.atack();
-				} else if (link.getUsingArrows() &&inBounds(event, 1542, 629, 212, 217)) {
+				} else if (link.getUsingArrows() && inBounds(event, 1645, 670, 223, 223)) {
 					arrows.add(link.shoot());
-				} else if (link.getUsingBombs() && inBounds(event, 1440, 0, 480, 540)) {
+				} else if (link.getUsingBombs() && inBounds(event, 1645, 670, 223, 223)) {
 					bombs.add(link.placeBomb());
-				} else if (link.getUsingCakes() && inBounds(event, 1440, 0, 480, 540)) {
-					//this is where the method goes for placing cakes
+				} else if (link.getUsingCakes() && inBounds(event, 1645, 670, 223, 223)) { 
+					link.placeCake();
 				}				
 			}
 			tilemap[link.getXpos()][link.getYpos()] = 2;
+		}
+		
+		if (timer >= 300) {
+			addGhost();
+			timer = 0;
+		} else {
+			timer++;
 		}
 
 		Iterator itr = items.iterator();
@@ -442,6 +448,11 @@ public class GameScreen extends Screen {
 				case 1:
 					g.drawImage(grass, mod_i, mod_j);
 					g.drawImage(Assets.cake, mod_i, mod_j);
+					break;
+					
+				case 5:
+					g.drawImage(grass, mod_i, mod_j);
+					g.drawImage(Assets.chocolate_cake, mod_i, mod_j);
 					break;
 
 				default:
@@ -709,7 +720,19 @@ public class GameScreen extends Screen {
 		g.drawString(String.valueOf(link.getCakes()), 1710, 50, paint);
 		g.drawString(String.valueOf(link.getPoints()), 1230, 50, paint);
 		g.drawImage(Assets.dpad, 70, 630);
-		g.drawImage(Assets.buttons, 1440, 630);
+		//g.drawImage(Assets.buttons, 1440, 630);
+		g.drawImage(Assets.red_button, 1425, 825);
+		
+		//for the 3 methods below need to add the drawImage for which weapon were using
+		if (link.getUsingArrows()) {
+			g.drawImage(Assets.green_bow_button, 1650, 675);
+		}
+		if (link.getUsingBombs()) {
+			g.drawImage(Assets.green_bomb_button, 1650, 675);
+		}
+		if (link.getUsingCakes()) {
+			g.drawImage(Assets.green_cake_button, 1650, 675);
+		}
 		
 		if (!link.isWithBow()) {
 			g.drawImage(Assets.crossout_GUI, 1731, 34);
@@ -717,18 +740,6 @@ public class GameScreen extends Screen {
 		if (!link.getWithCakeMix()) {
 			g.drawImage(Assets.crossout_GUI, 1567, 34);
 		}
-		
-		//for the 3 methods below need to add the drawImage for which weapon were using
-		if (link.getUsingArrows()) {
-			
-		}
-		if (link.getUsingBombs()) {
-			
-		}
-		if (link.getUsingCakes()) {
-			
-		}
-
 	}
 
 	private void drawPausedUI() {
