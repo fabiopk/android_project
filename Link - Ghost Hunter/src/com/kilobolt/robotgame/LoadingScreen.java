@@ -77,6 +77,7 @@ public class LoadingScreen extends Screen {
 		Assets.heart = g.newImage("heart.png", ImageFormat.RGB565);
 		Assets.gameover = g.newImage("gameover.png", ImageFormat.RGB565);
 		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.RGB565);
+		Assets.placed_bomb = g.newImage("placed_bomb.png", ImageFormat.RGB565);
 		Assets.icon = g.newImage("icon.png", ImageFormat.RGB565);
 		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.RGB565);
 		
@@ -87,7 +88,6 @@ public class LoadingScreen extends Screen {
 		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.RGB565);
 		Assets.portal_b = g.newImage("portal_blue.png", ImageFormat.ARGB4444);
 		Assets.portal_o = g.newImage("portal_orange.png", ImageFormat.ARGB4444);
-		
 		Assets.dpad = g.newImage("dpad.png", ImageFormat.ARGB4444);
 		Assets.buttons = g.newImage("buttons.png", ImageFormat.ARGB4444);
 		Assets.exclamation = g.newImage("exclamation.png", ImageFormat.ARGB4444);

@@ -33,7 +33,7 @@ public class GameScreen extends Screen {
 			walk_down, walk_up, sword_down, sword_right, sword_left, sword_up,
 			heart, item_heart, item_bow, item_arrow, shuriken, 
 			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, 
-			item_cake_item, cake_placed, item_bomb;
+			item_cake_item, cake_placed, item_bomb, placed_bomb;
 
 	static Paint paint;
 
@@ -45,10 +45,10 @@ public class GameScreen extends Screen {
 	private Animation a_down, a_left, a_right, ag_right, ag_left, ag_down;
 	private static ArrayList<Ghost> ghosts;
 	private static ArrayList<Arrow> arrows;
+	private static ArrayList<Bomb> bombs;
 	static Animation ag_dead;
 	private SpriteSheet w_left, w_right, w_down, w_up;
 	private boolean nearGhost;
-	private boolean testCond;
 
 	private int frameCounter;
 	private int timer;
@@ -85,6 +85,7 @@ public class GameScreen extends Screen {
 
 		items = new ArrayList<Item>();
 		arrows = new ArrayList<Arrow>();
+		bombs = new ArrayList<Bomb>();
 
 		up = Assets.up;
 		down = Assets.down;
@@ -133,6 +134,7 @@ public class GameScreen extends Screen {
 		item_cake_item = Assets.item_cake_item;
 		cake_placed = Assets.cake_placed;
 		item_bomb = Assets.item_bomb;
+		placed_bomb = Assets.placed_bomb;
 
 		switch (ShopScreen.getLevel()) {
 		case 0:
@@ -329,6 +331,8 @@ public class GameScreen extends Screen {
 					link.atack();
 				} else if (inBounds(event, 1542, 629, 212, 217)) {
 					arrows.add(link.shoot());
+				} else if (link.getUsingBombs() && inBounds(event, 1440, 0, 480, 540)) {
+					bombs.add(link.placeBomb());
 				}
 
 				if (timer >= 30) {
@@ -359,14 +363,18 @@ public class GameScreen extends Screen {
 			}
 		}
 		
+		Iterator itr3 = bombs.iterator();
+		while (itr3.hasNext()) {
+			Bomb bomb = (Bomb) itr3.next();
+			bomb.update();
+			if (bomb.getExploded()) {
+				itr3.remove();
+			}
+		}
+		
 		if(frameCounter%5 == 0)
 			ghostNear();
 		frameCounter++;
-		if(frameCounter >= 200){
-			testCond = true;
-		}
-			
-
 	}
 
 	private boolean inBounds(TouchEvent event, int x, int y, int width,
@@ -583,7 +591,12 @@ public class GameScreen extends Screen {
 			mod_j = 120 * arrow.getYpos();
 			g.drawImage(shuriken, mod_i + arrow.getXbonus(),
 					mod_j + arrow.getYbonus());
-
+		}
+		
+		for (Bomb bomb : bombs) {
+			mod_i = 120 * bomb.getXpos();
+			mod_j = 120 * bomb.getYpos();
+			g.drawImage(placed_bomb, mod_i, mod_j);
 		}
 
 		if (state == GameState.Ready)
@@ -597,8 +610,6 @@ public class GameScreen extends Screen {
 			drawPausedUI();
 		if (state == GameState.GameOver)
 			drawGameOverUI();
-		if (testCond == true){}
-			//drawTest();
 		
 
 	}

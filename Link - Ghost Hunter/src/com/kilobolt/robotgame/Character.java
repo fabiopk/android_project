@@ -11,6 +11,9 @@ public class Character {
 	private static final int KILL_POINTS = 10;
 	private boolean withBow;
 	private boolean withCakeMix;
+	private boolean usingArrows;
+	private boolean usingBombs;
+	private boolean usingCakes;
 	protected int xpos, ypos;
 	protected int xspeed, yspeed;
 	protected int xbonus, ybonus;
@@ -21,13 +24,15 @@ public class Character {
 	private int[][] maps = GameScreen.getTilemap();
 	private int arrows;
 	private int life;
-	private int bomb;
 	private State old_state = State.Down;
 	private int money, points, bombs, cakes;
 
 	public Character() {
 		withBow = false;
 		withCakeMix = false;
+		usingArrows = true;
+		usingBombs = false;
+		usingCakes = false;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
@@ -329,6 +334,17 @@ public class Character {
 		// ADdasda
 		return ar1;
 	}
+	
+	public Bomb placeBomb() {
+		if (bombs > 0) {
+			bombs -= 1;
+			Bomb bmb1 = new Bomb(this.xpos, this.ypos);
+			return bmb1;
+		}
+		Bomb bmb1 = new Bomb(this.xpos, this.ypos);
+		bmb1.setExploded(true);
+		return bmb1;
+	}
 
 	public int getXpos() {
 		return xpos;
@@ -472,5 +488,29 @@ public class Character {
 		else {
 		this.points -= amount;
 		}
+	}
+	
+	public boolean getUsingArrows() {
+		return usingArrows;
+	}
+	
+	public void setUsingArrows(boolean usingArrows) {
+		this.usingArrows = usingArrows;
+	}
+	
+	public boolean getUsingBombs() {
+		return usingBombs;
+	}
+	
+	public void setUsingBombs(boolean usingBombs) {
+		this.usingBombs = usingBombs;
+	}
+	
+	public boolean getUsingCakes() {
+		return usingBombs;
+	}
+	
+	public void setUsingCakes(boolean usingCakes) {
+		this.usingCakes = usingCakes;
 	}
 }
