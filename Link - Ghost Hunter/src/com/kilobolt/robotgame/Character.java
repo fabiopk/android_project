@@ -31,16 +31,16 @@ public class Character {
 	public Character() {
 		withBow = false;
 
-		withCakeMix = false;
-		usingArrows = true;
+		withCakeMix = true;
+		usingArrows = false;
 		usingBombs = false;
-		usingCakes = false;
+		usingCakes = true;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
 		bombs = 0;
-		cakes = 0;
+		cakes = 250;
 
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
@@ -575,19 +575,19 @@ public class Character {
 			int mapa[][] = GameScreen.getTilemap();
 			switch (state) {
 			case Up:
-				mapa[xpos][ypos - 1] = 0;
+				mapa[xpos][ypos - 1] = 5;
 				break;
 
 			case Down:
-				mapa[xpos][ypos + 1] = 0;
+				mapa[xpos][ypos + 1] = 5;
 				break;
 
 			case Left:
-				mapa[xpos - 1][ypos] = 0;
+				mapa[xpos - 1][ypos] = 5;
 				break;
 
 			case Right:
-				mapa[xpos + 1][ypos] = 0;
+				mapa[xpos + 1][ypos] = 5;
 				break;
 
 			default:
