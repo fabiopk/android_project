@@ -741,7 +741,8 @@ public class GameScreen extends Screen {
 	private void drawGameOverUI() {
 		Graphics g = game.getGraphics();
 		g.drawImage(Assets.gameover, 0, 0);
-
+		int n = link.getPoints() + link.getMoney();
+		g.drawString("FINAL SCORE: " + n, 960, 900, paint);
 	}
 	
 	private void drawDanger() {
