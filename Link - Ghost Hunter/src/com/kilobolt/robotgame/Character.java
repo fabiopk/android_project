@@ -35,7 +35,7 @@ public class Character {
 //		usingCakes = false;
 		arrows = 3;
 		life = 3;
-		linkSpeed = 8;
+		linkSpeed = 30;
 		money = 0;
 		bombs = 0;
 		cakes = 0;
