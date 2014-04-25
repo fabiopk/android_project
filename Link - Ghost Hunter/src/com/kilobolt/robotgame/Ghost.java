@@ -21,11 +21,13 @@ public class Ghost extends Character {
 			x = position.nextInt(14)+1;
 			y = position.nextInt(7)+1;
 			if(mapa[x][y] == 0){
-				this.xpos = x;
-				this.ypos = y;
-				//mapa[x][y] = 3;
-				checkSpawn = 1;
-				return;
+				if(!(x == GameScreen.getLink().getXpos() && y == GameScreen.getLink().getYpos())) {
+					this.xpos = x;
+					this.ypos = y;
+					//mapa[x][y] = 3;
+					checkSpawn = 1;
+					return;
+				}
 			}
 			
 		}
