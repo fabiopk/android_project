@@ -76,6 +76,7 @@ public class GameScreen extends Screen {
 		createTilemap();
 		if (ShopScreen.getLevel() == 0) {
 			link = new Character();
+			tilemap[link.getXpos()][link.getYpos()] = 2;
 		}
 
 		ghosts = new ArrayList<Ghost>();
@@ -313,13 +314,6 @@ public class GameScreen extends Screen {
 		tilemap[link.getXpos()][link.getYpos()] = 0;
 		animate();
 		link.update();
-		
-		if (timer >= 300) {
-			addGhost();
-			timer = 0;
-		} else {
-			timer++;
-		}
 
 		// 1. All touch input is handled here:
 		int len = touchEvents.size();
@@ -346,6 +340,13 @@ public class GameScreen extends Screen {
 				}				
 			}
 			tilemap[link.getXpos()][link.getYpos()] = 2;
+		}
+		
+		if (timer >= 300) {
+			addGhost();
+			timer = 0;
+		} else {
+			timer++;
 		}
 
 		Iterator itr = items.iterator();
