@@ -243,32 +243,40 @@ public class Character {
 				case Up:
 					old_state = State.Up;
 					if (this.xpos == gts.xpos && (this.ypos - 1) == gts.ypos) {
+						if(gts.getState() != State.Dead) {
+							points += KILL_POINTS;				
+						}
 						gts.kill();
-						points += KILL_POINTS;
 					}
 					break;
 
 				case Down:
 					old_state = State.Down;
 					if (this.xpos == gts.xpos && (this.ypos + 1) == gts.ypos) {
+						if(gts.getState() != State.Dead) {
+							points += KILL_POINTS;				
+						}
 						gts.kill();
-						points += KILL_POINTS;
 					}
 					break;
 
 				case Left:
 					old_state = State.Left;
 					if ((this.xpos - 1) == gts.xpos && this.ypos == gts.ypos) {
+						if(gts.getState() != State.Dead) {
+							points += KILL_POINTS;				
+						}
 						gts.kill();
-						points += KILL_POINTS;
 					}
 					break;
 
 				case Right:
 					old_state = State.Right;
 					if ((this.xpos + 1) == gts.xpos && this.ypos == gts.ypos) {
+						if(gts.getState() != State.Dead) {
+							points += KILL_POINTS;				
+						}
 						gts.kill();
-						points += KILL_POINTS;
 					}
 					break;
 
