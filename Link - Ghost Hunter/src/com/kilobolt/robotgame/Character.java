@@ -31,46 +31,46 @@ public class Character {
 	public Character() {
 		withBow = false;
 
-		withCakeMix = false;
-		usingArrows = true;
+		withCakeMix = true;
+		usingArrows = false;
 		usingBombs = false;
-		usingCakes = false;
+		usingCakes = true;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
 		bombs = 0;
-		cakes = 0;
+		cakes = 250;
 
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
 		int x;
 		int y;
 		int checkSpawn = 0;
-		
-		while (checkSpawn == 0){
-			x = position.nextInt(14)+1;
-			y = position.nextInt(7)+1;
-			if(mapa[x][y] == 0){
+
+		while (checkSpawn == 0) {
+			x = position.nextInt(14) + 1;
+			y = position.nextInt(7) + 1;
+			if (mapa[x][y] == 0) {
 				this.xpos = x;
 				this.ypos = y;
-				//mapa[x][y] = 2;
+				// mapa[x][y] = 2;
 				checkSpawn = 1;
 				return;
 			}
-			
+
 		}
-//		int x = position.nextInt(5);
-//		int y = position.nextInt(5);
-//		for (int i = x; i < GameScreen.getRows(); i++) {
-//			for (int j = y; j < GameScreen.getColumns(); j++) {
-//				if (mapa[i][j] != 1) {
-//					xpos = i;
-//					ypos = j;
-//					return;
-//				}
-//			}
-//		}
+		// int x = position.nextInt(5);
+		// int y = position.nextInt(5);
+		// for (int i = x; i < GameScreen.getRows(); i++) {
+		// for (int j = y; j < GameScreen.getColumns(); j++) {
+		// if (mapa[i][j] != 1) {
+		// xpos = i;
+		// ypos = j;
+		// return;
+		// }
+		// }
+		// }
 		return;
 	}
 
@@ -194,8 +194,7 @@ public class Character {
 	public void loseCakes(int amount) {
 		if (this.cakes - amount < 0) {
 			this.cakes = 0;
-		} 
-		else {
+		} else {
 
 			this.cakes -= amount;
 		}
@@ -305,6 +304,37 @@ public class Character {
 
 				}
 			}
+			int mapa[][] = GameScreen.getTilemap();
+			
+			switch(this.state) {
+		case Up:
+			if(mapa[xpos][ypos - 1] == 5) {
+				mapa[xpos][ypos - 1] = 0;
+			}
+			break;
+
+		case Down:
+			if (mapa[xpos][ypos + 1] == 5){
+				mapa[xpos][ypos + 1] = 0;
+			}
+			break;
+
+		case Left:
+			if (mapa[xpos - 1][ypos] == 5){
+				mapa[xpos - 1][ypos] = 0;
+			}
+			break;
+
+		case Right:
+			if (mapa[xpos + 1][ypos] == 5) {
+				mapa[xpos + 1][ypos] = 0;
+			}
+			break;
+
+		default:
+			break;
+			}
+			
 		}
 		this.state = State.SwordAttack;
 	}
@@ -541,7 +571,7 @@ public class Character {
 	public void placeCake() {
 
 		if (cakes > 0) {
-			cakes -=1;
+			cakes -= 1;
 			int mapa[][] = GameScreen.getTilemap();
 			switch (state) {
 			case Up:

@@ -127,7 +127,7 @@ public class Item {
 				break;
 				
 			case Cake:
-				GameScreen.getLink().setCakes(GameScreen.getLink().getCakes());
+				GameScreen.getLink().setCakes(GameScreen.getLink().getCakes() +1);
 				break;
 				
 			case Portal:
