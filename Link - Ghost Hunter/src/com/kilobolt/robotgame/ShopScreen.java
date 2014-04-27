@@ -107,23 +107,23 @@ public class ShopScreen extends Screen {
 		paint.setAntiAlias(true);
 		paint.setColor(Color.WHITE);
 		//set bomb price
-		g.drawString("10", 170, 360, paint);
+		g.drawString("10", 170, 358, paint);
 		//set heart price
-		g.drawString("5", 420, 360, paint);
+		g.drawString("5", 430, 358, paint);
 		//set arrow price
-		g.drawString("3", 660, 360, paint);
+		g.drawString("3", 670, 358, paint);
 		//set cake price
-		g.drawString("1", 910, 360, paint);
+		g.drawString("1", 918, 358, paint);
 		//show number of coins
-		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 300, 600, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getMoney()), 300, 592, paint);
 		//show number of points
-		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 300, 825, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getPoints()), 300, 815, paint);
 		//show number of bombs
-		g.drawString(String.valueOf(GameScreen.getLink().getBombs()), 1550, 560, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getBombs()), 1558, 563, paint);
 		//show number of cakes
-		g.drawString(String.valueOf(GameScreen.getLink().getCakes()), 1405, 890, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getCakes()), 1412, 890, paint);
 		//show number of arrows
-		g.drawString(String.valueOf(GameScreen.getLink().getArrows()), 1660, 890, paint);
+		g.drawString(String.valueOf(GameScreen.getLink().getArrows()), 1665, 890, paint);
 
 		
 	}
