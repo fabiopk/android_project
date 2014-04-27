@@ -37,8 +37,9 @@ public class GameScreen extends Screen {
 			red_button, green_bow_button, green_bomb_button, green_cake_button;
 
 	static Paint paint;
+	static Paint paint2;
+	static Paint paint_items;
 
-	Paint paint2;
 	private static int rows = 16;
 	private static int columns = 9;
 	private static int[][] tilemap;
@@ -172,6 +173,14 @@ public class GameScreen extends Screen {
 		paint.setAntiAlias(true);
 		paint.setColor(Color.WHITE);
 		paint.setStrokeWidth(20.2f);
+		
+		paint_items = new Paint();
+		paint_items.setTextSize(50);
+		paint_items.setTextAlign(Paint.Align.CENTER);
+		paint_items.setAntiAlias(true);
+		paint_items.setColor(Color.WHITE);
+		paint_items.setStrokeWidth(20.2f);
+		
 		// Add animations
 		a_down = new Animation();
 		a_down.addFrame(down, 1250);
@@ -714,11 +723,11 @@ public class GameScreen extends Screen {
 			offset += heart.getWidth() + 10;
 		}
 		g.drawImage(Assets.item_GUI, 1093, 10);
-		g.drawString(String.valueOf(link.getArrows()), 1850, 100, paint);
-		g.drawString(String.valueOf(link.getMoney()), 1390, 100, paint);
-		g.drawString(String.valueOf(link.getBombs()), 1540, 100, paint);
-		g.drawString(String.valueOf(link.getCakes()), 1710, 100, paint);
-		g.drawString(String.valueOf(link.getPoints()), 1230, 100, paint);
+		g.drawString(String.valueOf(link.getArrows()), 1855, 100, paint_items);
+		g.drawString(String.valueOf(link.getMoney()), 1388, 100, paint_items);
+		g.drawString(String.valueOf(link.getBombs()), 1525, 100, paint_items);
+		g.drawString(String.valueOf(link.getCakes()), 1694, 100, paint_items);
+		g.drawString(String.valueOf(link.getPoints()), 1230, 100, paint_items);
 		g.drawImage(Assets.dpad, 70, 630);
 		//g.drawImage(Assets.buttons, 1440, 630);
 		g.drawImage(Assets.red_button, 1425, 825);

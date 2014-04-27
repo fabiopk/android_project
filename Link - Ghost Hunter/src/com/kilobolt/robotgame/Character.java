@@ -30,17 +30,16 @@ public class Character {
 
 	public Character() {
 		withBow = false;
-
-		withCakeMix = true;
-		usingArrows = false;
+		withCakeMix = false;
+		usingArrows = true;
 		usingBombs = false;
-		usingCakes = true;
+		usingCakes = false;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
 		bombs = 0;
-		cakes = 250;
+		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
@@ -570,7 +569,7 @@ public class Character {
 
 	public void placeCake() {
 
-		if (cakes > 0) {
+		if (cakes > 0 && withCakeMix) {
 			cakes -= 1;
 			int mapa[][] = GameScreen.getTilemap();
 			switch (state) {
