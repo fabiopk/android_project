@@ -31,10 +31,10 @@ public class GameScreen extends Screen {
 			g_right1, grass, cake, g_dead, g_dead1, g_dead2, g_dead3, g_dead4,
 			g_dead5, g_dead6, g_dead7, g_dead8, g_dead9, walk_left, walk_right,
 			walk_down, walk_up, sword_down, sword_right, sword_left, sword_up,
-			heart, item_heart, item_bow, item_arrow, shuriken, 
-			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, 
-			item_cake_item, cake_placed, item_bomb, placed_bomb,
-			red_button, green_bow_button, green_bomb_button, green_cake_button;
+			heart, item_heart, item_bow, item_arrow, shuriken, item_diamond,
+			item_bronze_coin, item_gold_coin, item_cake_mix, item_cake_item,
+			cake_placed, item_bomb, placed_bomb, red_button, green_bow_button,
+			green_bomb_button, green_cake_button;
 
 	static Paint paint;
 	static Paint paint2;
@@ -75,7 +75,6 @@ public class GameScreen extends Screen {
 
 		// Initialize game objects here
 
-		ShopScreen.prev_points = 0;
 		createTilemap();
 		if (ShopScreen.getLevel() == 0) {
 			link = new Character();
@@ -148,10 +147,10 @@ public class GameScreen extends Screen {
 		cake_placed = Assets.cake_placed;
 		item_bomb = Assets.item_bomb;
 		placed_bomb = Assets.placed_bomb;
-//		red_button = Assets.red_button;
-//		green_bow_button = Assets.green_bow_button;
-//		green_bomb_button = Assets.green_bomb_button;
-//		green_cake_button = Assets.green_cake_button;
+		// red_button = Assets.red_button;
+		// green_bow_button = Assets.green_bow_button;
+		// green_bomb_button = Assets.green_bomb_button;
+		// green_cake_button = Assets.green_cake_button;
 
 		switch (ShopScreen.getLevel()) {
 		case 0:
@@ -292,8 +291,8 @@ public class GameScreen extends Screen {
 		// Refer to Unit 3's code. We did a similar thing without separating the
 		// update methods.
 
-		//if (state == GameState.Ready)
-		 //updateReady(touchEvents);
+		// if (state == GameState.Ready)
+		// updateReady(touchEvents);
 		if (state == GameState.Running)
 			updateRunning(touchEvents, deltaTime);
 		if (state == GameState.Paused)
@@ -319,13 +318,15 @@ public class GameScreen extends Screen {
 			Assets.applause.play(1f);
 			state = GameState.GameOver;
 		}
-		
-		if (link.getPoints() >= (ShopScreen.prev_points + (ShopScreen.getLevel()+1) * 20) && !hasPortal) {
+
+		if (link.getPoints() >= (Assets.prev_points + (ShopScreen
+				.getLevel() + 1) * 20) && !hasPortal) {
 			Item portal = new Item(14, 5);
 			tilemap[14][5] = 0;
 			portal.setType(Type.Portal);
 			items.add(portal);
 			hasPortal = true;
+			Assets.prev_points = link.getPoints();
 		}
 
 		for (Ghost gst : ghosts) { // Clean map before ghost move, so it is zero
@@ -334,7 +335,7 @@ public class GameScreen extends Screen {
 		}
 		for (Ghost gst : ghosts) {
 			gst.update();
-			gst.randonMovement();
+			gst.randomMovement();
 		}
 		for (Ghost gst : ghosts) {
 			tilemap[gst.getXpos()][gst.getYpos()] = 3; // New position is now =
@@ -355,7 +356,7 @@ public class GameScreen extends Screen {
 
 				if (inBounds(event, 55, 756, 150, 165)) {
 					link.moveLeft();
-				} else if (inBounds(event, 350, 756, 150, 165 )) {
+				} else if (inBounds(event, 350, 756, 150, 165)) {
 					link.moveRight();
 				} else if (inBounds(event, 195, 615, 165, 140)) {
 					link.moveUp();
@@ -363,17 +364,20 @@ public class GameScreen extends Screen {
 					link.moveDown();
 				} else if (inBounds(event, 1417, 820, 227, 221)) {
 					link.atack();
-				} else if (link.getUsingArrows() && inBounds(event, 1645, 670, 223, 223)) {
+				} else if (link.getUsingArrows()
+						&& inBounds(event, 1645, 670, 223, 223)) {
 					arrows.add(link.shoot());
-				} else if (link.getUsingBombs() && inBounds(event, 1645, 670, 223, 223)) {
+				} else if (link.getUsingBombs()
+						&& inBounds(event, 1645, 670, 223, 223)) {
 					bombs.add(link.placeBomb());
-				} else if (link.getUsingCakes() && inBounds(event, 1645, 670, 223, 223)) { 
+				} else if (link.getUsingCakes()
+						&& inBounds(event, 1645, 670, 223, 223)) {
 					link.placeCake();
-				}				
+				}
 			}
 			tilemap[link.getXpos()][link.getYpos()] = 2;
 		}
-		
+
 		if (timer >= 300) {
 			addGhost();
 			timer = 0;
@@ -398,7 +402,7 @@ public class GameScreen extends Screen {
 				itr2.remove();
 			}
 		}
-		
+
 		Iterator itr3 = bombs.iterator();
 		while (itr3.hasNext()) {
 			Bomb bomb = (Bomb) itr3.next();
@@ -407,8 +411,8 @@ public class GameScreen extends Screen {
 				itr3.remove();
 			}
 		}
-		
-		if(frameCounter%5 == 0)
+
+		if (frameCounter % 5 == 0)
 			ghostNear();
 		frameCounter++;
 	}
@@ -475,7 +479,7 @@ public class GameScreen extends Screen {
 					g.drawImage(grass, mod_i, mod_j);
 					g.drawImage(Assets.cake, mod_i, mod_j);
 					break;
-					
+
 				case 5:
 					g.drawImage(grass, mod_i, mod_j);
 					g.drawImage(Assets.chocolate_cake, mod_i, mod_j);
@@ -596,35 +600,35 @@ public class GameScreen extends Screen {
 			case Arrow:
 				g.drawImage(item_arrow, mod_i, mod_j);
 				break;
-				
+
 			case Diamond:
 				g.drawImage(item_diamond, mod_i, mod_j);
 				break;
-				
+
 			case Bronze:
 				g.drawImage(item_bronze_coin, mod_i, mod_j);
 				break;
-				
+
 			case Gold:
 				g.drawImage(item_gold_coin, mod_i, mod_j);
 				break;
-			
+
 			case Cake_Mix:
 				g.drawImage(item_cake_mix, mod_i, mod_j);
 				break;
-				
+
 			case Cake:
 				g.drawImage(item_cake_item, mod_i, mod_j);
 				break;
-				
+
 			case Bomb:
 				g.drawImage(item_bomb, mod_i, mod_j);
 				break;
-				
+
 			case Portal:
 				g.drawImage(Assets.portal_b, mod_i, mod_j);
-			break;
-			}	
+				break;
+			}
 		}
 
 		for (Arrow arrow : arrows) {
@@ -633,7 +637,7 @@ public class GameScreen extends Screen {
 			g.drawImage(shuriken, mod_i + arrow.getXbonus(),
 					mod_j + arrow.getYbonus());
 		}
-		
+
 		for (Bomb bomb : bombs) {
 			mod_i = 120 * bomb.getXpos();
 			mod_j = 120 * bomb.getYpos();
@@ -642,7 +646,7 @@ public class GameScreen extends Screen {
 
 		if (state == GameState.Ready)
 			drawReadyUI();
-		if (state == GameState.Running){
+		if (state == GameState.Running) {
 			drawRunningUI();
 			if (nearGhost == true)
 				drawDanger();
@@ -651,7 +655,6 @@ public class GameScreen extends Screen {
 			drawPausedUI();
 		if (state == GameState.GameOver)
 			drawGameOverUI();
-		
 
 	}
 
@@ -745,11 +748,13 @@ public class GameScreen extends Screen {
 		g.drawString(String.valueOf(link.getBombs()), 1525, 100, paint_items);
 		g.drawString(String.valueOf(link.getCakes()), 1694, 100, paint_items);
 		g.drawString(String.valueOf(link.getPoints()), 1230, 100, paint_items);
+
 		g.drawImage(Assets.dpad, 70, 630);
-		//g.drawImage(Assets.buttons, 1440, 630);
+		// g.drawImage(Assets.buttons, 1440, 630);
 		g.drawImage(Assets.red_button, 1425, 825);
-		
-		//for the 3 methods below need to add the drawImage for which weapon were using
+
+		// for the 3 methods below need to add the drawImage for which weapon
+		// were using
 		if (link.getUsingArrows()) {
 			g.drawImage(Assets.green_bow_button, 1650, 675);
 		}
@@ -759,7 +764,7 @@ public class GameScreen extends Screen {
 		if (link.getUsingCakes()) {
 			g.drawImage(Assets.green_cake_button, 1650, 675);
 		}
-		
+
 		if (!link.isWithBow()) {
 			g.drawImage(Assets.crossout_GUI, 1731, 34);
 		}
@@ -784,10 +789,11 @@ public class GameScreen extends Screen {
 		g.drawString("FINAL SCORE: " + n, 960, 900, paint);
 
 	}
-	
+
 	private void drawDanger() {
 		Graphics g = game.getGraphics();
-		g.drawImage(Assets.exclamation, (link.getXpos()*120)+ 43+ link.xbonus, (link.getYpos()*120)-42 + link.ybonus);
+		g.drawImage(Assets.exclamation, (link.getXpos() * 120) + 43
+				+ link.xbonus, (link.getYpos() * 120) - 42 + link.ybonus);
 	}
 
 	@Override
@@ -834,10 +840,9 @@ public class GameScreen extends Screen {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
-				if (i == 0 || i == rows-1 || j == 0 || j == columns -1){
+				if (i == 0 || i == rows - 1 || j == 0 || j == columns - 1) {
 					tilemap[i][j] = 1;
-				}
-				else if (r.nextInt(5) == 0) {
+				} else if (r.nextInt(5) == 0) {
 					tilemap[i][j] = 1;
 				} else {
 					tilemap[i][j] = 0;
@@ -950,19 +955,29 @@ public class GameScreen extends Screen {
 	public static void goToMerchant() {
 		game.setScreen(new ShopScreen(game));
 		nullify();
-		
+
 	}
 
-	
-	public void ghostNear(){
-		for(int i = link.getXpos()-1; i <= link.getXpos()+1; i++){
-			for(int j = link.getYpos()-1; j <= link.getYpos()+1; j++){
-				if(tilemap[i][j] == 3){
+	public void ghostNear() {
+		for (int i = link.getXpos() - 1; i <= link.getXpos() + 1; i++) {
+			for (int j = link.getYpos() - 1; j <= link.getYpos() + 1; j++) {
+				if (tilemap[i][j] == 3) {
 					nearGhost = true;
 					return;
 				}
 			}
 		}
 		nearGhost = false;
+	}
+
+	public static void restoreMap() {
+//restore borders
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
+				if (i == 0 || i == rows - 1 || j == 0 || j == columns - 1) {
+					tilemap[i][j] = 1;
+				}
+			}
+		}
 	}
 }

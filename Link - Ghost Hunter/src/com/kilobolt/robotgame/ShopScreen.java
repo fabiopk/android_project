@@ -15,7 +15,6 @@ public class ShopScreen extends Screen {
 	//coments
 	
 	private static int level = 0;
-	public static int prev_points;
 	public ShopScreen(Game game) {
 		super(game);
 		
@@ -23,7 +22,6 @@ public class ShopScreen extends Screen {
 
 	@Override
     public void update(float deltaTime) {
-		prev_points = GameScreen.getLink().getPoints();
         Graphics g = game.getGraphics();
         List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 
