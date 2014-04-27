@@ -10,7 +10,7 @@ public class Ghost extends Character {
 	private int count_to_move;
 
 	public Ghost() {
-		this.linkSpeed = 7;
+		this.linkSpeed = 30;
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
 		int x;
@@ -46,7 +46,7 @@ public class Ghost extends Character {
 		return;
 	}
 
-	public void randonMovement() {
+	public void randomMovement() {
 
 		if (isAlive && count_to_move == 15) {
 			move();

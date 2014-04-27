@@ -317,7 +317,7 @@ public class GameScreen extends Screen {
 		}
 		for (Ghost gst : ghosts) {
 			gst.update();
-			gst.randonMovement();
+			gst.randomMovement();
 		}
 		for (Ghost gst : ghosts) {
 			tilemap[gst.getXpos()][gst.getYpos()] = 3; // New position is now =
@@ -649,27 +649,27 @@ public class GameScreen extends Screen {
 	public void animate() {
 
 		if (link.isMoving && !(link.getState() == State.SwordAttack)) {
-			w_left.update(13);
-			w_right.update(13);
-			w_down.update(13);
-			w_up.update(13);
+			w_left.update(40);
+			w_right.update(40);
+			w_down.update(40);
+			w_up.update(40);
 		} else if (link.getState() == State.SwordAttack) {
-			s_down.update(10);
-			s_right.update(10);
-			s_left.update(10);
-			s_up.update(10);
+			s_down.update(30);
+			s_right.update(40);
+			s_left.update(30);
+			s_up.update(30);
 		} else {
-			a_down.update(12);
-			a_left.update(12);
-			a_right.update(12);
+			a_down.update(40);
+			a_left.update(40);
+			a_right.update(40);
 		}
 		for (Ghost gst : ghosts) {
 			if (gst.isAlive) {
-				ag_right.update(9);
-				ag_left.update(9);
-				ag_down.update(9);
+				ag_right.update(25);
+				ag_left.update(25);
+				ag_down.update(25);
 			} else {
-				ag_dead.update(14);
+				ag_dead.update(40);
 			}
 
 		}
@@ -723,11 +723,19 @@ public class GameScreen extends Screen {
 			offset += heart.getWidth() + 10;
 		}
 		g.drawImage(Assets.item_GUI, 1093, 10);
+<<<<<<< HEAD
 		g.drawString(String.valueOf(link.getArrows()), 1855, 100, paint_items);
 		g.drawString(String.valueOf(link.getMoney()), 1388, 100, paint_items);
 		g.drawString(String.valueOf(link.getBombs()), 1525, 100, paint_items);
 		g.drawString(String.valueOf(link.getCakes()), 1694, 100, paint_items);
 		g.drawString(String.valueOf(link.getPoints()), 1230, 100, paint_items);
+=======
+		g.drawString(String.valueOf(link.getArrows()), 1850, 100, paint);
+		g.drawString(String.valueOf(link.getMoney()), 1390, 100, paint);
+		g.drawString(String.valueOf(link.getBombs()), 1540, 100, paint);
+		g.drawString(String.valueOf(link.getCakes()), 1710, 100, paint);
+		g.drawString(String.valueOf(link.getPoints()), 1230, 100, paint);
+>>>>>>> refs/heads/faster
 		g.drawImage(Assets.dpad, 70, 630);
 		//g.drawImage(Assets.buttons, 1440, 630);
 		g.drawImage(Assets.red_button, 1425, 825);
@@ -765,7 +773,10 @@ public class GameScreen extends Screen {
 		g.drawImage(Assets.gameover, 0, 0);
 		int n = link.getPoints() + link.getMoney();
 		g.drawString("FINAL SCORE: " + n, 960, 900, paint);
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/heads/faster
 	}
 	
 	private void drawDanger() {
