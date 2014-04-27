@@ -27,6 +27,8 @@ public class Character {
 	private int life;
 	private State old_state = State.Down;
 	private int money, points, bombs, cakes;
+	private int movCheck;
+	private int[][]movmap = GameScreen.getMovingMap();
 
 	public Character() {
 		withBow = false;
@@ -35,7 +37,7 @@ public class Character {
 		usingBombs = false;
 		usingCakes = false;
 		arrows = 3;
-		life = 3;
+		life = 99;
 		linkSpeed = 8;
 		money = 0;
 		bombs = 0;
@@ -204,6 +206,7 @@ public class Character {
 				&& xpos < (GameScreen.getRows() - 1)) {
 			int[][] mapa = GameScreen.getTilemap();
 			if (mapa[xpos + 1][ypos] == 0) {
+				mapa[xpos + 1][ypos] = 2;
 				xspeed = +linkSpeed;
 				this.isMoving = true;
 			}
@@ -216,6 +219,7 @@ public class Character {
 		if (!isMoving && isAlive && state == State.Left && xpos > 0) {
 			int[][] mapa = GameScreen.getTilemap();
 			if (mapa[xpos - 1][ypos] == 0) {
+				mapa[xpos - 1][ypos] = 2;
 				xspeed = -linkSpeed;
 				this.isMoving = true;
 			}
@@ -224,10 +228,11 @@ public class Character {
 		}
 	}
 
-	public void moveUp() {
+	public void moveUp() {		
 		if (!isMoving && isAlive && state == State.Up && ypos > 0) {
 			int[][] mapa = GameScreen.getTilemap();
 			if (mapa[xpos][ypos - 1] == 0) {
+				mapa[xpos][ypos - 1] = 2;
 				yspeed -= linkSpeed;
 				this.isMoving = true;
 			}
@@ -241,6 +246,7 @@ public class Character {
 				&& ypos < (GameScreen.getColumns() - 1)) {
 			int[][] mapa = GameScreen.getTilemap();
 			if (mapa[xpos][ypos + 1] == 0) {
+				mapa[xpos][ypos + 1] = 2;
 				yspeed += linkSpeed;
 				this.isMoving = true;
 			}
