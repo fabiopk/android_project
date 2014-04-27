@@ -46,7 +46,7 @@ public class Ghost extends Character {
 		return;
 	}
 
-	public void randonMovement() {
+	public void randomMovement() {
 
 		if (isAlive && count_to_move == 18 - ShopScreen.getLevel() - Assets.option_screen_difficulty * 2) {
 			move();
