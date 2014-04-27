@@ -726,19 +726,12 @@ public class GameScreen extends Screen {
 			offset += heart.getWidth() + 10;
 		}
 		g.drawImage(Assets.item_GUI, 1093, 10);
-<<<<<<< HEAD
 		g.drawString(String.valueOf(link.getArrows()), 1855, 100, paint_items);
 		g.drawString(String.valueOf(link.getMoney()), 1388, 100, paint_items);
 		g.drawString(String.valueOf(link.getBombs()), 1525, 100, paint_items);
 		g.drawString(String.valueOf(link.getCakes()), 1694, 100, paint_items);
 		g.drawString(String.valueOf(link.getPoints()), 1230, 100, paint_items);
-=======
-		g.drawString(String.valueOf(link.getArrows()), 1850, 100, paint);
-		g.drawString(String.valueOf(link.getMoney()), 1390, 100, paint);
-		g.drawString(String.valueOf(link.getBombs()), 1540, 100, paint);
-		g.drawString(String.valueOf(link.getCakes()), 1710, 100, paint);
-		g.drawString(String.valueOf(link.getPoints()), 1230, 100, paint);
->>>>>>> refs/heads/faster
+
 		g.drawImage(Assets.dpad, 70, 630);
 		// g.drawImage(Assets.buttons, 1440, 630);
 		g.drawImage(Assets.red_button, 1425, 825);
@@ -777,10 +770,7 @@ public class GameScreen extends Screen {
 		g.drawImage(Assets.gameover, 0, 0);
 		int n = link.getPoints() + link.getMoney();
 		g.drawString("FINAL SCORE: " + n, 960, 900, paint);
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/heads/faster
 	}
 
 	private void drawDanger() {
