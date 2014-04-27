@@ -69,37 +69,38 @@ public class LoadingScreen extends Screen {
 		Assets.item_GUI = g.newImage("gui_new.png", ImageFormat.ARGB4444);
 		Assets.crossout_GUI = g.newImage("crossout.png", ImageFormat.ARGB4444);
 		
-//		Assets.grass = g.newImage("grass.png", ImageFormat.RGB565);
-//		Assets.grass_2 = g.newImage("grass_2.png", ImageFormat.RGB565);
-//		Assets.grass_3 = g.newImage("grass_3.png", ImageFormat.RGB565);
-//		Assets.grass_4 = g.newImage("grass_4.png", ImageFormat.RGB565);
-//		Assets.block = g.newImage("block.png", ImageFormat.RGB565);
-//		Assets.cake = g.newImage("cake.png", ImageFormat.RGB565);
-//		Assets.heart = g.newImage("heart.png", ImageFormat.RGB565);
-//		Assets.gameover = g.newImage("gameover.png", ImageFormat.RGB565);
-//		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.RGB565);
-//		Assets.placed_bomb = g.newImage("placed_bomb.png", ImageFormat.RGB565);
-//		Assets.icon = g.newImage("icon.png", ImageFormat.RGB565);
-//		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.RGB565);
+		Assets.grass = g.newImage("grass.png", ImageFormat.RGB565);
+		Assets.grass_2 = g.newImage("grass_2.png", ImageFormat.RGB565);
+		Assets.grass_3 = g.newImage("grass_3.png", ImageFormat.RGB565);
+		Assets.grass_4 = g.newImage("grass_4.png", ImageFormat.RGB565);
+		Assets.block = g.newImage("block.png", ImageFormat.RGB565);
+		Assets.cake = g.newImage("cake.png", ImageFormat.RGB565);
+		Assets.heart = g.newImage("heart.png", ImageFormat.RGB565);
+		Assets.gameover = g.newImage("gameover.png", ImageFormat.RGB565);
+		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.RGB565);
+		Assets.placed_bomb = g.newImage("placed_bomb.png", ImageFormat.RGB565);
+		Assets.icon = g.newImage("icon.png", ImageFormat.RGB565);
+		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.RGB565);
 		
-		Assets.grass = g.newImage("grass.png", ImageFormat.ARGB4444);
-		Assets.grass_2 = g.newImage("grass_2.png", ImageFormat.ARGB4444);
-		Assets.grass_3 = g.newImage("grass_3.png", ImageFormat.ARGB4444);
-		Assets.grass_4 = g.newImage("grass_4.png", ImageFormat.ARGB4444);
-		Assets.block = g.newImage("block.png", ImageFormat.ARGB4444);
-		Assets.cake = g.newImage("cake.png", ImageFormat.ARGB4444);
-		Assets.heart = g.newImage("heart.png", ImageFormat.ARGB4444);
-		Assets.gameover = g.newImage("gameover.png", ImageFormat.ARGB4444);
-		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.ARGB4444);
-		Assets.placed_bomb = g.newImage("placed_bomb.png", ImageFormat.ARGB4444);
-		Assets.icon = g.newImage("icon.png", ImageFormat.ARGB4444);
-		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.ARGB4444);
+//		Assets.grass = g.newImage("grass.png", ImageFormat.ARGB4444);
+//		Assets.grass_2 = g.newImage("grass_2.png", ImageFormat.ARGB4444);
+//		Assets.grass_3 = g.newImage("grass_3.png", ImageFormat.ARGB4444);
+//		Assets.grass_4 = g.newImage("grass_4.png", ImageFormat.ARGB4444);
+//		Assets.block = g.newImage("block.png", ImageFormat.ARGB4444);
+//		Assets.cake = g.newImage("cake.png", ImageFormat.ARGB4444);
+//		Assets.heart = g.newImage("heart.png", ImageFormat.ARGB4444);
+//		Assets.gameover = g.newImage("gameover.png", ImageFormat.ARGB4444);
+//		Assets.shuriken = g.newImage("shuriken.png", ImageFormat.ARGB4444);
+//		Assets.placed_bomb = g.newImage("placed_bomb.png", ImageFormat.ARGB4444);
+//		Assets.icon = g.newImage("icon.png", ImageFormat.ARGB4444);
+//		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.ARGB4444);
 		
-//		Assets.menu_screen_easy = g.newImage("menu_screen_easy.png", ImageFormat.RGB565);
-//		Assets.menu_screen_normal = g.newImage("menu_screen_normal.png", ImageFormat.RGB565);
-//		Assets.menu_screen_hard = g.newImage("menu_screen_hard.png", ImageFormat.RGB565);
-//		Assets.menu_screen_muted = g.newImage("menu_screen_muted.png", ImageFormat.RGB565);
-//		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.RGB565);
+		Assets.menu_screen_easy = g.newImage("menu_screen_easy.png", ImageFormat.RGB565);
+		Assets.menu_screen_normal = g.newImage("menu_screen_normal.png", ImageFormat.RGB565);
+		Assets.menu_screen_hard = g.newImage("menu_screen_hard.png", ImageFormat.RGB565);
+		Assets.menu_screen_muted = g.newImage("menu_screen_muted.png", ImageFormat.RGB565);		
+		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.RGB565);
+		
 		Assets.portal_b = g.newImage("portal_blue.png", ImageFormat.ARGB4444);
 		Assets.portal_o = g.newImage("portal_orange.png", ImageFormat.ARGB4444);
 		Assets.dpad = g.newImage("dpad.png", ImageFormat.ARGB4444);
@@ -112,11 +113,11 @@ public class LoadingScreen extends Screen {
 		Assets.green_bomb_button = g.newImage("bomb_button.png", ImageFormat.ARGB4444);
 		Assets.green_cake_button = g.newImage("cake_button.png", ImageFormat.ARGB4444);
 		
-		Assets.menu_screen_easy = g.newImage("menu_screen_easy.png", ImageFormat.ARGB4444);
-		Assets.menu_screen_normal = g.newImage("menu_screen_normal.png", ImageFormat.ARGB4444);
-		Assets.menu_screen_hard = g.newImage("menu_screen_hard.png", ImageFormat.ARGB4444);
-		Assets.menu_screen_muted = g.newImage("menu_screen_muted.png", ImageFormat.ARGB4444);
-		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.ARGB4444);
+//		Assets.menu_screen_easy = g.newImage("menu_screen_easy.png", ImageFormat.ARGB4444);
+//		Assets.menu_screen_normal = g.newImage("menu_screen_normal.png", ImageFormat.ARGB4444);
+//		Assets.menu_screen_hard = g.newImage("menu_screen_hard.png", ImageFormat.ARGB4444);
+//		Assets.menu_screen_muted = g.newImage("menu_screen_muted.png", ImageFormat.ARGB4444);
+//		Assets.options_screen_clean = g.newImage("options_screen_clean.png", ImageFormat.ARGB4444);
 		
 		// This is how you would load a sound if you had one.
 		 Assets.explosion = game.getAudio().createSound("explosion.mp3");

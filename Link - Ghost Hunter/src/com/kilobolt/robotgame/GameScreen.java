@@ -74,7 +74,6 @@ public class GameScreen extends Screen {
 
 		// Initialize game objects here
 
-		ShopScreen.prev_points = 0;
 		createTilemap();
 		if (ShopScreen.getLevel() == 0) {
 			link = new Character();
@@ -303,13 +302,14 @@ public class GameScreen extends Screen {
 			state = GameState.GameOver;
 		}
 
-		if (link.getPoints() >= (ShopScreen.prev_points + (ShopScreen
+		if (link.getPoints() >= (Assets.prev_points + (ShopScreen
 				.getLevel() + 1) * 20) && !hasPortal) {
 			Item portal = new Item(14, 5);
 			tilemap[14][5] = 0;
 			portal.setType(Type.Portal);
 			items.add(portal);
 			hasPortal = true;
+			Assets.prev_points = link.getPoints();
 		}
 
 		for (Ghost gst : ghosts) { // Clean map before ghost move, so it is zero
@@ -652,27 +652,27 @@ public class GameScreen extends Screen {
 	public void animate() {
 
 		if (link.isMoving && !(link.getState() == State.SwordAttack)) {
-			w_left.update(40);
-			w_right.update(40);
-			w_down.update(40);
-			w_up.update(40);
+			w_left.update(13);
+			w_right.update(13);
+			w_down.update(13);
+			w_up.update(13);
 		} else if (link.getState() == State.SwordAttack) {
-			s_down.update(30);
-			s_right.update(40);
-			s_left.update(30);
-			s_up.update(30);
+			s_down.update(10);
+			s_right.update(10);
+			s_left.update(10);
+			s_up.update(10);
 		} else {
-			a_down.update(40);
-			a_left.update(40);
-			a_right.update(40);
+			a_down.update(12);
+			a_left.update(12);
+			a_right.update(12);
 		}
 		for (Ghost gst : ghosts) {
 			if (gst.isAlive) {
-				ag_right.update(25);
-				ag_left.update(25);
-				ag_down.update(25);
+				ag_right.update(9);
+				ag_left.update(9);
+				ag_down.update(9);
 			} else {
-				ag_dead.update(40);
+				ag_dead.update(14);
 			}
 
 		}
@@ -953,7 +953,7 @@ public class GameScreen extends Screen {
 		nearGhost = false;
 	}
 
-	public void restoreMap() {
+	public static void restoreMap() {
 //restore borders
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {

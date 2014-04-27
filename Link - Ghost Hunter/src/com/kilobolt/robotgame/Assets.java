@@ -27,6 +27,8 @@ public class Assets {
 	public static Sound explosion;
 	public static Sound applause;
 
+	public static int prev_points;
+
 	public static void load(SampleGame sampleGame) {
 		// TODO Auto-generated method stub
 		theme = sampleGame.getAudio().createMusic("zelda.mp3");
