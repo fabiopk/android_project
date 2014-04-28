@@ -34,8 +34,8 @@ public class Character {
 		withBow = false;
 		withCakeMix = false;
 		
-		usingArrows = true;
-		usingBombs = false;
+		usingArrows = false;
+		usingBombs = true;
 		usingCakes = false;
 		
 		hurtTimer = 0;	
@@ -44,7 +44,7 @@ public class Character {
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
-		bombs = 0;
+		bombs = 10;
 		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();

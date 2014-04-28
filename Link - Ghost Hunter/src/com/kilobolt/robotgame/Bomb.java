@@ -23,6 +23,7 @@ public class Bomb {
 	public void update() {
 		int[][] map = GameScreen.getTilemap();
 		if(placed == true){
+			GameScreen.b_explosion.update(10);
 			timeCounter++;
 		}
 		else

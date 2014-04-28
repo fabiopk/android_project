@@ -83,6 +83,12 @@ public class LoadingScreen extends Screen {
 		Assets.shop_screen_selection = g.newImage("select_shop_screen.png", ImageFormat.RGB565);
 		Assets.merchant_screen = g.newImage("merchant_screen.png", ImageFormat.RGB565);
 		
+		Assets.bomb_0 = g.newImage("bomb_0.png", ImageFormat.RGB565);
+		Assets.bomb_1 = g.newImage("bomb_1.png", ImageFormat.RGB565);
+		Assets.bomb_2 = g.newImage("bomb_2.png", ImageFormat.RGB565);
+		Assets.bomb_3 = g.newImage("bomb_3.png", ImageFormat.RGB565);
+		Assets.bomb_4 = g.newImage("bomb_4.png", ImageFormat.RGB565);
+		
 //		Assets.grass = g.newImage("grass.png", ImageFormat.ARGB4444);
 //		Assets.grass_2 = g.newImage("grass_2.png", ImageFormat.ARGB4444);
 //		Assets.grass_3 = g.newImage("grass_3.png", ImageFormat.ARGB4444);
