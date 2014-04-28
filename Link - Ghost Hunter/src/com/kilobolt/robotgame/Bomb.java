@@ -70,7 +70,8 @@ public class Bomb {
 		while (its.hasNext()) {
 			Ghost ghost = its.next();
 			if (((ghost.getXpos() == this.xpos) || (ghost.getXpos() == this.xpos+1) || (ghost.getXpos() == this.xpos-1))
-				&& ((ghost.getYpos() == this.ypos) || (ghost.getYpos() == this.ypos+1) || (ghost.getYpos() == this.ypos-1))) {
+			&& ((ghost.getYpos() == this.ypos) || (ghost.getYpos() == this.ypos+1) || (ghost.getYpos() == this.ypos-1)) &&
+			ghost.isAlive) {
 				ghost.kill();
 				numGhostsKilled++;
 			}
