@@ -356,13 +356,34 @@ public class GameScreen extends Screen {
 			}
 			tilemap[link.getXpos()][link.getYpos()] = 2;
 		}
-
-		if (timer >= 300) {
-			addGhost();
-			timer = 0;
-		} else {
-			timer++;
+		
+		switch(Assets.option_screen_difficulty) {
+		case 0:
+			if (timer >= (300 - ShopScreen.getLevel()*10)) {
+				addGhost();
+				timer = 0;
+			} else {
+				timer++;
+			}
+			break;
+		case 1:
+			if (timer >= (260 - ShopScreen.getLevel()*10)) {
+				addGhost();
+				timer = 0;
+			} else {
+				timer++;
+			}
+			break;
+		case 2:
+			if (timer >= (220 - ShopScreen.getLevel()*10)) {
+				addGhost();
+				timer = 0;
+			} else {
+				timer++;
+			}
+			break;
 		}
+
 
 		Iterator itr = items.iterator();
 		while (itr.hasNext()) {
