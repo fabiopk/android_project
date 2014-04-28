@@ -297,15 +297,31 @@ public class GameScreen extends Screen {
 			Assets.applause.play(1f);
 			state = GameState.GameOver;
 		}
-
+		
+		int tempGetPointsCheck = link.getPoints();
+		int tempPrevPointsCheck = Assets.prev_points;
+		
+		
 		if (link.getPoints() >= (Assets.prev_points + (ShopScreen
 				.getLevel() + 1) * 20) && !hasPortal) {
-			Item portal = new Item(14, 5);
-			tilemap[14][5] = 0;
-			portal.setType(Type.Portal);
-			items.add(portal);
-			hasPortal = true;
-			Assets.prev_points = link.getPoints();
+			Item portal;
+			if(ShopScreen.getLevel()%2 == 0){
+				portal = new Item(14, 5);
+				tilemap[14][5] = 0;
+				portal.setType(Type.Portal);
+				items.add(portal);
+				hasPortal = true;
+				Assets.prev_points = link.getPoints();
+			}
+			else{
+				portal = new Item(14, 4);
+				tilemap[14][4] = 0;
+				portal.setType(Type.Portal);
+				items.add(portal);
+				hasPortal = true;
+				Assets.prev_points = link.getPoints();
+			}
+				
 		}
 
 		for (Ghost gst : ghosts) { // Clean map before ghost move, so it is zero
@@ -959,8 +975,9 @@ public class GameScreen extends Screen {
 	}
 
 	public static void goToMerchant() {
+		Assets.prev_points = link.getPoints();
 		game.setScreen(new ShopScreen(game));
-		nullify();
+		//nullify();
 
 	}
 
