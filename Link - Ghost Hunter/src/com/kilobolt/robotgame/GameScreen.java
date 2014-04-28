@@ -437,7 +437,10 @@ public class GameScreen extends Screen {
 				}
 
 				if (inBounds(event, 730, 600, 460, 120)) {
-					goToMenu();
+					nullify();
+					ShopScreen.setLevel(0);
+					link.setAlive(true);
+					game.setScreen(new MainMenuScreen(game));
 				}
 			}
 		}
@@ -721,6 +724,9 @@ public class GameScreen extends Screen {
 		g_right = null;
 		grass = null;
 		cake = null;
+		//link.setPoints(0);
+		Assets.prev_points = 0;
+		Assets.weapon_selection = 0;
 
 		// Call garbage collector to clean up memory.
 		System.gc();
