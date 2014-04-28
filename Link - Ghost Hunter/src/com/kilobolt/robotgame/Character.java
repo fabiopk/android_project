@@ -27,21 +27,25 @@ public class Character {
 	private int life;
 	private State old_state = State.Down;
 	private int money, points, bombs, cakes;
+	private int hurtTimer;
+	private int hurtCheck;
 
 	public Character() {
 		withBow = false;
-		withCakeMix = true;
+		withCakeMix = false;
 		
-		usingArrows = false;
+		usingArrows = true;
 		usingBombs = false;
-		usingCakes = true;
+		usingCakes = false;
 		
+		hurtTimer = 0;	
+		hurtCheck = 0;
 		arrows = 3;
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
-		bombs = 10;
-		cakes = 111;
+		bombs = 0;
+		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
@@ -55,23 +59,11 @@ public class Character {
 			if (mapa[x][y] == 0) {
 				this.xpos = x;
 				this.ypos = y;
-				// mapa[x][y] = 2;
 				checkSpawn = 1;
 				return;
 			}
 
 		}
-		// int x = position.nextInt(5);
-		// int y = position.nextInt(5);
-		// for (int i = x; i < GameScreen.getRows(); i++) {
-		// for (int j = y; j < GameScreen.getColumns(); j++) {
-		// if (mapa[i][j] != 1) {
-		// xpos = i;
-		// ypos = j;
-		// return;
-		// }
-		// }
-		// }
 		return;
 	}
 
@@ -158,6 +150,15 @@ public class Character {
 				this.state = old_state;
 			}
 		}
+		
+		if(hurtCheck == 1) {
+			hurtTimer++;
+			if(hurtTimer >= 140){
+				hurtCheck = 0;
+				hurtTimer = 0;
+			}
+			
+		}
 	}
 
 	public int getBombs() {
@@ -206,6 +207,7 @@ public class Character {
 				&& xpos < (GameScreen.getRows() - 1)) {
 			int[][] mapa = GameScreen.getTilemap();
 			if (mapa[xpos + 1][ypos] == 0) {
+				mapa[xpos + 1][ypos] = 2;
 				xspeed = +linkSpeed;
 				this.isMoving = true;
 			}
@@ -218,6 +220,7 @@ public class Character {
 		if (!isMoving && isAlive && state == State.Left && xpos > 0) {
 			int[][] mapa = GameScreen.getTilemap();
 			if (mapa[xpos - 1][ypos] == 0) {
+				mapa[xpos - 1][ypos] = 2;
 				xspeed = -linkSpeed;
 				this.isMoving = true;
 			}
@@ -226,10 +229,11 @@ public class Character {
 		}
 	}
 
-	public void moveUp() {
+	public void moveUp() {		
 		if (!isMoving && isAlive && state == State.Up && ypos > 0) {
 			int[][] mapa = GameScreen.getTilemap();
 			if (mapa[xpos][ypos - 1] == 0) {
+				mapa[xpos][ypos - 1] = 2;
 				yspeed -= linkSpeed;
 				this.isMoving = true;
 			}
@@ -243,6 +247,7 @@ public class Character {
 				&& ypos < (GameScreen.getColumns() - 1)) {
 			int[][] mapa = GameScreen.getTilemap();
 			if (mapa[xpos][ypos + 1] == 0) {
+				mapa[xpos][ypos + 1] = 2;
 				yspeed += linkSpeed;
 				this.isMoving = true;
 			}
@@ -308,36 +313,48 @@ public class Character {
 			int mapa[][] = GameScreen.getTilemap();
 			
 			switch(this.state) {
-		case Up:
-			if(mapa[xpos][ypos - 1] == 5) {
-				mapa[xpos][ypos - 1] = 0;
-			}
-			GameScreen.restoreMap();
-			break;
+			case Up:
+				if(mapa[xpos][ypos - 1] == 5) {
+					if(ypos - 1 == 0)
+						mapa[xpos][ypos - 1] = 1;
+					else
+						mapa[xpos][ypos - 1] = 0;
+				}
+				//GameScreen.restoreMap();
+				break;
 
-		case Down:
-			if (mapa[xpos][ypos + 1] == 5){
-				mapa[xpos][ypos + 1] = 0;
-			}
-			GameScreen.restoreMap();
-			break;
+			case Down:
+				if (mapa[xpos][ypos + 1] == 5){
+					if(ypos + 1 == 8)
+						mapa[xpos][ypos + 1] = 1;
+					else
+						mapa[xpos][ypos + 1] = 0;
+				}
+				//GameScreen.restoreMap();
+				break;
 
-		case Left:
-			if (mapa[xpos - 1][ypos] == 5){
-				mapa[xpos - 1][ypos] = 0;
-			}
-			GameScreen.restoreMap();
-			break;
+			case Left:
+				if (mapa[xpos - 1][ypos] == 5){
+					if(xpos - 1 == 0)
+						mapa[xpos - 1][ypos] = 1;
+					else
+						mapa[xpos - 1][ypos] = 0;
+				}
+				//GameScreen.restoreMap();
+				break;
 
-		case Right:
-			if (mapa[xpos + 1][ypos] == 5) {
-				mapa[xpos + 1][ypos] = 0;
-			}
-			GameScreen.restoreMap();
-			break;
-
-		default:
-			break;
+			case Right:
+				if (mapa[xpos + 1][ypos] == 5) {
+					if(xpos + 1 == 15)
+						mapa[xpos + 1][ypos] = 1;
+					else
+						mapa[xpos + 1][ypos] = 0;
+				}
+				//GameScreen.restoreMap();
+				break;
+			
+			default:
+				break;
 			}
 			
 		}
@@ -466,6 +483,22 @@ public class Character {
 			this.isAlive = false;
 		}
 
+	}
+	
+	public int getHurtTimer(){
+		return hurtTimer;
+	}
+	
+	public void setHurtTimer(int hurtTimer) {
+		this.hurtTimer = hurtTimer;
+	}
+	
+	public int getHurtCheck () {
+		return hurtCheck;
+	}
+	
+	public void setHurtCheck(int hurtCheck) {
+		this.hurtCheck = hurtCheck;
 	}
 
 	public boolean loseMoney(int amount) {

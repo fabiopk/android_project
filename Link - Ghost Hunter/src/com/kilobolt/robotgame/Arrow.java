@@ -45,7 +45,6 @@ public class Arrow {
 					break;
 				case 3:
 					killGhost();
-					GameScreen.getLink().setPoints(GameScreen.getLink().getPoints() + 5);
 					hit = true;
 					break;
 
@@ -144,7 +143,6 @@ public class Arrow {
 
 				}
 			}
-
 		}
 	}
 
@@ -152,8 +150,9 @@ public class Arrow {
 		Iterator<Ghost> its = GameScreen.getGhosts().iterator();
 		while (its.hasNext()) {
 			Ghost ghost = its.next();
-			if (ghost.getXpos() == this.xpos && ghost.getYpos() == this.ypos) {
+			if (ghost.getXpos() == this.xpos && ghost.getYpos() == this.ypos && ghost.isAlive()) {
 				ghost.kill();
+				GameScreen.getLink().setPoints(GameScreen.getLink().getPoints() + 5);
 			}
 		}
 

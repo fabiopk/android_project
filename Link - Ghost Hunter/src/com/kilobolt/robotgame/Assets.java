@@ -15,10 +15,11 @@ public class Assets {
 			menu_screen_easy, menu_screen_normal, menu_screen_hard, menu_screen_muted, options_screen_clean,
 			item_diamond, item_bronze_coin, item_gold_coin, item_cake_mix, item_cake_item, cake_placed, portal_o, portal_b, 
 			item_bomb, dpad, buttons, exclamation, placed_bomb, chocolate_cake,
-			red_button, green_bow_button, green_bomb_button, green_cake_button;
+			red_button, green_bow_button, green_bomb_button, green_cake_button, shop_screen_selection;
 
 	// public static Music theme;
 	public static int option_screen_difficulty;
+	public static int weapon_selection;
 	public static int mute;
 	public static Image splash;
 	public static Image menu;

@@ -78,7 +78,7 @@ public class GameScreen extends Screen {
 		if (ShopScreen.getLevel() == 0) {
 			link = new Character();
 			tilemap[link.getXpos()][link.getYpos()] = 2;
-		}
+		}		
 
 		ghosts = new ArrayList<Ghost>();
 		addGhost();
@@ -138,10 +138,6 @@ public class GameScreen extends Screen {
 		cake_placed = Assets.cake_placed;
 		item_bomb = Assets.item_bomb;
 		placed_bomb = Assets.placed_bomb;
-		// red_button = Assets.red_button;
-		// green_bow_button = Assets.green_bow_button;
-		// green_bomb_button = Assets.green_bomb_button;
-		// green_cake_button = Assets.green_cake_button;
 
 		switch (ShopScreen.getLevel()) {
 		case 0:
@@ -161,7 +157,7 @@ public class GameScreen extends Screen {
 			break;
 
 		default:
-			grass = Assets.grass;
+			grass = Assets.grass_4;
 			break;
 		}
 
@@ -301,15 +297,31 @@ public class GameScreen extends Screen {
 			Assets.applause.play(1f);
 			state = GameState.GameOver;
 		}
-
+		
+		int tempGetPointsCheck = link.getPoints();
+		int tempPrevPointsCheck = Assets.prev_points;
+		
+		
 		if (link.getPoints() >= (Assets.prev_points + (ShopScreen
 				.getLevel() + 1) * 20) && !hasPortal) {
-			Item portal = new Item(14, 5);
-			tilemap[14][5] = 0;
-			portal.setType(Type.Portal);
-			items.add(portal);
-			hasPortal = true;
-			Assets.prev_points = link.getPoints();
+			Item portal;
+			if((link.getXpos() == 14 && link.getYpos() == 4)){
+				portal = new Item(14, 5);
+				tilemap[14][5] = 0;
+				portal.setType(Type.Portal);
+				items.add(portal);
+				hasPortal = true;
+				Assets.prev_points = link.getPoints();
+			}
+			else if ((link.getXpos() == 14 && link.getYpos() == 5)){
+				portal = new Item(14, 4);
+				tilemap[14][4] = 0;
+				portal.setType(Type.Portal);
+				items.add(portal);
+				hasPortal = true;
+				Assets.prev_points = link.getPoints();
+			}
+				
 		}
 
 		for (Ghost gst : ghosts) { // Clean map before ghost move, so it is zero
@@ -360,13 +372,34 @@ public class GameScreen extends Screen {
 			}
 			tilemap[link.getXpos()][link.getYpos()] = 2;
 		}
-
-		if (timer >= 300) {
-			addGhost();
-			timer = 0;
-		} else {
-			timer++;
+		
+		switch(Assets.option_screen_difficulty) {
+		case 0:
+			if (timer >= (300 - ShopScreen.getLevel()*10)) {
+				addGhost();
+				timer = 0;
+			} else {
+				timer++;
+			}
+			break;
+		case 1:
+			if (timer >= (260 - ShopScreen.getLevel()*12)) {
+				addGhost();
+				timer = 0;
+			} else {
+				timer++;
+			}
+			break;
+		case 2:
+			if (timer >= (220 - ShopScreen.getLevel()*15)) {
+				addGhost();
+				timer = 0;
+			} else {
+				timer++;
+			}
+			break;
 		}
+
 
 		Iterator itr = items.iterator();
 		while (itr.hasNext()) {
@@ -420,7 +453,10 @@ public class GameScreen extends Screen {
 				}
 
 				if (inBounds(event, 730, 600, 460, 120)) {
-					goToMenu();
+					nullify();
+					ShopScreen.setLevel(0);
+					link.setAlive(true);
+					game.setScreen(new MainMenuScreen(game));
 				}
 			}
 		}
@@ -704,6 +740,9 @@ public class GameScreen extends Screen {
 		g_right = null;
 		grass = null;
 		cake = null;
+		//link.setPoints(0);
+		Assets.prev_points = 0;
+		Assets.weapon_selection = 0;
 
 		// Call garbage collector to clean up memory.
 		System.gc();
@@ -936,8 +975,9 @@ public class GameScreen extends Screen {
 	}
 
 	public static void goToMerchant() {
+		Assets.prev_points = link.getPoints();
 		game.setScreen(new ShopScreen(game));
-		nullify();
+		//nullify();
 
 	}
 
