@@ -8,7 +8,6 @@ import com.kilobolt.robotgame.Character.State;
 public class Ghost extends Character {
 
 	private int count_to_move;
-	private int movCheck;
 
 	public Ghost() {
 		this.linkSpeed = 7 + ShopScreen.getLevel() + Assets.option_screen_difficulty * 2;
@@ -25,25 +24,12 @@ public class Ghost extends Character {
 				if(!(x == GameScreen.getLink().getXpos() && y == GameScreen.getLink().getYpos())) {
 					this.xpos = x;
 					this.ypos = y;
-					//mapa[x][y] = 3;
 					checkSpawn = 1;
 					return;
 				}
 			}
 			
 		}
-		
-//		int x = position.nextInt(7);
-//		int y = position.nextInt(7);
-//		for (int i = x; i < GameScreen.getRows(); i++) {
-//			for (int j = y; j < GameScreen.getColumns(); j++) {
-//				if (mapa[i][j] != 1) {
-//					this.xpos = i;
-//					ypos = j;
-//					return;
-//				}
-//			}
-//		}
 		return;
 	}
 	
@@ -152,37 +138,26 @@ public class Ghost extends Character {
 	}
 
 	public void move() {
-//		int [][] movmap = GameScreen.getMovingMap();
 		Random dir = new Random();
 		switch (dir.nextInt(7)) {
 		case 0:
-//			movmap[xpos][ypos+1] = 4;
-//			movCheck = 1;
 			this.moveDown();
 			this.atack();
-//			movmap[xpos][ypos+1] = 3;
-//			movCheck = 0;
 			break;
 
 		case 1:
-//			movmap[xpos][ypos-1] = 4;
 			this.moveUp();
 			this.atack();
-//			movmap[xpos][ypos-1] = 3;
 			break;
 
 		case 2:
-//			movmap[xpos-1][ypos] = 4;
 			this.moveLeft();
 			this.atack();
-//			movmap[xpos-1][ypos] = 3;
 			break;
 
 		case 3:
-//			movmap[xpos+1][ypos] = 4;
 			this.moveRight();
 			this.atack();
-//			movmap[xpos+1][ypos] = 3;
 			break;
 
 		case 4:
@@ -204,25 +179,20 @@ public class Ghost extends Character {
 	}
 
 	public void moveSameDirection() {
-//		int [][] movmap = GameScreen.getMovingMap();
 		switch (state) {
 		case Up:
-//			movmap[xpos][ypos-1] = 3;
 			this.moveUp();
 			break;
 
 		case Down:
-//			movmap[xpos][ypos+1] = 3;
 			this.moveDown();
 			break;
 
 		case Left:
-//			movmap[xpos-1][ypos] = 3;
 			this.moveLeft();
 			break;
 
 		case Right:
-//			movmap[xpos+1][ypos] = 3;
 			this.moveRight();
 			break;
 		}
@@ -240,30 +210,34 @@ public class Ghost extends Character {
 		switch (state) {
 
 		case Up:
-			if (this.xpos == GameScreen.getLink().xpos
-					&& (this.ypos - 1) == GameScreen.getLink().ypos) {
+			if ((GameScreen.getLink().getHurtCheck() == 0) && (this.xpos == GameScreen.getLink().xpos
+					&& (this.ypos - 1) == GameScreen.getLink().ypos)) {
 				GameScreen.getLink().kill();
+				GameScreen.getLink().setHurtCheck(1);
 			}
 			break;
 
 		case Down:
-			if (this.xpos == GameScreen.getLink().xpos
-					&& (this.ypos + 1) == GameScreen.getLink().ypos) {
+			if ((GameScreen.getLink().getHurtCheck() == 0) && (this.xpos == GameScreen.getLink().xpos
+					&& (this.ypos + 1) == GameScreen.getLink().ypos)) {
 				GameScreen.getLink().kill();
+				GameScreen.getLink().setHurtCheck(1);
 			}
 			break;
 
 		case Left:
-			if ((this.xpos - 1) == GameScreen.getLink().xpos
-					&& this.ypos == GameScreen.getLink().ypos) {
+			if ((GameScreen.getLink().getHurtCheck() == 0) && ((this.xpos - 1) == GameScreen.getLink().xpos
+					&& this.ypos == GameScreen.getLink().ypos)) {
 				GameScreen.getLink().kill();
+				GameScreen.getLink().setHurtCheck(1);
 			}
 			break;
 
 		case Right:
-			if ((this.xpos + 1) == GameScreen.getLink().xpos
-					&& this.ypos == GameScreen.getLink().ypos) {
+			if ((GameScreen.getLink().getHurtCheck() == 0) && ((this.xpos + 1) == GameScreen.getLink().xpos
+					&& this.ypos == GameScreen.getLink().ypos)) {
 				GameScreen.getLink().kill();
+				GameScreen.getLink().setHurtCheck(1);
 			}
 			break;
 

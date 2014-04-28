@@ -27,23 +27,25 @@ public class Character {
 	private int life;
 	private State old_state = State.Down;
 	private int money, points, bombs, cakes;
-	private int movCheck;
-	private int[][]movmap = GameScreen.getMovingMap();
+	private int hurtTimer;
+	private int hurtCheck;
 
 	public Character() {
 		withBow = false;
-		withCakeMix = true;
+		withCakeMix = false;
 		
-		usingArrows = false;
+		usingArrows = true;
 		usingBombs = false;
-		usingCakes = true;
+		usingCakes = false;
 		
+		hurtTimer = 0;	
+		hurtCheck = 0;
 		arrows = 3;
-		life = 99;
+		life = 3;
 		linkSpeed = 8;
 		money = 0;
-		bombs = 10;
-		cakes = 111;
+		bombs = 0;
+		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();
 		Random position = new Random();
@@ -57,23 +59,11 @@ public class Character {
 			if (mapa[x][y] == 0) {
 				this.xpos = x;
 				this.ypos = y;
-				// mapa[x][y] = 2;
 				checkSpawn = 1;
 				return;
 			}
 
 		}
-		// int x = position.nextInt(5);
-		// int y = position.nextInt(5);
-		// for (int i = x; i < GameScreen.getRows(); i++) {
-		// for (int j = y; j < GameScreen.getColumns(); j++) {
-		// if (mapa[i][j] != 1) {
-		// xpos = i;
-		// ypos = j;
-		// return;
-		// }
-		// }
-		// }
 		return;
 	}
 
@@ -159,6 +149,15 @@ public class Character {
 				GameScreen.getS_up().setOver(false);
 				this.state = old_state;
 			}
+		}
+		
+		if(hurtCheck == 1) {
+			hurtTimer++;
+			if(hurtTimer >= 140){
+				hurtCheck = 0;
+				hurtTimer = 0;
+			}
+			
 		}
 	}
 
@@ -472,6 +471,22 @@ public class Character {
 			this.isAlive = false;
 		}
 
+	}
+	
+	public int getHurtTimer(){
+		return hurtTimer;
+	}
+	
+	public void setHurtTimer(int hurtTimer) {
+		this.hurtTimer = hurtTimer;
+	}
+	
+	public int getHurtCheck () {
+		return hurtCheck;
+	}
+	
+	public void setHurtCheck(int hurtCheck) {
+		this.hurtCheck = hurtCheck;
 	}
 
 	public boolean loseMoney(int amount) {

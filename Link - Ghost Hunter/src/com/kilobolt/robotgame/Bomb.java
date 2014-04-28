@@ -53,7 +53,7 @@ public class Bomb {
 //			}		
 //		}
 		
-		if(timeCounter >= 200){
+		if(timeCounter >= 140){
 			killGhost();
 			GameScreen.getLink().setPoints(GameScreen.getLink().getPoints() + 5*numGhostsKilled);
 			exploded = true;
@@ -78,17 +78,6 @@ public class Bomb {
 
 	}
 	
-//	private void killGhost() {
-//		Iterator<Ghost> its = GameScreen.getGhosts().iterator();
-//		while (its.hasNext()) {
-//			Ghost ghost = its.next();
-//			if ((ghost.getXpos() == this.xpos)	&& (ghost.getYpos() == this.ypos)) {
-//				ghost.kill();
-//			}
-//		}
-//
-//	}
-
 	public int getXpos() {
 		return xpos;
 	}

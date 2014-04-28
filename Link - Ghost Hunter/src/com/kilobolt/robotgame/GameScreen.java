@@ -43,7 +43,6 @@ public class GameScreen extends Screen {
 	private static int rows = 16;
 	private static int columns = 9;
 	private static int[][] tilemap;
-	private static int[][] movingMap;
 	static Character link;
 	private Animation a_down, a_left, a_right, ag_right, ag_left, ag_down;
 	private static ArrayList<Ghost> ghosts;
@@ -79,15 +78,7 @@ public class GameScreen extends Screen {
 		if (ShopScreen.getLevel() == 0) {
 			link = new Character();
 			tilemap[link.getXpos()][link.getYpos()] = 2;
-		}
-		
-		movingMap = new int [rows][columns];
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < columns; j++) {
-				movingMap[i][j] = 0;
-			}
-		}
-				
+		}		
 
 		ghosts = new ArrayList<Ghost>();
 		addGhost();
@@ -147,10 +138,6 @@ public class GameScreen extends Screen {
 		cake_placed = Assets.cake_placed;
 		item_bomb = Assets.item_bomb;
 		placed_bomb = Assets.placed_bomb;
-		// red_button = Assets.red_button;
-		// green_bow_button = Assets.green_bow_button;
-		// green_bomb_button = Assets.green_bomb_button;
-		// green_cake_button = Assets.green_cake_button;
 
 		switch (ShopScreen.getLevel()) {
 		case 0:
@@ -272,14 +259,6 @@ public class GameScreen extends Screen {
 
 	public void setTilemap(int[][] tilemap) {
 		this.tilemap = tilemap;
-	}
-	
-	public static int[][] getMovingMap() {
-		return movingMap;
-	}
-	
-	public void setMovingMap(int[][] movingMap) {
-		this.movingMap = movingMap;
 	}
 
 	@Override
