@@ -313,36 +313,48 @@ public class Character {
 			int mapa[][] = GameScreen.getTilemap();
 			
 			switch(this.state) {
-		case Up:
-			if(mapa[xpos][ypos - 1] == 5) {
-				mapa[xpos][ypos - 1] = 0;
-			}
-			GameScreen.restoreMap();
-			break;
+			case Up:
+				if(mapa[xpos][ypos - 1] == 5) {
+					if(ypos - 1 == 0)
+						mapa[xpos][ypos - 1] = 1;
+					else
+						mapa[xpos][ypos - 1] = 0;
+				}
+				//GameScreen.restoreMap();
+				break;
 
-		case Down:
-			if (mapa[xpos][ypos + 1] == 5){
-				mapa[xpos][ypos + 1] = 0;
-			}
-			GameScreen.restoreMap();
-			break;
+			case Down:
+				if (mapa[xpos][ypos + 1] == 5){
+					if(ypos + 1 == 8)
+						mapa[xpos][ypos + 1] = 1;
+					else
+						mapa[xpos][ypos + 1] = 0;
+				}
+				//GameScreen.restoreMap();
+				break;
 
-		case Left:
-			if (mapa[xpos - 1][ypos] == 5){
-				mapa[xpos - 1][ypos] = 0;
-			}
-			GameScreen.restoreMap();
-			break;
+			case Left:
+				if (mapa[xpos - 1][ypos] == 5){
+					if(xpos - 1 == 0)
+						mapa[xpos - 1][ypos] = 1;
+					else
+						mapa[xpos - 1][ypos] = 0;
+				}
+				//GameScreen.restoreMap();
+				break;
 
-		case Right:
-			if (mapa[xpos + 1][ypos] == 5) {
-				mapa[xpos + 1][ypos] = 0;
-			}
-			GameScreen.restoreMap();
-			break;
-
-		default:
-			break;
+			case Right:
+				if (mapa[xpos + 1][ypos] == 5) {
+					if(xpos + 1 == 15)
+						mapa[xpos + 1][ypos] = 1;
+					else
+						mapa[xpos + 1][ypos] = 0;
+				}
+				//GameScreen.restoreMap();
+				break;
+			
+			default:
+				break;
 			}
 			
 		}
