@@ -157,7 +157,7 @@ public class GameScreen extends Screen {
 			break;
 
 		default:
-			grass = Assets.grass;
+			grass = Assets.grass_4;
 			break;
 		}
 
@@ -305,7 +305,7 @@ public class GameScreen extends Screen {
 		if (link.getPoints() >= (Assets.prev_points + (ShopScreen
 				.getLevel() + 1) * 20) && !hasPortal) {
 			Item portal;
-			if(ShopScreen.getLevel()%2 == 0){
+			if((link.getXpos() == 14 && link.getYpos() == 4)){
 				portal = new Item(14, 5);
 				tilemap[14][5] = 0;
 				portal.setType(Type.Portal);
@@ -313,7 +313,7 @@ public class GameScreen extends Screen {
 				hasPortal = true;
 				Assets.prev_points = link.getPoints();
 			}
-			else{
+			else if ((link.getXpos() == 14 && link.getYpos() == 5)){
 				portal = new Item(14, 4);
 				tilemap[14][4] = 0;
 				portal.setType(Type.Portal);
