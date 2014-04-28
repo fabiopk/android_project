@@ -19,6 +19,7 @@ public class Assets {
 
 	// public static Music theme;
 	public static int option_screen_difficulty;
+	public static int weapon_selection;
 	public static int mute;
 	public static Image splash;
 	public static Image menu;

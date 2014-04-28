@@ -12,10 +12,8 @@ import com.kilobolt.framework.Graphics.ImageFormat;
 import com.kilobolt.framework.Input.TouchEvent;
 
 public class ShopScreen extends Screen {
-	//coments
 	
 	private static int level = 0;
-	private int weaponSelection = 0;
 	
 	public ShopScreen(Game game) {
 		super(game);
@@ -58,7 +56,7 @@ public class ShopScreen extends Screen {
         		}
         		//if choose bomb for weapon
         		if (inBounds(event, 1483, 311, 151, 273)) {
-        			weaponSelection = 1;
+        			Assets.weapon_selection = 1;
         			GameScreen.getLink().setUsingBombs(true);
         			GameScreen.getLink().setUsingArrows(false);
         			GameScreen.getLink().setUsingCakes(false);
@@ -67,7 +65,7 @@ public class ShopScreen extends Screen {
         		}
         		//if choose cake for weapon
         		if (inBounds(event, 1335, 634, 153, 273)) {
-        			weaponSelection = 2;
+        			Assets.weapon_selection = 2;
         			GameScreen.getLink().setUsingCakes(true);
         			GameScreen.getLink().setUsingBombs(false);
         			GameScreen.getLink().setUsingArrows(false);
@@ -76,7 +74,7 @@ public class ShopScreen extends Screen {
         		}
         		//if choose arrow for weapon
         		if (inBounds(event, 1587, 634, 151, 273)) {
-        			weaponSelection = 0;
+        			Assets.weapon_selection = 0;
         			GameScreen.getLink().setUsingArrows(true);
         			GameScreen.getLink().setUsingBombs(false);
         			GameScreen.getLink().setUsingCakes(false);
@@ -129,7 +127,7 @@ public class ShopScreen extends Screen {
 		//show number of arrows
 		g.drawString(String.valueOf(GameScreen.getLink().getArrows()), 1665, 890, paint);
 		
-		switch(weaponSelection) {
+		switch(Assets.weapon_selection) {
 		case 0: //draw box around bow
 			g.drawImage(Assets.shop_screen_selection, 1538, 586);
 			break;

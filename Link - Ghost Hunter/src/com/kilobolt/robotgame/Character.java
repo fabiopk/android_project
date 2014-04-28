@@ -31,7 +31,7 @@ public class Character {
 	private int hurtCheck;
 
 	public Character() {
-		withBow = false;
+		withBow = true;
 		withCakeMix = false;
 		
 		usingArrows = true;
@@ -40,8 +40,8 @@ public class Character {
 		
 		hurtTimer = 0;	
 		hurtCheck = 0;
-		arrows = 3;
-		life = 3;
+		arrows = 30;
+		life = 30;
 		linkSpeed = 8;
 		money = 0;
 		bombs = 0;
