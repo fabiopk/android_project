@@ -31,10 +31,14 @@ public class OptionsScreen extends Screen {
             		if(Assets.mute == 0) {
             			Assets.mute = 1;
             			Assets.theme.stop();
+            			Assets.applause.dispose();
+            			Assets.explosion.dispose();
             		}
             		else if(Assets.mute == 1) {
             			Assets.mute = 0;
             			Assets.theme.play();
+            			Assets.explosion = game.getAudio().createSound("explosion.mp3");
+            			Assets.applause = game.getAudio().createSound("applause.mp3");
             		}
                 } //mutes sound
             	

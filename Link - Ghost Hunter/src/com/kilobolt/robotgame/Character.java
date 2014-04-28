@@ -31,7 +31,7 @@ public class Character {
 	private int hurtCheck;
 
 	public Character() {
-		withBow = true;
+		withBow = false;
 		withCakeMix = false;
 		
 		usingArrows = true;
@@ -40,11 +40,11 @@ public class Character {
 		
 		hurtTimer = 0;	
 		hurtCheck = 0;
-		arrows = 30;
-		life = 30;
+		arrows = 3;
+		life = 3;
 		linkSpeed = 8;
 		money = 0;
-		bombs = 0;
+		bombs = 10;
 		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();
