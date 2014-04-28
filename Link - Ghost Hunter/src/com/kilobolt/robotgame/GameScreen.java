@@ -367,7 +367,7 @@ public class GameScreen extends Screen {
 			}
 			break;
 		case 1:
-			if (timer >= (260 - ShopScreen.getLevel()*10)) {
+			if (timer >= (260 - ShopScreen.getLevel()*12)) {
 				addGhost();
 				timer = 0;
 			} else {
@@ -375,7 +375,7 @@ public class GameScreen extends Screen {
 			}
 			break;
 		case 2:
-			if (timer >= (220 - ShopScreen.getLevel()*10)) {
+			if (timer >= (220 - ShopScreen.getLevel()*15)) {
 				addGhost();
 				timer = 0;
 			} else {
