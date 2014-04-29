@@ -335,6 +335,15 @@ public class GameScreen extends Screen {
 				hasPortal = true;
 				Assets.prev_points = link.getPoints();
 			}
+			else {
+				portal = new Item(14, 4);
+				tilemap[14][4] = 0;
+				portal.setType(Type.Portal);
+				items.add(portal);
+				hasPortal = true;
+				Assets.prev_points = link.getPoints();
+			}
+				
 				
 		}
 
