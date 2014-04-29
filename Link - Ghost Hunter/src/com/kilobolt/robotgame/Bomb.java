@@ -23,8 +23,8 @@ public class Bomb {
 	public void update() {
 		int[][] map = GameScreen.getTilemap();
 		if(placed == true){
-			GameScreen.b_explosion.update(10);
 			timeCounter++;
+
 		}
 		else
 			timeCounter = 0;
@@ -54,8 +54,9 @@ public class Bomb {
 //			}		
 //		}
 		
-		if(timeCounter >= 140){
+		if(GameScreen.b_explosion.getCurrentFrame() == 5){
 			killGhost();
+
 			GameScreen.getLink().setPoints(GameScreen.getLink().getPoints() + 5*numGhostsKilled);
 			exploded = true;
 			placed = false;

@@ -34,8 +34,8 @@ public class Character {
 		withBow = false;
 		withCakeMix = false;
 		
-		usingArrows = false;
-		usingBombs = true;
+		usingArrows = true;
+		usingBombs = false;
 		usingCakes = false;
 		
 		hurtTimer = 0;	
@@ -44,7 +44,7 @@ public class Character {
 		life = 3;
 		linkSpeed = 8;
 		money = 0;
-		bombs = 10;
+		bombs = 0;
 		cakes = 0;
 
 		int[][] mapa = GameScreen.getTilemap();
@@ -416,9 +416,13 @@ public class Character {
 
 	public Bomb placeBomb() {
 		if (bombs > 0) {
+			synchronized(this) {
 			bombs -= 1;
 			Bomb bmb1 = new Bomb(this.xpos, this.ypos);
+			GameScreen.b_explosion.setCurrentFrame(0);
+
 			return bmb1;
+			}
 		}
 		Bomb bmb1 = new Bomb(this.xpos, this.ypos);
 		bmb1.setExploded(true);

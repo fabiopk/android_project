@@ -181,11 +181,12 @@ public class GameScreen extends Screen {
 		// Add animations
 		
 		b_explosion = new Animation();
-		b_explosion.addFrame(Assets.bomb_0, 50);
-		b_explosion.addFrame(Assets.bomb_1, 50);
-		b_explosion.addFrame(Assets.bomb_2, 50);
-		b_explosion.addFrame(Assets.bomb_3, 50);
-		b_explosion.addFrame(Assets.bomb_4, 50);
+		b_explosion.addFrame(Assets.bomb_0, 600);
+		b_explosion.addFrame(Assets.bomb_1, 250);
+		b_explosion.addFrame(Assets.bomb_2, 250);
+		b_explosion.addFrame(Assets.bomb_3, 250);
+		b_explosion.addFrame(Assets.bomb_4, 300);
+		b_explosion.addFrame(Assets.bomb_4, 20);
 		
 		
 		
@@ -654,7 +655,7 @@ public class GameScreen extends Screen {
 				break;
 
 			case Bomb:
-				g.drawImage(bomb_item, mod_i, mod_j);
+				g.drawImage(item_bomb, mod_i, mod_j);
 				break;
 
 			case Portal:
@@ -673,7 +674,7 @@ public class GameScreen extends Screen {
 		for (Bomb bomb : bombs) {
 			mod_i = 120 * bomb.getXpos();
 			mod_j = 120 * bomb.getYpos();
-			g.drawImage(placed_bomb, mod_i, mod_j);
+			g.drawImage(b_explosion.getImage(), mod_i, mod_j);
 		}
 
 		if (state == GameState.Ready)
@@ -699,7 +700,10 @@ public class GameScreen extends Screen {
 	}
 
 	public void animate() {
-		b_explosion.update(10);
+
+		if (!bombs.isEmpty()) {
+			GameScreen.b_explosion.update(10);
+		}
 		if (link.isMoving && !(link.getState() == State.SwordAttack)) {
 			w_left.update(13);
 			w_right.update(13);
